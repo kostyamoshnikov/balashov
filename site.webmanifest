@@ -1,15 +1,15 @@
 {
   "name": "Николай Балашов — артист цирка",
   "short_name": "Балашов",
-  "start_url": "/index.html",
+  "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#EFE3C8",
-  "theme_color": "#211B18",
+  "background_color": "#0A0705",
+  "theme_color": "#C81E1E",
   "icons": [
-    { "src": "/Brand/favicon-48.png", "sizes": "48x48", "type": "image/png" },
-    { "src": "/Brand/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
-    { "src": "/Brand/maskable-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
-    { "src": "/Brand/maskable-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
-    { "src": "/Brand/avatar-512.png", "sizes": "512x512", "type": "image/png" }
+    { "src": "Brand/favicon-48.png", "sizes": "48x48", "type": "image/png" },
+    { "src": "Brand/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "Brand/maskable-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "Brand/maskable-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "Brand/avatar-512.png", "sizes": "512x512", "type": "image/png" }
   ]
 }
