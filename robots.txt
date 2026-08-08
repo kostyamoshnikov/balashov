@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://balashov-circus.ru/sitemap.xml
