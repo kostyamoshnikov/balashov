@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 100">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&amp;display=swap');
+    .word{font-family:'Bricolage Grotesque',Arial,sans-serif;font-weight:800;letter-spacing:1px;}
+  </style>
+  <g transform="translate(6,8) scale(0.6)">
+    <rect x="26" y="18" width="14" height="84" rx="7" fill="#211B18"/>
+    <rect x="80" y="18" width="14" height="84" rx="7" fill="#211B18"/>
+    <rect x="18" y="53" width="84" height="14" rx="7" fill="#E8323D"/>
+  </g>
+  <text x="92" y="46" class="word" font-size="30" fill="#211B18">НИКОЛАЙ</text>
+  <text x="92" y="82" class="word" font-size="30" fill="#E8323D">БАЛАШОВ</text>
+</svg>
