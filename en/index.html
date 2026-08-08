@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nikolai Balashov — circus artiste</title>
-<meta name="description" content="Nikolai Balashov — juggler on a free-standing ladder, stilt-walker, flexible-pole artiste. Russian record holder, 2009. Saint Petersburg and Leningrad region.">
+<title>Nikolai Balashov — "Shou Balashova", circus artiste in Saint Petersburg</title>
+<meta name="description" content="Nikolai Balashov — juggler on a free-standing ladder, stilt-walker, flexible-pole artiste. Russian record holder, 2009. "Shou Balashova" — Saint Petersburg and Leningrad region.">
 <link rel="icon" type="image/png" href="../Brand/favicon-32.png">
 <link rel="canonical" href="https://balashov-circus.ru/en/index.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Nikolai Balashov — circus artiste">
+<meta property="og:title" content="Nikolai Balashov — "Shou Balashova"">
 <meta property="og:description" content="Juggler on a ladder, stilt-walker, flexible poles. Russian record holder, 2009. Saint Petersburg region.">
 <meta property="og:url" content="https://balashov-circus.ru/en/index.html">
 <meta property="og:image" content="https://balashov-circus.ru/Brand/og-image.png">
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Nikolai Balashov — circus artiste">
+<meta name="twitter:title" content="Nikolai Balashov — "Shou Balashova"">
 <meta name="twitter:description" content="Juggler on a ladder, stilt-walker, flexible poles. Russian record holder, 2009. Saint Petersburg region.">
 <meta name="twitter:image" content="https://balashov-circus.ru/Brand/og-image.png">
 <link rel="manifest" href="../site.webmanifest">
@@ -22,172 +22,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Public+Sans:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
-<style>
-:root{
-  --half: clamp(150px, 46vw, 383px);
-  --paper:#0A0705;
-  --ink:#FBF3E4;
-  --ink-soft:#C9BBA6;
-
-  --crimson:#C81E1E; --crimson-deep:#8A1210;
-  --cobalt:#7A2A12; --cobalt-deep:#4A140A;
-  --ochre:#FEB127; --ochre-deep:#B5750A; --ochre-light:#FFD87A;
-  --emerald:#D99A1B; --emerald-deep:#7A4E0A;
-
-  --foil:#FDD945; --foil-deep:#E8B23D;
-
-  --lane: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='200'%3E%3Cline x1='20' y1='0' x2='20' y2='200' stroke='%23FDD945' stroke-width='1.5' opacity='0.22'/%3E%3Ccircle cx='20' cy='24' r='4' fill='%23FDD945' opacity='0.55'/%3E%3Ccircle cx='20' cy='74' r='3' fill='%23FEB127' opacity='0.4'/%3E%3Ccircle cx='20' cy='124' r='4' fill='%23FDD945' opacity='0.55'/%3E%3Ccircle cx='20' cy='174' r='3' fill='%23FEB127' opacity='0.4'/%3E%3C/svg%3E");
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  background:var(--paper);color:var(--ink);
-  font-family:'Space Mono',monospace;font-weight:400;line-height:1.6;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;
-}
-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.04;mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-::selection{background:var(--ink);color:var(--paper)}
-img{max-width:100%;display:block}
-a{color:inherit}
-
-/* readable prose gets a clean sans; Space Mono is reserved for labels, data, numbers */
-.prose{font-family:'Public Sans',system-ui,sans-serif;line-height:1.65}
-
-.eyebrow{font-family:'Space Mono';font-size:11px;letter-spacing:.16em;text-transform:uppercase}
-.serif{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
-.wrap{padding:0 24px}
-
-/* ══════════ THE TENT ══════════ */
-.tent-hero{position:relative;padding-top:8px}
-.tent-svg{width:100%;height:auto;display:block;max-height:300px}
-.tent-reading{text-align:center;margin-top:-10px;position:relative;z-index:1;font-family:'Space Mono';font-size:11px;letter-spacing:.1em;color:var(--ink-soft)}
-.tent-reading b{color:var(--crimson);font-weight:400}
-
-/* ══════════ THE LADDER ══════════ */
-.gauge{
-  position:relative;
-  background-image:var(--lane),var(--lane);
-  background-repeat:repeat-y,repeat-y;
-  background-size:40px 200px,40px 200px;
-  background-position:calc(50% - var(--half) - 20px) 0, calc(50% + var(--half) - 20px) 0;
-}
-.rail-mask{
-  position:absolute;top:0;bottom:0;width:40px;background:var(--paper);z-index:2;
-  transform-origin:bottom;animation:maskShrink 2s cubic-bezier(.22,.9,.32,1) forwards;pointer-events:none;
-}
-.rail-mask-left{left:calc(50% - var(--half) - 20px)}
-.rail-mask-right{left:calc(50% + var(--half) - 20px)}
-@keyframes maskShrink{from{transform:scaleY(1)} to{transform:scaleY(0)}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)}}
-
-.rung{
-  width:calc(var(--half) * 2);margin:0 auto;position:relative;z-index:1;
-  display:flex;align-items:center;justify-content:space-between;padding:10px 20px;
-  opacity:0;animation:fadeUp .7s ease-out forwards;
-  font-family:'Space Mono';
-}
-.rung::before{content:"";position:absolute;left:2px;right:2px;top:50%;height:1px;background:rgba(201,187,166,.3)}
-.rung .m{position:relative;background:var(--paper);padding-right:10px;font-size:12px;color:var(--crimson);font-weight:700}
-.rung .lbl{position:relative;background:var(--paper);padding-left:10px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
-.rung .dot{position:absolute;top:50%;width:8px;height:8px;border-radius:50%;transform:translateY(-50%);background:var(--ink-soft);opacity:.55;box-shadow:0 0 0 3px var(--paper)}
-.rung .dot.l{left:-4px} .rung .dot.r{right:-4px}
-.rung:nth-of-type(1){animation-delay:1.3s} .rung:nth-of-type(2){animation-delay:1.42s}
-.rung:nth-of-type(3){animation-delay:1.54s} .rung:nth-of-type(4){animation-delay:1.66s}
-.rung:nth-of-type(5){animation-delay:1.78s} .rung:nth-of-type(6){animation-delay:1.9s}
-.rung:nth-of-type(7){animation-delay:2.02s} .rung:nth-of-type(8){animation-delay:2.14s}
-.rung:nth-of-type(9){animation-delay:2.26s}
-
-/* ── hero: name sits light and open, right on the paper — no card, no outline ─────────────────────────── */
-header{padding:10px 20px 26px;text-align:center;position:relative;z-index:1}
-.hero-copy{max-width:calc(var(--half) * 2 - 32px);margin:0 auto}
-.kicker{font-family:'Space Mono';font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--crimson-deep)}
-h1.name{
-  font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
-  font-size:clamp(40px,12vw,92px);line-height:.9;margin-top:10px;text-transform:uppercase;
-  color:var(--ink);
-}
-.tag{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(16px,3vw,21px);margin-top:14px;color:var(--ink-soft);font-weight:400}
-.hero-strip{margin-top:20px;display:flex;gap:7px;flex-wrap:wrap;justify-content:center}
-.hero-strip span{font-family:'Space Mono';font-size:10.5px;letter-spacing:.04em;border:1px solid rgba(251,243,228,.28);color:var(--ink-soft);padding:5px 10px;border-radius:2px}
-.mark{width:34px;height:34px;margin:0 auto 10px}
-
-/* ── site nav ─────────────────────────── */
-.site-nav{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;padding:14px 20px 0;font-family:'Space Mono';font-size:11px;letter-spacing:.1em;text-transform:uppercase}
-.site-nav a{color:var(--ink-soft);text-decoration:none;padding-bottom:3px;border-bottom:2px solid transparent}
-.site-nav a.current,.site-nav a:hover{color:var(--crimson);border-bottom-color:var(--crimson)}
-.site-nav a.lang-switch{border:1px solid rgba(251,243,228,.28);border-radius:999px;padding:3px 10px;color:var(--ink-soft)}
-.site-nav a.lang-switch:hover{border-color:var(--crimson);color:var(--crimson)}
-
-/* ── act cards: soft, rounded, inset, gently tilted ─────────────────────────── */
-.act-wrap{padding:6px 20px 16px}
-.act-block{
-  width:calc(var(--half) * 2 - 40px);max-width:100%;margin:0 auto;
-  color:var(--ink);position:relative;overflow:hidden;
-  border-radius:28px;padding:34px 26px 38px;
-  box-shadow:0 14px 26px -16px rgba(0,0,0,.45);
-}
-.act-block.crimson{background:linear-gradient(155deg,var(--crimson) 0%,var(--crimson-deep) 140%);transform:rotate(-0.6deg)}
-.act-block.cobalt{background:linear-gradient(155deg,var(--cobalt) 0%,var(--cobalt-deep) 140%);transform:rotate(0.5deg)}
-.act-block.ochre{background:linear-gradient(155deg,var(--ochre) 0%,var(--ochre-deep) 140%);transform:rotate(-0.4deg)}
-.act-block.emerald{background:linear-gradient(155deg,var(--emerald) 0%,var(--emerald-deep) 140%);transform:rotate(0.6deg)}
-.act-block.ochre,.act-block.emerald{color:var(--paper)}
-.act-block.ochre .act-num,.act-block.emerald .act-num{-webkit-text-stroke-color:rgba(10,7,5,.35)}
-.act-num{
-  font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(50px,11vw,100px);line-height:.7;
-  position:absolute;top:2px;right:16px;z-index:0;
-  color:transparent;-webkit-text-stroke:1.4px rgba(255,255,255,.4);
-}
-.act-eyebrow{font-family:'Space Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.9;position:relative;z-index:1}
-.act-block h3{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-size:clamp(24px,5.2vw,36px);margin:7px 0 12px;position:relative;z-index:1}
-.act-block p{font-size:14.5px;opacity:.96;position:relative;z-index:1;max-width:44ch}
-
-/* ── plain sections ─────────────────────────── */
-section.plain{padding:38px 0 44px;position:relative;z-index:1}
-section.tinted{background:rgba(254,177,39,.045)}
-.section-head{margin-bottom:24px}
-.section-head .eyebrow{color:var(--crimson)}
-.section-head h2{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-size:clamp(24px,4.6vw,34px);margin-top:4px}
-
-/* ── record ─────────────────────────── */
-.record-wrap{padding:6px 20px 16px}
-.record{
-  width:calc(var(--half) * 2 - 40px);max-width:100%;margin:0 auto;
-  background:var(--ink);color:var(--paper);text-align:center;padding:40px 26px;position:relative;z-index:1;
-  border-radius:28px;box-shadow:0 14px 26px -16px rgba(0,0,0,.45);
-}
-.record .eyebrow{color:var(--crimson-deep)}
-.record .big{font-family:'Instrument Serif';font-style:italic;font-size:clamp(30px,6.6vw,52px);margin-top:8px}
-.record p{margin-top:10px;color:rgba(10,7,5,.75);font-size:14px}
-
-/* ── timeline ─────────────────────────── */
-.tl-row{display:grid;grid-template-columns:60px 1fr;gap:14px;padding:13px 0;border-bottom:1px dashed rgba(251,243,228,.22)}
-.tl-row:first-child{border-top:1px dashed rgba(251,243,228,.22)}
-.tl-year{font-family:'Space Mono';font-size:12.5px;color:var(--crimson);font-weight:700}
-.tl-body h4{font-family:'Public Sans';font-weight:600;font-size:14.5px;margin-bottom:4px;color:var(--ink)}
-.tl-body p{font-size:13px;color:rgba(201,187,166,.85)}
-
-/* ── touring: measured list ─────────────────────────── */
-.tour-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dotted rgba(251,243,228,.3);font-family:'Space Mono';font-size:12.5px}
-.tour-row span:first-child{color:var(--ink)}
-.tour-row span:last-child{color:var(--crimson);font-weight:700}
-
-/* ── footer: ground level ─────────────────────────── */
-footer{background:linear-gradient(155deg,var(--cobalt),var(--cobalt-deep) 140%);color:var(--ink);padding:44px 20px 40px;text-align:center;position:relative;z-index:1}
-footer .eyebrow{color:var(--ochre-light)}
-footer h2{font-family:'Instrument Serif';font-style:italic;font-size:clamp(26px,5.4vw,40px);margin-top:6px}
-footer .tag{color:var(--ink);opacity:.9}
-.cta{display:inline-block;margin-top:20px;font-family:'Space Mono';font-size:12.5px;letter-spacing:.04em;color:var(--cobalt-deep);background:var(--ink);padding:12px 26px;text-decoration:none;font-weight:700}
-.foot-note{margin-top:30px;font-family:'Space Mono';font-size:10.5px;opacity:.55}
-
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto}
-  .rail-mask{animation:none;transform:scaleY(0)}
-  .rung{animation:none;opacity:1;transform:none}
-}
-</style>
 
 <!-- Яндекс.Метрика — раскомментировать и вставить свой ID счётчика после регистрации на metrika.yandex.ru
 <script type="text/javascript">
@@ -200,215 +34,356 @@ footer .tag{color:var(--ink);opacity:.9}
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/00000000" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 -->
+
+<style>
+
+:root{
+  --ink:#0A0705;
+  --ink-2:#1B1109;
+  --ink-3:#2A1810;
+  --cream:#FBF3E4;
+  --cream-soft:#C9BBA6;
+
+  --crimson:#C81E1E; --crimson-deep:#8A1210;
+  --gold:#FDD945; --gold-deep:#B5750A;
+  --flame:#FEB127; --flame-deep:#8A5A0E;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);color:var(--cream);
+  font-family:'Public Sans',system-ui,sans-serif;font-weight:400;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+::selection{background:var(--gold);color:var(--ink)}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+.mono{font-family:'Space Mono',monospace}
+.serif{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+.wrap{max-width:640px;margin:0 auto;padding:0 24px}
+.prose{font-family:'Public Sans',system-ui,sans-serif;line-height:1.65}
+
+.gold-text{
+  background:linear-gradient(180deg,#FFF3B0 0%, var(--gold) 45%, var(--flame-deep) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 3px 5px rgba(0,0,0,.55));
+}
+
+.marquee{
+  height:22px;
+  background-image:repeating-radial-gradient(circle at 11px 11px, var(--gold) 0 2.6px, rgba(253,217,69,.12) 2.6px 3.6px, transparent 3.6px 22px);
+  background-size:22px 22px;
+  opacity:.85;
+}
+
+.ribbon{
+  display:inline-block;position:relative;
+  background:linear-gradient(180deg,var(--crimson),var(--crimson-deep));
+  color:var(--gold);padding:8px 28px;
+  clip-path:polygon(4% 0,96% 0,100% 50%,96% 100%,4% 100%,0 50%);
+  font-family:'Space Mono';font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  box-shadow:0 6px 14px -6px rgba(0,0,0,.6);
+}
+
+.site-nav{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;padding:18px 20px;font-family:'Space Mono';font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;position:relative;z-index:2;background:var(--ink)}
+.site-nav a{color:var(--cream-soft);text-decoration:none;padding-bottom:3px;border-bottom:2px solid transparent}
+.site-nav a.current,.site-nav a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+.site-nav a.lang-switch{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px}
+.site-nav a.lang-switch:hover{border-color:var(--gold)}
+
+.badge-glow{position:relative;margin:0 auto}
+.badge-glow::before{
+  content:"";position:absolute;inset:-24px;border-radius:50%;
+  background:radial-gradient(circle, rgba(253,217,69,.32), transparent 70%);
+  filter:blur(6px);
+}
+.badge-glow img{
+  position:relative;width:100%;height:100%;border-radius:50%;object-fit:cover;
+  box-shadow:0 0 0 3px rgba(253,217,69,.5), 0 14px 34px -10px rgba(0,0,0,.7);
+}
+
+.page-hero{position:relative;padding:44px 20px 34px;text-align:center;overflow:hidden}
+.page-hero::before{
+  content:"";position:absolute;inset:0;z-index:0;
+  background:radial-gradient(ellipse 60% 40% at 50% 8%, rgba(254,177,39,.16), transparent 70%);
+}
+.page-hero .badge-glow{width:76px;height:76px;margin-bottom:16px;position:relative;z-index:1}
+.page-hero h1{position:relative;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(30px,8vw,52px);text-transform:uppercase;margin-top:8px;z-index:1}
+.page-hero .tag{position:relative;font-family:'Instrument Serif';font-style:italic;font-size:clamp(15px,3vw,19px);color:var(--cream-soft);margin-top:10px;max-width:46ch;margin-left:auto;margin-right:auto;z-index:1}
+
+section{padding:44px 0;position:relative}
+section.tinted{background:rgba(253,217,69,.025)}
+.section-head{text-align:center;margin-bottom:28px}
+.section-head h2{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-size:clamp(24px,5vw,34px);margin-top:12px;color:var(--cream)}
+.section-head .sub{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);margin-top:8px;max-width:48ch;margin-left:auto;margin-right:auto}
+
+.body-copy p{font-family:'Public Sans';font-size:14.5px;color:var(--cream-soft);margin-bottom:14px}
+.body-copy p:last-child{margin-bottom:0}
+.body-copy b{color:var(--cream);font-weight:600}
+
+.stat-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.stat{background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:14px;padding:16px 18px;flex:1 1 130px;text-align:center}
+.stat b{display:block;font-family:'Bricolage Grotesque';font-weight:800;font-size:24px;color:var(--gold)}
+.stat span{font-family:'Space Mono';font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--cream-soft)}
+
+.interests{display:flex;flex-wrap:wrap;gap:8px}
+.interests span{font-family:'Space Mono';font-size:11px;border:1px solid rgba(253,217,69,.25);color:var(--cream-soft);padding:6px 12px;border-radius:999px;background:rgba(253,217,69,.03)}
+
+.acts{display:flex;flex-direction:column;gap:14px}
+.act{background:var(--ink-2);border-radius:14px;padding:22px 20px;position:relative;border:1px solid var(--accent, rgba(253,217,69,.25))}
+.act .num{position:absolute;top:-12px;left:20px;width:30px;height:30px;border-radius:50%;background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:13px;box-shadow:0 4px 10px -4px rgba(0,0,0,.6)}
+.act h3{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-size:20px;margin-top:8px;color:var(--cream)}
+.act .kind{font-family:'Space Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);opacity:.85}
+.act p{font-size:13.5px;color:var(--cream-soft);margin-top:8px}
+.act.c1{--accent:rgba(200,30,30,.4)}
+.act.c2{--accent:rgba(254,177,39,.35)}
+.act.c3{--accent:rgba(253,217,69,.3)}
+.act.c4{--accent:rgba(200,30,30,.4)}
+
+.tl-row{display:grid;grid-template-columns:64px 1fr;gap:14px;padding:14px 0;border-bottom:1px dashed rgba(253,217,69,.15)}
+.tl-row:first-child{border-top:1px dashed rgba(253,217,69,.15)}
+.tl-year{font-family:'Space Mono';font-size:12px;color:var(--gold);font-weight:700}
+.tl-body h4{font-family:'Public Sans';font-weight:600;font-size:14px;color:var(--cream)}
+.tl-body p{font-family:'Public Sans';font-size:12.5px;color:var(--cream-soft);margin-top:3px}
+
+.tour-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dotted rgba(253,217,69,.15);font-family:'Space Mono';font-size:12px}
+.tour-row span:first-child{color:var(--cream)}
+.tour-row span:last-child{color:var(--gold);font-weight:700}
+
+.record{text-align:center}
+.record .big{font-family:'Instrument Serif';font-style:italic;font-size:clamp(30px,7vw,48px);margin-top:12px}
+.record p.prose{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);margin-top:12px;max-width:46ch;margin-left:auto;margin-right:auto}
+
+.format-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.format-grid .f{background:var(--ink-2);border:1px solid rgba(253,217,69,.18);border-radius:14px;padding:14px 12px;font-size:12px;text-align:center;color:var(--cream-soft)}
+.format-grid .f b{display:block;font-family:'Public Sans';font-weight:600;font-size:13.5px;margin-bottom:3px;color:var(--cream)}
+
+.rider-box{background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:16px;padding:22px 20px;margin-top:20px}
+.rider-box .ribbon{margin-bottom:10px}
+.rider-box h3{font-family:'Instrument Serif';font-style:italic;font-size:19px;color:var(--cream);margin-bottom:8px}
+.rider-box ul{margin:8px 0 0 18px;font-family:'Public Sans';font-size:12.5px;color:var(--cream-soft)}
+.rider-box li{margin-bottom:6px}
+.rider-box .note{font-family:'Space Mono';font-size:10px;color:var(--cream-soft);opacity:.7;margin-top:10px}
+
+.form-card{background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:18px;padding:24px 20px;margin-top:16px}
+.field{margin-bottom:15px}
+.field label{display:block;font-family:'Space Mono';font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--cream-soft);margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;border:1.5px solid rgba(253,217,69,.25);border-radius:10px;padding:11px 13px;font-family:'Public Sans';font-size:14px;color:var(--cream);background:var(--ink)}
+.field textarea{resize:vertical;min-height:70px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
+.submit-btn{width:100%;border:none;border-radius:10px;padding:15px;margin-top:6px;font-family:'Space Mono';font-size:13px;letter-spacing:.04em;font-weight:700;background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:var(--ink);cursor:pointer}
+.form-note{font-family:'Public Sans';font-size:12px;color:var(--cream-soft);margin-top:12px;text-align:center}
+
+.link-card{background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:16px;padding:18px 20px;margin-bottom:12px;display:block;text-decoration:none;color:inherit}
+.link-card:hover{border-color:rgba(253,217,69,.45)}
+.link-card .kind{font-family:'Space Mono';font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.link-card h4{font-family:'Public Sans';font-weight:600;font-size:15px;margin:5px 0 4px;color:var(--cream)}
+.link-card p{font-family:'Public Sans';font-size:13px;color:var(--cream-soft);margin-bottom:6px}
+.link-card .url{font-family:'Space Mono';font-size:11px;color:var(--flame);word-break:break-all}
+
+.note-box{background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:16px;padding:18px 20px;margin-top:22px}
+.note-box p{font-family:'Public Sans';font-size:13px;color:var(--cream-soft);line-height:1.6}
+.note-box .eyebrow-plain{font-family:'Space Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:6px}
+
+footer{background:linear-gradient(180deg,var(--ink-2),var(--ink));padding:52px 20px 40px;text-align:center;position:relative}
+footer::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(200,30,30,.16),transparent 70%)}
+footer .inner{position:relative}
+footer .badge-glow{width:96px;height:96px;margin-bottom:14px}
+footer h2{font-family:'Instrument Serif';font-style:italic;font-size:clamp(26px,5.6vw,40px);margin-top:12px}
+footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);margin-top:10px;max-width:42ch;margin-left:auto;margin-right:auto}
+.cta-row{margin-top:24px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.cta{display:inline-block;font-family:'Space Mono';font-size:12px;letter-spacing:.04em;padding:13px 26px;text-decoration:none;font-weight:700;border-radius:2px}
+.cta.primary{background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:var(--ink)}
+.cta.ghost{background:transparent;border:1px solid rgba(253,217,69,.4);color:var(--gold)}
+.foot-note{margin-top:26px;font-family:'Space Mono';font-size:10.5px;color:var(--cream-soft);opacity:.65}
+.foot-note a{color:var(--cream-soft)}
+
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+
+
+</style>
 </head>
 <body>
 
-<div class="tent-hero">
-  <svg class="tent-svg" viewBox="0 0 600 340" preserveAspectRatio="xMidYMin meet" aria-hidden="true">
-    <defs>
-      <clipPath id="tentShape">
-        <path d="M55,300 Q78,110 300,45 Q522,110 545,300 Z"/>
-      </clipPath>
-      <radialGradient id="tentGlow" cx="50%" cy="10%" r="55%">
-        <stop offset="0%" stop-color="#FFE9B0" stop-opacity="0.9"/>
-        <stop offset="60%" stop-color="#FDD945" stop-opacity="0.15"/>
-        <stop offset="100%" stop-color="#FDD945" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
+<nav class="site-nav">
+  <a href="index.html" class="current">Home</a>
+  <a href="about.html">About</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="media.html">Media</a>
+  <a href="booking.html">Booking</a>
+  <a href="../index.html" class="lang-switch">RU</a>
+</nav>
 
-    <ellipse cx="300" cy="300" rx="270" ry="90" fill="url(#tentGlow)"/>
+<header>
+  <div class="badge-glow" style="width:168px;height:168px;margin:0 auto 22px">
+    <img src="../Brand/logo-shou-balashova.jpg" alt="Shou Balashova">
+  </div>
+  <p class="kicker" style="text-align:center;font-family:'Space Mono';font-size:11.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--cream-soft)">Circus artiste · since 1994</p>
+  <h1 class="name gold-text" style="text-align:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(38px,11vw,80px);line-height:.95;text-transform:uppercase;margin-top:12px">Nikolai Balashov</h1>
+  <p class="showname" style="text-align:center;font-family:'Instrument Serif';font-style:italic;font-size:clamp(17px,3.2vw,22px);color:var(--gold);margin-top:8px">"Shou Balashova"</p>
+  <p class="tag" style="text-align:center;font-family:'Public Sans';font-size:14.5px;color:var(--cream-soft);margin-top:12px;max-width:44ch;margin-left:auto;margin-right:auto">Juggler, equilibrist, stilt-walker, flexible-pole artiste — circus acts for events in Saint Petersburg and the Leningrad region.</p>
+  <div class="hero-strip" style="margin-top:24px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+    <span style="font-family:'Space Mono';font-size:10.5px;border:1px solid rgba(253,217,69,.35);color:var(--cream-soft);padding:6px 12px;border-radius:999px;background:rgba(253,217,69,.04)">Ladder</span>
+    <span style="font-family:'Space Mono';font-size:10.5px;border:1px solid rgba(253,217,69,.35);color:var(--cream-soft);padding:6px 12px;border-radius:999px;background:rgba(253,217,69,.04)">Stilt-walker</span>
+    <span style="font-family:'Space Mono';font-size:10.5px;border:1px solid rgba(253,217,69,.35);color:var(--cream-soft);padding:6px 12px;border-radius:999px;background:rgba(253,217,69,.04)">Flexible poles</span>
+    <span style="font-family:'Space Mono';font-size:10.5px;border:1px solid rgba(253,217,69,.35);color:var(--cream-soft);padding:6px 12px;border-radius:999px;background:rgba(253,217,69,.04)">Russian record · 2009</span>
+  </div>
+  <div style="text-align:center">
+    <a class="scroll-cue" href="#repertoire" style="display:inline-block;margin-top:30px;font-family:'Space Mono';font-size:11px;letter-spacing:.1em;color:var(--gold-deep);text-decoration:none">See the acts ↓</a>
+  </div>
+</header>
 
-    <g clip-path="url(#tentShape)">
-      <rect x="0" y="0" width="600" height="340" fill="#0A0705"/>
-      <g>
-        <polygon points="300,45 55,300 100,300" fill="#C81E1E"/>
-        <polygon points="300,45 100,300 145,300" fill="#0A0705"/>
-        <polygon points="300,45 145,300 190,300" fill="#7A2A12"/>
-        <polygon points="300,45 190,300 235,300" fill="#0A0705"/>
-        <polygon points="300,45 235,300 280,300" fill="#FEB127"/>
-        <polygon points="300,45 280,300 325,300" fill="#0A0705"/>
-        <polygon points="300,45 325,300 370,300" fill="#D99A1B"/>
-        <polygon points="300,45 370,300 415,300" fill="#0A0705"/>
-        <polygon points="300,45 415,300 460,300" fill="#C81E1E"/>
-        <polygon points="300,45 460,300 505,300" fill="#0A0705"/>
-        <polygon points="300,45 505,300 545,300" fill="#7A2A12"/>
-      </g>
-      <path d="M55,300 Q78,110 300,45 Q522,110 545,300 Z" fill="none" stroke="#FBF3E4" stroke-opacity="0.25" stroke-width="2"/>
-    </g>
+<div class="marquee"></div>
 
-    <g fill="#FDD945">
-      <circle cx="70" cy="300" r="17"/><circle cx="106" cy="300" r="17"/><circle cx="142" cy="300" r="17"/>
-      <circle cx="178" cy="300" r="17"/><circle cx="214" cy="300" r="17"/><circle cx="250" cy="300" r="17"/>
-      <circle cx="286" cy="300" r="17"/><circle cx="322" cy="300" r="17"/><circle cx="358" cy="300" r="17"/>
-      <circle cx="394" cy="300" r="17"/><circle cx="430" cy="300" r="17"/><circle cx="466" cy="300" r="17"/>
-      <circle cx="502" cy="300" r="17"/><circle cx="530" cy="300" r="17"/>
-    </g>
-    <rect x="52" y="286" width="496" height="14" fill="#FBF3E4"/>
-
-    <g stroke="#FBF3E4" stroke-opacity="0.45" stroke-width="2" stroke-dasharray="1 5" stroke-linecap="round">
-      <line x1="150" y1="145" x2="95" y2="300"/>
-      <line x1="450" y1="145" x2="505" y2="300"/>
-    </g>
-
-    <line x1="300" y1="45" x2="300" y2="8" stroke="#FBF3E4" stroke-width="3" stroke-linecap="round"/>
-    <path d="M300,8 L332,18 L300,29 Z" fill="#C81E1E"/>
-
-    <ellipse cx="300" cy="296" rx="46" ry="16" fill="#FBF3E4"/>
-    <ellipse cx="300" cy="296" rx="46" ry="16" fill="none" stroke="#FDD945" stroke-width="2" stroke-opacity="0.6"/>
-  </svg>
-  <p class="tent-reading">18.0 m <b>·</b> big-top canopy — starting point</p>
-</div>
-
-<div class="gauge">
-  <div class="rail-mask rail-mask-left"></div>
-  <div class="rail-mask rail-mask-right"></div>
-
-  <nav class="site-nav">
-    <a href="index.html" class="current">Home</a>
-    <a href="about.html">About</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="media.html">Media</a>
-    <a href="booking.html">Booking</a>
-    <a href="../index.html" class="lang-switch">RU</a>
-  </nav>
-
-  <header>
-    <div class="hero-copy">
-      <img class="mark" src="../Brand/logo-shou-balashova.jpg" alt="Shou Balashova" style="border-radius:50%;object-fit:cover">
-      <p class="kicker">Circus artiste · since 1994</p>
-      <h1 class="name">Nikolai<br>Balashov</h1>
-      <p class="tag">Juggler, equilibrist, stilt-walker, flexible-pole artiste — wherever the floor runs out.</p>
-      <div class="hero-strip">
-        <span>Ladder</span><span>Stilt-walker</span><span>Flexible poles</span><span>Russian record · 2009</span>
-      </div>
-    </div>
-  </header>
-
-  <div class="rung"><i class="dot l"></i><span class="m">15.5 m</span><span class="lbl">equilibristics</span><i class="dot r"></i></div>
-  <div class="act-wrap">
-    <div class="act-block crimson">
-      <div class="act-num">01</div>
-      <p class="act-eyebrow">Juggler on a free-standing ladder</p>
-      <h3>An act fastened to nothing</h3>
-      <p class="prose">Nothing but the artiste's balance, no safety line. Performing since 1994 — from corporate galas and product launches to private receptions.</p>
+<section>
+  <div class="wrap" style="text-align:center">
+    <span class="ribbon">Format</span>
+    <h2 class="serif">One act — or a whole show</h2>
+    <div class="body-copy" style="text-align:left;margin-top:20px">
+      <p>Every event has <b>Nikolai himself</b> on it — thirty years in the ring, every performance under his name and his responsibility.</p>
+      <p>For larger formats, he assembles the right team. That's how the circus troupe for "Princess of the Circus" at the Musical Comedy Theatre came together, and for the paramotor flying show he brought in a champion pilot and four trapeze gymnasts.</p>
+      <p>"Shou Balashova" spans everything from a single act at a wedding to a full production at a city festival — and either way, Nikolai is the one on site.</p>
     </div>
   </div>
+</section>
 
-  <div class="rung"><i class="dot l"></i><span class="m">12.5 m</span><span class="lbl">stilt-walker</span><i class="dot r"></i></div>
-  <div class="act-wrap">
-    <div class="act-block cobalt">
-      <div class="act-num">02</div>
-      <p class="act-eyebrow">Stilt-walker in any costume</p>
-      <h3>Spotted from a distance</h3>
-      <p class="prose">Fairy-tale, jester and themed costumes — for children's parties, weddings, mall openings or city events. Live interaction with the guests, greeting and entertaining.</p>
+<div class="marquee"></div>
+
+<section id="repertoire" class="tinted">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="ribbon">Repertoire</span>
+      <h2 class="serif">Four signature acts</h2>
     </div>
-  </div>
-
-  <div class="rung"><i class="dot l"></i><span class="m">9.5 m</span><span class="lbl">flexible poles</span><i class="dot r"></i></div>
-  <div class="act-wrap">
-    <div class="act-block ochre">
-      <div class="act-num">03</div>
-      <p class="act-eyebrow">Flexible poles</p>
-      <h3>A genre almost no one performs</h3>
-      <p class="prose">Only three or four theatres in the world work this genre. The idea came from a Canadian circus performing on Palace Square — it took a year to build the act with a partner: strength, flexibility and height set to music.</p>
-    </div>
-  </div>
-
-  <div class="rung"><i class="dot l"></i><span class="m">6.5 m</span><span class="lbl">spring-man</span><i class="dot r"></i></div>
-  <div class="act-wrap">
-    <div class="act-block emerald">
-      <div class="act-num">04</div>
-      <p class="act-eyebrow">Spring-man</p>
-      <h3>A cosmic guest of honour</h3>
-      <p class="prose">A bright interactive character for children's and city events — moves, springs, plays with the crowd. For adult guests there's the "Transforming Tube" — it "swallows" and "spits out" the guest of honour.</p>
-    </div>
-  </div>
-
-  <div class="rung"><i class="dot l"></i><span class="m">4.5 m</span><span class="lbl">russian record</span><i class="dot r"></i></div>
-  <div class="record-wrap">
-    <div class="record">
-      <p class="eyebrow">Russian Book of Records · 2009</p>
-      <p class="big">The most fragile balance</p>
-      <p class="prose">An officially registered Russian record in the category "Most Fragile Balance in Russia" — it started with balancing on three plastic cups and equilibrium on rolls.</p>
-    </div>
-  </div>
-
-  <div class="rung"><i class="dot l"></i><span class="m">3.0 m</span><span class="lbl">theatre</span><i class="dot r"></i></div>
-  <section class="plain">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Theatre</p>
-        <h2 class="serif">On stage today</h2>
+    <div class="acts">
+      <div class="act c1">
+        <div class="num">01</div>
+        <p class="kind">Equilibristics</p>
+        <h3>Juggler on a free-standing ladder</h3>
+        <p>Nothing but the artiste's balance, no safety line. Performing since 1994 — from corporate galas and product launches to private receptions.</p>
       </div>
-      <div class="tl-row">
-        <div class="tl-year">2023 —</div>
-        <div class="tl-body"><h4>«Princess of the Circus» · Musical Comedy Theatre</h4>
-        <p class="prose">Director of circus acts and head of the circus troupe: juggler on the ladder and on stilts. Currently in the theatre's repertoire.</p></div>
+      <div class="act c2">
+        <div class="num">02</div>
+        <p class="kind">Any costume</p>
+        <h3>Stilt-walker</h3>
+        <p>Fairy-tale, jester and themed costumes — for children's parties, weddings, mall openings or city events. Live interaction with the guests.</p>
       </div>
-      <div class="tl-row">
-        <div class="tl-year">2018</div>
-        <div class="tl-body"><h4>Opera «La Bohème» · Mikhailovsky Theatre</h4>
-        <p class="prose">Stilt juggler in the "Fair" scene, later a stunt performer (three-year contract).</p></div>
+      <div class="act c3">
+        <div class="num">03</div>
+        <p class="kind">Rare genre</p>
+        <h3>Flexible poles</h3>
+        <p>Only three or four theatres in the world work this genre. The idea came from a Canadian circus on Palace Square — a year to build with a partner: strength, flexibility and height set to music.</p>
       </div>
-      <div class="tl-row">
-        <div class="tl-year">—</div>
-        <div class="tl-body"><h4>«A Midsummer Night's Dream» · Mariinsky Theatre</h4>
-        <p class="prose">Staged by Claudia Sholti, acrobatic stunts staged by David Doulen.</p></div>
+      <div class="act c4">
+        <div class="num">04</div>
+        <p class="kind">Cosmic guest</p>
+        <h3>Spring-man</h3>
+        <p>A bright interactive character for children's and city events. For adult guests there's the "Transforming Tube" — it "swallows" and "spits out" the guest of honour.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <div class="rung"><i class="dot l"></i><span class="m">1.8 m</span><span class="lbl">film</span><i class="dot r"></i></div>
-  <section class="plain tinted">
-    <div class="wrap">
-      <div class="section-head"><p class="eyebrow">Film</p><h2 class="serif">Filmography</h2></div>
-      <div class="tl-row"><div class="tl-year">2025</div><div class="tl-body"><h4>«Sex. Before and After»</h4><p class="prose">Dir. Anna Moroz. Tailcoat juggler on stilts.</p></div></div>
-      <div class="tl-row"><div class="tl-year">2024</div><div class="tl-body"><h4>«Favourite» (Potemkin)</h4><p class="prose">Fire-juggling fakir.</p></div></div>
-      <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4>«Captain Volkonogov Escaped»</h4><p class="prose">Pole act.</p></div></div>
-      <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4>«Good Girls Go to Heaven»</h4><p class="prose">Wedding scene.</p></div></div>
-      <div class="tl-row"><div class="tl-year">2019</div><div class="tl-body"><h4>«Vertinsky»</h4><p class="prose">Feast scene.</p></div></div>
-      <div class="tl-row"><div class="tl-year">2018</div><div class="tl-body"><h4>«Bender»</h4><p class="prose">Supporting role, circus troupe.</p></div></div>
-      <div class="tl-row"><div class="tl-year">2017</div><div class="tl-body"><h4>«The Duelist»</h4><p class="prose">On-screen appearance.</p></div></div>
-      <div class="tl-row"><div class="tl-year">2008</div><div class="tl-body"><h4>«Gorodok»</h4><p class="prose">TV series.</p></div></div>
-      <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4>«The August Envoy»</h4><p class="prose">Fire work.</p></div></div>
-      <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4>«Traffic Cops»</h4><p class="prose">TV series, fire work on stilts.</p></div></div>
-      <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4>«A Sprig of Lilac»</h4><p class="prose">Dir. Pavel Lungin.</p></div></div>
-      <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4>«House on Ligovka»</h4><p class="prose">Dir. Mikhail Bogin.</p></div></div>
-      <div class="tl-row"><div class="tl-year">2003</div><div class="tl-body"><h4>«Good Luck, Detective!»</h4><p class="prose">Dir. Alexander Bashirov.</p></div></div>
+<div class="marquee"></div>
+
+<section>
+  <div class="wrap record">
+    <span class="ribbon">Russian Book of Records · 2009</span>
+    <p class="big serif gold-text">The most fragile balance</p>
+    <p class="prose">An officially registered Russian record in the category "Most Fragile Balance in Russia" — it started with balancing on three plastic cups and equilibrium on rolls.</p>
+  </div>
+</section>
+
+<div class="marquee"></div>
+
+<section class="tinted">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="ribbon">Theatre</span>
+      <h2 class="serif">On stage today</h2>
     </div>
-  </section>
-
-  <div class="rung"><i class="dot l"></i><span class="m">0.8 m</span><span class="lbl">touring</span><i class="dot r"></i></div>
-  <section class="plain">
-    <div class="wrap">
-      <div class="section-head"><p class="eyebrow">Touring</p><h2 class="serif">30 years on the road</h2></div>
-      <div class="tour-row"><span>Poland</span><span>1994–95</span></div>
-      <div class="tour-row"><span>Finland</span><span>1996</span></div>
-      <div class="tour-row"><span>Germany, Stuttgart</span><span>1996</span></div>
-      <div class="tour-row"><span>Turkey</span><span>1998, 2004</span></div>
-      <div class="tour-row"><span>Israel</span><span>1999</span></div>
-      <div class="tour-row"><span>Cyprus</span><span>1999</span></div>
-      <div class="tour-row"><span>England</span><span>2000</span></div>
-      <div class="tour-row"><span>UAE, Dubai</span><span>2001</span></div>
-      <div class="tour-row"><span>UAE–Qatar</span><span>2001</span></div>
-      <div class="tour-row"><span>Taiwan</span><span>2002–03</span></div>
-      <div class="tour-row"><span>Macao, Hong Kong</span><span>2005, 2007</span></div>
+    <div class="tl-row">
+      <div class="tl-year">2023 —</div>
+      <div class="tl-body"><h4>"Princess of the Circus" · Musical Comedy Theatre</h4>
+      <p>Director of circus acts and head of the circus troupe: juggler on the ladder and on stilts.</p></div>
     </div>
-  </section>
+    <div class="tl-row">
+      <div class="tl-year">2018</div>
+      <div class="tl-body"><h4>Opera "La Bohème" · Mikhailovsky Theatre</h4>
+      <p>Stilt juggler in the "Fair" scene, later a stunt performer (three-year contract).</p></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-year">—</div>
+      <div class="tl-body"><h4>"A Midsummer Night's Dream" · Mariinsky Theatre</h4>
+      <p>Staged by Claudia Sholti, acrobatic stunts staged by David Doulen.</p></div>
+    </div>
+  </div>
+</section>
 
-  <div class="rung"><i class="dot l"></i><span class="m">0.0 m</span><span class="lbl">ground level</span><i class="dot r"></i></div>
-  <footer>
-    <img class="mark" src="../Brand/logo-shou-balashova.jpg" alt="Shou Balashova" style="border-radius:50%;object-fit:cover">
-    <p class="eyebrow">Booking</p>
-    <h2>Book Nikolai for your event</h2>
-    <p class="tag">Birthdays, weddings, corporate events, city festivals — Saint Petersburg and Leningrad region.</p>
-    <a class="cta" href="mailto:booking@balashov-circus.ru">Enquire about booking</a>
-    <a class="cta" style="margin-left:8px;background:transparent;border:1px solid var(--ink);color:var(--ink)" href="https://vk.ru/shou_spb" target="_blank" rel="noopener">VK group</a>
-    <p class="foot-note"><a href="tel:+79119138374" style="color:inherit">+7 911 913-83-74</a></p>
-    <p class="foot-note"><a href="privacy.html" style="color:inherit;opacity:.75">Privacy Policy</a></p>
-    <p class="foot-note">© Nikolai Balashov. Site in English — mirrors the Russian version.</p>
-  </footer>
-</div>
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="ribbon">Film</span>
+      <h2 class="serif">Filmography</h2>
+    </div>
+    <div class="tl-row"><div class="tl-year">2025</div><div class="tl-body"><h4>"Sex. Before and After"</h4><p>Dir. Anna Moroz. Tailcoat juggler on stilts.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2024</div><div class="tl-body"><h4>"Favourite" (Potemkin)</h4><p>Fire-juggling fakir.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4>"Captain Volkonogov Escaped"</h4><p>Pole act.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4>"Good Girls Go to Heaven"</h4><p>Wedding scene.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2019</div><div class="tl-body"><h4>"Vertinsky"</h4><p>Feast scene.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2018</div><div class="tl-body"><h4>"Bender"</h4><p>Supporting role, circus troupe.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2017</div><div class="tl-body"><h4>"The Duelist"</h4><p>On-screen appearance.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2008</div><div class="tl-body"><h4>"Gorodok"</h4><p>TV series.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4>"The August Envoy"</h4><p>Fire work.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4>"Traffic Cops"</h4><p>TV series, fire work on stilts.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4>"A Sprig of Lilac"</h4><p>Dir. Pavel Lungin.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4>"House on Ligovka"</h4><p>Dir. Mikhail Bogin.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2003</div><div class="tl-body"><h4>"Good Luck, Detective!"</h4><p>Dir. Alexander Bashirov.</p></div></div>
+  </div>
+</section>
+
+<section class="tinted">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="ribbon">Touring</span>
+      <h2 class="serif">30 years on the road</h2>
+    </div>
+    <div class="tour-row"><span>Poland</span><span>1994–95</span></div>
+    <div class="tour-row"><span>Finland</span><span>1996</span></div>
+    <div class="tour-row"><span>Germany, Stuttgart</span><span>1996</span></div>
+    <div class="tour-row"><span>Turkey</span><span>1998, 2004</span></div>
+    <div class="tour-row"><span>Israel</span><span>1999</span></div>
+    <div class="tour-row"><span>Cyprus</span><span>1999</span></div>
+    <div class="tour-row"><span>England</span><span>2000</span></div>
+    <div class="tour-row"><span>UAE, Dubai</span><span>2001</span></div>
+    <div class="tour-row"><span>UAE–Qatar</span><span>2001</span></div>
+    <div class="tour-row"><span>Taiwan</span><span>2002–03</span></div>
+    <div class="tour-row"><span>Macao, Hong Kong</span><span>2005, 2007</span></div>
+  </div>
+</section>
+
+<div class="marquee"></div>
+
+<footer>
+  <div class="inner">
+    <div class="badge-glow"><img src="../Brand/logo-shou-balashova.jpg" alt="Shou Balashova"></div>
+    <span class="ribbon">Booking</span>
+    <h2 class="serif">Book Nikolai for your event</h2>
+    <p class="tag">Birthdays, weddings, corporate events, city festivals — Saint Petersburg and the Leningrad region.</p>
+    <div class="cta-row">
+      <a class="cta primary" href="mailto:booking@balashov-circus.ru">Enquire about booking</a>
+      <a class="cta ghost" href="https://vk.ru/shou_spb" target="_blank" rel="noopener">VK group</a>
+    </div>
+    <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
+    <p class="foot-note"><a href="privacy.html">Privacy Policy</a></p>
+    <p class="foot-note">© Nikolai Balashov</p>
+  </div>
+</footer>
 
 </body>
 </html>
