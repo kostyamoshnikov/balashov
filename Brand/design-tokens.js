@@ -22,7 +22,7 @@ module.exports = {
     },
   },
   contact: {
-    email: "booking@balashov-circus.ru", // уточнить актуальный контакт у Николая — пока используется как заглушка
+    email: "booking@balashov-show.ru", // уточнить актуальный контакт у Николая — пока используется как заглушка
     phone: "+7 911 913-83-74",
     vk: "https://vk.ru/shou_spb",
   },
