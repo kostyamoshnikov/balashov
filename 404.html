@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — страница не найдена / page not found — Шоу Балашова</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="Brand/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Public+Sans:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A0705; --ink-2:#1B1109; --cream:#FBF3E4; --cream-soft:#C9BBA6;
+  --crimson:#C81E1E; --gold:#FDD945; --gold-deep:#B5750A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ink);color:var(--cream);font-family:'Public Sans',system-ui,sans-serif;line-height:1.6;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 20px;text-align:center}
+.wrap{max-width:440px}
+.badge-glow{position:relative;width:120px;height:120px;margin:0 auto 24px}
+.badge-glow::before{content:"";position:absolute;inset:-20px;border-radius:50%;background:radial-gradient(circle, rgba(253,217,69,.3), transparent 70%);filter:blur(6px)}
+.badge-glow img{position:relative;width:100%;height:100%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px rgba(253,217,69,.5)}
+.code{font-family:'Bricolage Grotesque';font-weight:800;font-size:72px;color:var(--gold);line-height:1;margin-bottom:8px}
+h1{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-size:22px;color:var(--cream);margin-bottom:6px}
+h1 .en{display:block;font-size:16px;color:var(--cream-soft);margin-top:4px}
+p{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);margin-bottom:24px}
+.links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.cta{display:inline-block;font-family:'Space Mono';font-size:12px;letter-spacing:.04em;padding:12px 22px;text-decoration:none;font-weight:700;border-radius:6px}
+.cta.primary{background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:var(--ink)}
+.cta.ghost{background:transparent;border:1px solid rgba(253,217,69,.4);color:var(--gold)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="badge-glow"><img src="Brand/logo-shou-balashova.jpg" alt="Шоу Балашова"></div>
+  <div class="code">404</div>
+  <h1>Такой страницы нет<span class="en">This page doesn't exist</span></h1>
+  <p>Возможно, ссылка устарела или в адресе опечатка.<br>The link may be outdated, or there's a typo in the address.</p>
+  <div class="links">
+    <a class="cta primary" href="/index.html">На главную</a>
+    <a class="cta ghost" href="/en/index.html">EN Home</a>
+  </div>
+</div>
+</body>
+</html>

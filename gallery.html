@@ -7,6 +7,9 @@
 <meta name="description" content="Номера Николая Балашова: жонглёр на лестнице, ходулист, труба-трансформер, гибкие шесты.">
 <link rel="icon" type="image/png" href="Brand/favicon-32.png">
 <link rel="canonical" href="https://balashov-show.ru/gallery.html">
+<link rel="alternate" hreflang="ru" href="https://balashov-show.ru/gallery.html">
+<link rel="alternate" hreflang="en" href="https://balashov-show.ru/en/gallery.html">
+<link rel="alternate" hreflang="x-default" href="https://balashov-show.ru/gallery.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Галерея — Николай Балашов">
 <meta property="og:description" content="Номера: лестница, ходулист, труба-трансформер, гибкие шесты.">
@@ -212,10 +215,13 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 .g-card{border-radius:18px;overflow:hidden;background:var(--ink-2);border:1px solid rgba(253,217,69,.22);position:relative}
 .g-art{padding:26px 0 4px;display:flex;justify-content:center;background:radial-gradient(ellipse 80% 60% at 50% 20%, rgba(253,217,69,.08), transparent 70%)}
 .g-art svg{width:110px;height:110px}
-.g-photos{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:2px;height:230px}
-.g-photos img{width:100%;height:100%;object-fit:cover;display:block}
-.g-photos img:first-child{grid-row:1/3}
-.g-photos.single{grid-template-columns:1fr;grid-template-rows:1fr;height:280px}
+.g-photos{position:relative;height:230px;overflow:hidden}
+.g-photos img{position:absolute;object-fit:cover;display:block}
+.g-photos img:nth-child(1){left:0;top:0;width:66%;height:100%}
+.g-photos img:nth-child(2){right:0;top:0;width:34%;height:50%}
+.g-photos img:nth-child(3){right:0;bottom:0;width:34%;height:50%}
+.g-photos.single{height:280px}
+.g-photos.single img{left:0;top:0;width:100%;height:100%}
 .g-body{padding:6px 20px 22px}
 .g-body .kind{font-family:'Space Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);opacity:.9}
 .g-body h3{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-size:21px;margin:6px 0 8px;color:var(--cream)}

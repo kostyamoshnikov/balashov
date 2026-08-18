@@ -61,7 +61,12 @@ def build_favicons_and_avatars():
         bg.paste(icon, (pad, pad))
         bg.save(f"{name}.png")
 
-    print("favicons/avatars/maskable-icons: done")
+    # favicon.ico в корне Site/ — некоторые краулеры и старые браузеры
+    # запрашивают именно /favicon.ico напрямую, игнорируя <link rel="icon">
+    ico_sizes = [(16, 16), (32, 32), (48, 48)]
+    im.save("../favicon.ico", format="ICO", sizes=ico_sizes)
+
+    print("favicons/avatars/maskable-icons/favicon.ico: done")
 
 
 def build_og_image():
