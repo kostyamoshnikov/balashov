@@ -138,7 +138,8 @@ section.tinted{background:rgba(253,217,69,.025)}
 .interests span{font-family:'Space Mono';font-size:11px;border:1px solid rgba(253,217,69,.25);color:var(--cream-soft);padding:6px 12px;border-radius:999px;background:rgba(253,217,69,.03)}
 
 .acts{display:flex;flex-direction:column;gap:14px}
-.act{background:var(--ink-2);border-radius:14px;padding:22px 20px;position:relative;border:1px solid var(--accent, rgba(253,217,69,.25))}
+.act{display:block;text-decoration:none;cursor:pointer;transition:border-color .15s,transform .15s;background:var(--ink-2);border-radius:14px;padding:22px 20px;position:relative;border:1px solid var(--accent, rgba(253,217,69,.25))}
+.act:hover{border-color:var(--gold);transform:translateY(-2px)}
 .act .num{position:absolute;top:-12px;left:20px;width:30px;height:30px;border-radius:50%;background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque';font-weight:800;font-size:13px;box-shadow:0 4px 10px -4px rgba(0,0,0,.6)}
 .act h3{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-size:20px;margin-top:8px;color:var(--cream)}
 .act .kind{font-family:'Space Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);opacity:.85}
@@ -155,6 +156,8 @@ section.tinted{background:rgba(253,217,69,.025)}
 .tl-row:first-child{border-top:1px dashed rgba(253,217,69,.15)}
 .tl-year{font-family:'Space Mono';font-size:12px;color:var(--gold);font-weight:700}
 .tl-body h4{font-family:'Public Sans';font-weight:600;font-size:14px;color:var(--cream)}
+.tl-body h4 a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(253,217,69,.35)}
+.tl-body h4 a:hover{border-color:var(--gold);color:var(--gold)}
 .tl-body p{font-family:'Public Sans';font-size:12.5px;color:var(--cream-soft);margin-top:3px}
 
 .tour-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dotted rgba(253,217,69,.15);font-family:'Space Mono';font-size:12px}
@@ -291,38 +294,34 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <h2 class="serif">Four signature acts</h2>
     </div>
     <div class="acts">
-      <div class="act c1">
+      <a class="act c1" href="nomera/ladder.html">
         <div class="num">01</div>
         <p class="kind">Equilibristics</p>
         <h3>Juggler on a free-standing ladder</h3>
         <p>Classic style — pure equilibristics, 6 minutes. Comic style — a joker costume, with audience interaction and prizes, 12 minutes. Nothing but the artiste's balance, no safety line.</p>
-      
-        <a class="act-more" href="nomera/ladder.html">Read more →</a>
-      </div>
-      <div class="act c2">
+        <span class="act-more">Read more →</span>
+      </a>
+      <a class="act c2" href="nomera/stilt-walker.html">
         <div class="num">02</div>
         <p class="kind">Any costume</p>
         <h3>Stilt-walker</h3>
         <p>Fairy-tale, jester and themed costumes — for children's parties, weddings, mall openings or city events. Live interaction with the guests.</p>
-      
-        <a class="act-more" href="nomera/stilt-walker.html">Read more →</a>
-      </div>
-      <div class="act c3">
+        <span class="act-more">Read more →</span>
+      </a>
+      <a class="act c3" href="nomera/flexible-poles.html">
         <div class="num">03</div>
         <p class="kind">Rare genre</p>
         <h3>Flexible poles</h3>
         <p>Two 6-metre poles that flex up to 2.5 m to each side and rotate around their axis. Works year-round, indoors and outdoors — an unusual attraction with an interactive show for guests.</p>
-      
-        <a class="act-more" href="nomera/flexible-poles.html">Read more →</a>
-      </div>
-      <div class="act c4">
+        <span class="act-more">Read more →</span>
+      </a>
+      <a class="act c4" href="nomera/transforming-tube.html">
         <div class="num">04</div>
         <p class="kind">Cosmic guest</p>
         <h3>Spring-man</h3>
         <p>A bright interactive character for children's and city events. For adult guests there's the "Transforming Tube" — 6 different colours of tube — it "swallows" and "spits out" the guest of honour.</p>
-      
-        <a class="act-more" href="nomera/transforming-tube.html">Read more →</a>
-      </div>
+        <span class="act-more">Read more →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -347,17 +346,17 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
     </div>
     <div class="tl-row">
       <div class="tl-year">2023 —</div>
-      <div class="tl-body"><h4>"Princess of the Circus" · Musical Comedy Theatre</h4>
+      <div class="tl-body"><h4><a href="https://muzcomedy.ru/about/persons/princessa_cirka/" target="_blank" rel="noopener">"Princess of the Circus" · Musical Comedy Theatre</a></h4>
       <p>Director of circus acts and head of the circus troupe: juggler on the ladder and on stilts.</p></div>
     </div>
     <div class="tl-row">
       <div class="tl-year">2018</div>
-      <div class="tl-body"><h4>Opera "La Bohème" · Mikhailovsky Theatre</h4>
+      <div class="tl-body"><h4><a href="https://mikhailovsky.ru/afisha/performances/detail/1070493/" target="_blank" rel="noopener">Opera "La Bohème" · Mikhailovsky Theatre</a></h4>
       <p>Stilt juggler in the "Fair" scene, later a stunt performer (three-year contract).</p></div>
     </div>
     <div class="tl-row">
       <div class="tl-year">—</div>
-      <div class="tl-body"><h4>"A Midsummer Night's Dream" · Mariinsky Theatre</h4>
+      <div class="tl-body"><h4><a href="https://www.mariinsky.ru/playbill/repertoire/opera/son/" target="_blank" rel="noopener">"A Midsummer Night's Dream" · Mariinsky Theatre</a></h4>
       <p>Staged by Claudia Sholti, acrobatic stunts staged by David Doulen.</p></div>
     </div>
   </div>
@@ -369,19 +368,19 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <span class="ribbon">Film</span>
       <h2 class="serif">Filmography</h2>
     </div>
-    <div class="tl-row"><div class="tl-year">2025</div><div class="tl-body"><h4>"Sex. Before and After"</h4><p>Dir. Anna Moroz. Tailcoat juggler on stilts.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2025</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/series/5249437/" target="_blank" rel="noopener">"Sex. Before and After"</a></h4><p>Dir. Darya Moroz. Tailcoat juggler on stilts.</p></div></div>
     <div class="tl-row"><div class="tl-year">2024</div><div class="tl-body"><h4>"Favourite" (Potemkin)</h4><p>Fire-juggling fakir.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4>"Captain Volkonogov Escaped"</h4><p>Pole act.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4>"Good Girls Go to Heaven"</h4><p>Wedding scene.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2019</div><div class="tl-body"><h4>"Vertinsky"</h4><p>Feast scene.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2018</div><div class="tl-body"><h4>"Bender"</h4><p>Supporting role, circus troupe.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2017</div><div class="tl-body"><h4>"The Duelist"</h4><p>On-screen appearance.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2008</div><div class="tl-body"><h4>"Gorodok"</h4><p>TV series.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4>"The August Envoy"</h4><p>Fire work.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4>"Traffic Cops"</h4><p>TV series, fire work on stilts.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4>"A Sprig of Lilac"</h4><p>Dir. Pavel Lungin.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4>"House on Ligovka"</h4><p>Dir. Mikhail Bogin.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2003</div><div class="tl-body"><h4>"Good Luck, Detective!"</h4><p>Dir. Alexander Bashirov.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/1402927/" target="_blank" rel="noopener">"Captain Volkonogov Escaped"</a></h4><p>Pole act.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/1402918/" target="_blank" rel="noopener">"Good Girls Go to Heaven"</a></h4><p>Wedding scene.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2019</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/4360154/" target="_blank" rel="noopener">"Vertinsky"</a></h4><p>Feast scene.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2018</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/1162781/" target="_blank" rel="noopener">"Bender"</a></h4><p>Supporting role, circus troupe.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2017</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/840234/" target="_blank" rel="noopener">"The Duelist"</a></h4><p>On-screen appearance.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2008</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/451181/" target="_blank" rel="noopener">"Gorodok"</a></h4><p>TV series.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/447113/" target="_blank" rel="noopener">"The August Envoy"</a></h4><p>Fire work.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/412345/" target="_blank" rel="noopener">"Traffic Cops"</a></h4><p>TV series, fire work on stilts.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/266536/" target="_blank" rel="noopener">"A Sprig of Lilac"</a></h4><p>Dir. Pavel Lungin.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/470915/" target="_blank" rel="noopener">"House on the English Embankment"</a></h4><p>Dir. Mikhail Bogin.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2003</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/series/468089/" target="_blank" rel="noopener">"Good Luck, Detective!"</a></h4><p>Dir. Alexander Bashirov.</p></div></div>
   </div>
 </section>
 
@@ -423,5 +422,22 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   </div>
 </footer>
 
+<script>
+(function(){
+  var STATS_ENDPOINT = "https://balashov-stats.YOUR-SUBDOMAIN.workers.dev"; // TODO: заменить после деплоя — см. _tools/StatsBot/README.md
+  try {
+    fetch(STATS_ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        page: location.pathname,
+        referrer: document.referrer ? new URL(document.referrer).hostname : "",
+        device: window.innerWidth < 768 ? "mobile" : "desktop",
+        lang: document.documentElement.lang === "en" ? "en" : "ru"
+      })
+    }).catch(function(){});
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>

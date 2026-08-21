@@ -206,8 +206,8 @@ def photos_block(act):
             <p class="note" style="margin-top:12px">Фото номера скоро появится в галерее.</p>'''
     cls = "single" if len(photos) == 1 else ""
     imgs = "\n".join(
-        f'            <img src="../Photos/web/{p}" alt="{a}" loading="lazy">'
-        for p, a in zip(photos, act["photo_alts"])
+        f'            <img src="../Photos/web/{p}" alt="{a}" loading="lazy" onclick="openLightbox({idx})">'
+        for idx, (p, a) in enumerate(zip(photos, act["photo_alts"]))
     )
     return f'''<div class="g-photos {cls}" style="height:320px;border-radius:16px;overflow:hidden">
 {imgs}
@@ -227,9 +227,81 @@ def prevnext(acts, i):
     return acts[(i - 1) % n], acts[(i + 1) % n]
 
 
+LIGHTBOX_CSS = '''<style>
+.g-photos img{cursor:zoom-in}
+.lightbox{display:none;position:fixed;inset:0;background:rgba(10,7,5,.94);z-index:999;align-items:center;justify-content:center;padding:20px}
+.lightbox.active{display:flex}
+.lightbox img{max-width:100%;max-height:85vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lightbox-close{position:absolute;top:18px;right:24px;font-size:34px;color:var(--cream);cursor:pointer;line-height:1;background:rgba(0,0,0,.35);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.lightbox-close:hover{color:var(--gold)}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:38px;color:var(--cream);cursor:pointer;background:rgba(0,0,0,.35);width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;user-select:none}
+.lightbox-nav:hover{color:var(--gold)}
+.lightbox-prev{left:16px}
+.lightbox-next{right:16px}
+.lightbox-counter{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-family:'Space Mono',monospace;font-size:12px;color:var(--cream-soft);letter-spacing:.1em}
+@media (max-width:600px){.lightbox-nav{width:42px;height:42px;font-size:28px}.lightbox-close{width:38px;height:38px;font-size:26px;top:10px;right:10px}}
+</style>'''
+
+
+def lightbox_markup(photos_urls):
+    if not photos_urls:
+        return ""
+    urls_js = ", ".join(f'"{u}"' for u in photos_urls)
+    return f'''<div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <span class="lightbox-nav lightbox-prev" onclick="event.stopPropagation();navLightbox(-1)">&#8249;</span>
+  <img id="lightboxImg" src="" alt="">
+  <span class="lightbox-nav lightbox-next" onclick="event.stopPropagation();navLightbox(1)">&#8250;</span>
+  <span class="lightbox-counter" id="lightboxCounter"></span>
+</div>
+<script>
+const lbPhotos = [{urls_js}];
+let lbIndex = 0;
+function openLightbox(i) {{
+  lbIndex = i;
+  document.getElementById('lightboxImg').src = lbPhotos[lbIndex];
+  document.getElementById('lightboxCounter').textContent = (lbIndex+1) + ' / ' + lbPhotos.length;
+  document.getElementById('lightbox').classList.add('active');
+}}
+function closeLightbox() {{ document.getElementById('lightbox').classList.remove('active'); }}
+function navLightbox(d) {{
+  lbIndex = (lbIndex + d + lbPhotos.length) % lbPhotos.length;
+  document.getElementById('lightboxImg').src = lbPhotos[lbIndex];
+  document.getElementById('lightboxCounter').textContent = (lbIndex+1) + ' / ' + lbPhotos.length;
+}}
+document.addEventListener('keydown', function(e) {{
+  if (!document.getElementById('lightbox').classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+}});
+</script>'''
+
+
+STATS_SNIPPET = '''<script>
+(function(){
+  var STATS_ENDPOINT = "https://balashov-stats.YOUR-SUBDOMAIN.workers.dev"; // TODO: заменить после деплоя — см. _tools/StatsBot/README.md
+  try {
+    fetch(STATS_ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        page: location.pathname,
+        referrer: document.referrer ? new URL(document.referrer).hostname : "",
+        device: window.innerWidth < 768 ? "mobile" : "desktop",
+        lang: document.documentElement.lang === "en" ? "en" : "ru"
+      })
+    }).catch(function(){});
+  } catch(e) {}
+})();
+</script>
+</body>'''
+
+
 def build_ru(head_raw, i, act):
     prev_act, next_act = prevnext(ACTS, i)
     head = make_head_ru(head_raw, act["title"], act["desc_meta"], act["slug"], act["en_slug"])
+    head = head.replace("</head>", LIGHTBOX_CSS + "\n</head>")
     nav = f'''<nav class="site-nav">
   <a href="../index.html">Главная</a>
   <a href="../about.html">О нём</a>
@@ -305,6 +377,8 @@ def build_ru(head_raw, i, act):
     </div>
   </div>
 </section>
+
+{lightbox_markup([f"../Photos/web/{p}" for p in act["photos"]])}
 
 {FOOTER_RU}'''
 
@@ -474,8 +548,8 @@ def photos_block_en(act):
             <p class="note" style="margin-top:12px">Photo of this act coming soon to the gallery.</p>'''
     cls = "single" if len(photos) == 1 else ""
     imgs = "\n".join(
-        f'            <img src="../../Photos/web/{p}" alt="{a}" loading="lazy">'
-        for p, a in zip(photos, act["photo_alts"])
+        f'            <img src="../../Photos/web/{p}" alt="{a}" loading="lazy" onclick="openLightbox({idx})">'
+        for idx, (p, a) in enumerate(zip(photos, act["photo_alts"]))
     )
     return f'''<div class="g-photos {cls}" style="height:320px;border-radius:16px;overflow:hidden">
 {imgs}
@@ -493,6 +567,7 @@ def stats_block_en(act):
 def build_en(head_raw, i, act):
     prev_act, next_act = prevnext(ACTS_EN, i)
     head = make_head_en(head_raw, act["title"], act["desc_meta"], act["slug"], act["ru_slug"])
+    head = head.replace("</head>", LIGHTBOX_CSS + "\n</head>")
     nav = f'''<nav class="site-nav">
   <a href="../index.html">Home</a>
   <a href="../about.html">About</a>
@@ -568,6 +643,8 @@ def build_en(head_raw, i, act):
   </div>
 </section>
 
+{lightbox_markup([f"../../Photos/web/{p}" for p in act["photos"]])}
+
 {FOOTER_EN}'''
 
 
@@ -579,6 +656,7 @@ def main():
     os.makedirs(outdir_ru, exist_ok=True)
     for i, act in enumerate(ACTS):
         html = build_ru(head_ru_raw, i, act)
+        html = html.replace("</body>", STATS_SNIPPET, 1)
         with open(os.path.join(outdir_ru, f'{act["slug"]}.html'), "w", encoding="utf-8") as f:
             f.write(html)
         print("wrote", "nomera/" + act["slug"] + ".html")
@@ -587,6 +665,7 @@ def main():
     os.makedirs(outdir_en, exist_ok=True)
     for i, act in enumerate(ACTS_EN):
         html = build_en(head_en_raw, i, act)
+        html = html.replace("</body>", STATS_SNIPPET, 1)
         with open(os.path.join(outdir_en, f'{act["slug"]}.html'), "w", encoding="utf-8") as f:
             f.write(html)
         print("wrote", "en/nomera/" + act["slug"] + ".html")

@@ -4,18 +4,19 @@
   докс-палитра. Расчёт на то, что письмо уходит ВМЕСТЕ с вложением
   Documents/Nikolai_Balashov_CommercialOffer.pdf (см. build_commercial_offer.js) —
   этот HTML предназначен как ТЕЛО письма, а не замена самого
-  предложения: коротко цепляет и подталкивает открыть вложение/перейти
-  на сайт, полная выгода — уже в PDF.
+  предложения, хотя расширенная версия (pack-v61) уже покрывает
+  большую часть содержания КП напрямую в письме — вложение остаётся
+  для тех, кто хочет распечатать/переслать целиком.
 
   Email-safe вёрстка сознательно: таблицы вместо flex/grid, инлайн-
   стили на каждом элементе (внешние/блочные <style> многие клиенты,
-  включая Gmail в części сценариев, обрезают или игнорируют), веб-
+  включая Gmail в части сценариев, обрезают или игнорируют), веб-
   безопасные шрифты с фолбэком (Georgia/Arial — сайтовские Instrument
   Serif/Public Sans почти никогда не грузятся в почтовых клиентах),
   bgcolor-атрибут ПЛЮС style с тем же цветом на каждой ключевой ячейке
-  (Outlook на Windows игнорирует background в CSS у ячеек таблицы, но
-  уважает атрибут bgcolor). Кнопка — простая ссылка с отступами,
-  без bulletproof-VML-обёртки для Outlook — для рассылки в десятки
+  (Outlook на Windows игнорирует CSS-фон у ячеек таблицы, но уважает
+  атрибут bgcolor). Кнопка — простая ссылка с отступами, без
+  bulletproof-VML-обёртки для Outlook — для рассылки в десятки
   адресатов это оправданный компромисс, не сотни тысяч писем
   корпоративной рассылки.
 
@@ -73,7 +74,7 @@
   </tr>
   <tr>
     <td align="center" style="padding:10px 24px 28px;">
-      <span style="font-family:Arial,Helvetica,sans-serif;font-size:14.5px;line-height:1.6;color:#C9BBA6;">Здравствуйте, {{Имя}}! Присылаем коммерческое предложение «Шоу Балашова» — цирковые номера для дней рождения, свадеб, корпоративов и городских праздников. Полная версия — во вложении.</span>
+      <span style="font-family:Arial,Helvetica,sans-serif;font-size:14.5px;line-height:1.6;color:#C9BBA6;">Здравствуйте, {{Имя}}! Присылаем коммерческое предложение «Шоу Балашова» — цирковые номера для дней рождения, свадеб, корпоративов и городских праздников по всей России. Полная версия — во вложении, а ниже — всё самое важное коротко.</span>
     </td>
   </tr>
 
@@ -90,28 +91,33 @@
   <tr>
     <td style="padding:28px 20px 8px;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-        <td width="33%" align="center" bgcolor="#1B1109" style="background-color:#1B1109;border:1px solid #2A1810;padding:16px 6px;">
-          <span style="font-family:Georgia,serif;font-weight:bold;font-size:24px;color:#FDD945;">40+</span><br>
-          <span style="font-family:'Courier New',monospace;font-size:10px;color:#C9BBA6;">лет на арене</span>
+        <td width="25%" align="center" bgcolor="#1B1109" style="background-color:#1B1109;border:1px solid #2A1810;padding:14px 4px;">
+          <span style="font-family:Georgia,serif;font-weight:bold;font-size:21px;color:#FDD945;">40+</span><br>
+          <span style="font-family:'Courier New',monospace;font-size:9px;color:#C9BBA6;">лет на арене</span>
         </td>
-        <td width="8" style="font-size:1px;line-height:1px;">&nbsp;</td>
-        <td width="33%" align="center" bgcolor="#1B1109" style="background-color:#1B1109;border:1px solid #2A1810;padding:16px 6px;">
-          <span style="font-family:Georgia,serif;font-weight:bold;font-size:24px;color:#FDD945;">0</span><br>
-          <span style="font-family:'Courier New',monospace;font-size:10px;color:#C9BBA6;">травм за карьеру</span>
+        <td width="6" style="font-size:1px;line-height:1px;">&nbsp;</td>
+        <td width="25%" align="center" bgcolor="#1B1109" style="background-color:#1B1109;border:1px solid #2A1810;padding:14px 4px;">
+          <span style="font-family:Georgia,serif;font-weight:bold;font-size:21px;color:#FDD945;">0</span><br>
+          <span style="font-family:'Courier New',monospace;font-size:9px;color:#C9BBA6;">травм за карьеру</span>
         </td>
-        <td width="8" style="font-size:1px;line-height:1px;">&nbsp;</td>
-        <td width="33%" align="center" bgcolor="#1B1109" style="background-color:#1B1109;border:1px solid #2A1810;padding:16px 6px;">
-          <span style="font-family:Georgia,serif;font-weight:bold;font-size:24px;color:#FDD945;">2009</span><br>
-          <span style="font-family:'Courier New',monospace;font-size:10px;color:#C9BBA6;">рекорд России</span>
+        <td width="6" style="font-size:1px;line-height:1px;">&nbsp;</td>
+        <td width="25%" align="center" bgcolor="#1B1109" style="background-color:#1B1109;border:1px solid #2A1810;padding:14px 4px;">
+          <span style="font-family:Georgia,serif;font-weight:bold;font-size:21px;color:#FDD945;">2009</span><br>
+          <span style="font-family:'Courier New',monospace;font-size:9px;color:#C9BBA6;">рекорд России</span>
+        </td>
+        <td width="6" style="font-size:1px;line-height:1px;">&nbsp;</td>
+        <td width="25%" align="center" bgcolor="#1B1109" style="background-color:#1B1109;border:1px solid #2A1810;padding:14px 4px;">
+          <span style="font-family:Georgia,serif;font-weight:bold;font-size:21px;color:#FDD945;">11</span><br>
+          <span style="font-family:'Courier New',monospace;font-size:9px;color:#C9BBA6;">стран гастролей</span>
         </td>
       </tr></table>
     </td>
   </tr>
 
-  <!-- Короткие выгоды -->
+  <!-- Выгоды (полный список из 6) -->
   <tr>
     <td style="padding:28px 24px 4px;">
-      <span style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:2px;color:#FDD945;text-transform:uppercase;">Коротко о главном</span>
+      <span style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:2px;color:#FDD945;text-transform:uppercase;">Почему «Шоу Балашова»</span>
     </td>
   </tr>
   <tr>
@@ -119,7 +125,15 @@
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td width="20" valign="top" style="font-family:Georgia,serif;font-size:15px;color:#FDD945;padding:6px 0;">—</td>
-          <td style="font-family:Arial,sans-serif;font-size:14px;line-height:1.5;color:#C9BBA6;padding:6px 0;"><b style="color:#FBF3E4;">Редкие жанры</b> — «Гибкие шесты» исполняют всего 3–4 театра в мире</td>
+          <td style="font-family:Arial,sans-serif;font-size:14px;line-height:1.5;color:#C9BBA6;padding:6px 0;"><b style="color:#FBF3E4;">Редкие жанры</b> — «Гибкие шесты» исполняют всего 3–4 театра в мире, гарантированно новый номер для вашей афиши</td>
+        </tr>
+        <tr>
+          <td width="20" valign="top" style="font-family:Georgia,serif;font-size:15px;color:#FDD945;padding:6px 0;">—</td>
+          <td style="font-family:Arial,sans-serif;font-size:14px;line-height:1.5;color:#C9BBA6;padding:6px 0;"><b style="color:#FBF3E4;">Официальный рекорд России</b> — узнаваемое имя, которое само по себе работает на анонс</td>
+        </tr>
+        <tr>
+          <td width="20" valign="top" style="font-family:Georgia,serif;font-size:15px;color:#FDD945;padding:6px 0;">—</td>
+          <td style="font-family:Arial,sans-serif;font-size:14px;line-height:1.5;color:#C9BBA6;padding:6px 0;"><b style="color:#FBF3E4;">Опыт больших сцен и камерных форматов</b> — Михайловский театр, Мариинский театр, Театр Музыкальной комедии — и с той же отдачей на закрытой свадьбе</td>
         </tr>
         <tr>
           <td width="20" valign="top" style="font-family:Georgia,serif;font-size:15px;color:#FDD945;padding:6px 0;">—</td>
@@ -127,9 +141,121 @@
         </tr>
         <tr>
           <td width="20" valign="top" style="font-family:Georgia,serif;font-size:15px;color:#FDD945;padding:6px 0;">—</td>
-          <td style="font-family:Arial,sans-serif;font-size:14px;line-height:1.5;color:#C9BBA6;padding:6px 0;"><b style="color:#FBF3E4;">От соло до постановки</b> — гибкий масштаб под задачу и бюджет</td>
+          <td style="font-family:Arial,sans-serif;font-size:14px;line-height:1.5;color:#C9BBA6;padding:6px 0;"><b style="color:#FBF3E4;">От соло до постановки</b> — гибкий масштаб под задачу и бюджет, вплоть до приглашённой команды</td>
+        </tr>
+        <tr>
+          <td width="20" valign="top" style="font-family:Georgia,serif;font-size:15px;color:#FDD945;padding:6px 0;">—</td>
+          <td style="font-family:Arial,sans-serif;font-size:14px;line-height:1.5;color:#C9BBA6;padding:6px 0;"><b style="color:#FBF3E4;">Ноль травм за карьеру</b> — полное соблюдение техники безопасности на площадке</td>
         </tr>
       </table>
+    </td>
+  </tr>
+
+  <!-- Разделитель -->
+  <tr>
+    <td style="padding:24px 20px 0;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+        <td height="1" bgcolor="#2A1810" style="background-color:#2A1810;font-size:1px;line-height:1px;">&nbsp;</td>
+      </tr></table>
+    </td>
+  </tr>
+
+  <!-- Номера -->
+  <tr>
+    <td style="padding:28px 24px 4px;">
+      <span style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:2px;color:#FDD945;text-transform:uppercase;">Номера</span>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding:10px 24px 0;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td style="font-family:Arial,sans-serif;font-size:14px;line-height:1.6;color:#C9BBA6;padding:5px 0;"><b style="color:#FBF3E4;">Жонглёр на вольностоящей лестнице</b> — классика (6 мин) и комический вариант с интерактивом (12 мин)</td>
+        </tr>
+        <tr>
+          <td style="font-family:Arial,sans-serif;font-size:14px;line-height:1.6;color:#C9BBA6;padding:5px 0;"><b style="color:#FBF3E4;">Ходулист</b> — сказочные и тематические костюмы под любой праздник</td>
+        </tr>
+        <tr>
+          <td style="font-family:Arial,sans-serif;font-size:14px;line-height:1.6;color:#C9BBA6;padding:5px 0;"><b style="color:#FBF3E4;">Гибкие шесты</b> — редкий жанр, работает круглый год в помещении и на улице</td>
+        </tr>
+        <tr>
+          <td style="font-family:Arial,sans-serif;font-size:14px;line-height:1.6;color:#C9BBA6;padding:5px 0;"><b style="color:#FBF3E4;">Труба-трансформер и Человек-пружинка</b> — 6 разных цветов трубы, хит на свадьбах и корпоративах</td>
+        </tr>
+        <tr>
+          <td style="font-family:Arial,sans-serif;font-size:14px;line-height:1.6;color:#C9BBA6;padding:5px 0;"><b style="color:#FBF3E4;">Турник на приз</b> — азартный интерактив, разогрев перед основными номерами</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Разделитель -->
+  <tr>
+    <td style="padding:24px 20px 0;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+        <td height="1" bgcolor="#2A1810" style="background-color:#2A1810;font-size:1px;line-height:1px;">&nbsp;</td>
+      </tr></table>
+    </td>
+  </tr>
+
+  <!-- Форматы -->
+  <tr>
+    <td style="padding:28px 24px 4px;">
+      <span style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:2px;color:#FDD945;text-transform:uppercase;">Форматы мероприятий</span>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding:10px 24px 0;">
+      <span style="font-family:Arial,sans-serif;font-size:14px;line-height:1.6;color:#C9BBA6;">Дни рождения · свадьбы · корпоративы · городские и семейные праздники · открытия площадок и торговых центров. Формат номера, хронометраж и технические требования согласовываются индивидуально под сценарий.</span>
+    </td>
+  </tr>
+
+  <!-- Разделитель -->
+  <tr>
+    <td style="padding:24px 20px 0;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+        <td height="1" bgcolor="#2A1810" style="background-color:#2A1810;font-size:1px;line-height:1px;">&nbsp;</td>
+      </tr></table>
+    </td>
+  </tr>
+
+  <!-- Как проходит бронирование -->
+  <tr>
+    <td style="padding:28px 24px 4px;">
+      <span style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:2px;color:#FDD945;text-transform:uppercase;">Как проходит бронирование</span>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding:10px 24px 0;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td width="24" valign="top" style="font-family:Arial,sans-serif;font-weight:bold;font-size:14px;color:#FDD945;padding:5px 0;">1.</td>
+          <td style="font-family:Arial,sans-serif;font-size:14px;line-height:1.5;color:#C9BBA6;padding:5px 0;">Присылаете бриф: дата, город/площадка, формат мероприятия, пожелания к номеру</td>
+        </tr>
+        <tr>
+          <td width="24" valign="top" style="font-family:Arial,sans-serif;font-weight:bold;font-size:14px;color:#FDD945;padding:5px 0;">2.</td>
+          <td style="font-family:Arial,sans-serif;font-size:14px;line-height:1.5;color:#C9BBA6;padding:5px 0;">В течение 1–2 дней — расчёт стоимости и предложение по номерам под ваш сценарий</td>
+        </tr>
+        <tr>
+          <td width="24" valign="top" style="font-family:Arial,sans-serif;font-weight:bold;font-size:14px;color:#FDD945;padding:5px 0;">3.</td>
+          <td style="font-family:Arial,sans-serif;font-size:14px;line-height:1.5;color:#C9BBA6;padding:5px 0;">Согласовываете детали и технический райдер (по запросу — полная версия отдельным файлом)</td>
+        </tr>
+        <tr>
+          <td width="24" valign="top" style="font-family:Arial,sans-serif;font-weight:bold;font-size:14px;color:#FDD945;padding:5px 0;">4.</td>
+          <td style="font-family:Arial,sans-serif;font-size:14px;line-height:1.5;color:#C9BBA6;padding:5px 0;">Бронируете дату — и Николай выходит на вашей площадке</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Стоимость -->
+  <tr>
+    <td style="padding:28px 24px 4px;">
+      <span style="font-family:'Courier New',monospace;font-size:11px;letter-spacing:2px;color:#FDD945;text-transform:uppercase;">Стоимость</span>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding:10px 24px 0;">
+      <span style="font-family:Arial,sans-serif;font-size:14px;line-height:1.6;color:#C9BBA6;">Зависит от формата номера, хронометража, даты и города — фиксированного прайса нет, каждый расчёт индивидуален под сценарий. Присылайте бриф — ответим с расчётом в течение 1–2 дней.</span>
     </td>
   </tr>
 

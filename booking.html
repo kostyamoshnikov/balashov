@@ -229,6 +229,9 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   <div class="badge-glow"><img src="Brand/logo-shou-balashova.jpg" alt="Шоу Балашова"></div>
   <h1>Booking</h1>
   <p class="tag">Дни рождения, свадьбы, корпоративы, городские праздники — вся Россия</p>
+  <div class="cta-row" style="margin-top:20px">
+    <a class="cta primary" href="#bookingForm">Заказать номер</a>
+  </div>
 </div>
 
 <div class="marquee"></div>
@@ -322,6 +325,10 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
         <label for="details">Детали (место, формат номера, пожелания)</label>
         <textarea id="details"></textarea>
       </div>
+      <div class="field" style="display:flex;align-items:flex-start;gap:8px;flex-direction:row">
+        <input type="checkbox" id="consent" required style="width:auto;margin-top:3px;flex-shrink:0">
+        <label for="consent" style="font-size:12px;font-weight:400;text-transform:none;font-family:'Public Sans',sans-serif;letter-spacing:normal;color:var(--cream-soft)">Согласен(на) на обработку персональных данных согласно <a href="privacy.html" target="_blank" style="color:var(--gold)">политике конфиденциальности</a></label>
+      </div>
       <button type="submit" class="submit-btn">Отправить заявку</button>
       <p class="form-note">Кнопка откроет письмо в почтовом клиенте с заполненными данными — отправка не автоматическая.</p>
       <p class="form-note">Быстрее всего — написать напрямую в <a href="https://vk.ru/shou_spb" target="_blank" rel="noopener" style="color:var(--gold);font-weight:600">группу VK</a>.</p>
@@ -358,5 +365,22 @@ document.getElementById('bookingForm').addEventListener('submit', function(e){
 });
 </script>
 
+<script>
+(function(){
+  var STATS_ENDPOINT = "https://balashov-stats.YOUR-SUBDOMAIN.workers.dev"; // TODO: заменить после деплоя — см. _tools/StatsBot/README.md
+  try {
+    fetch(STATS_ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        page: location.pathname,
+        referrer: document.referrer ? new URL(document.referrer).hostname : "",
+        device: window.innerWidth < 768 ? "mobile" : "desktop",
+        lang: document.documentElement.lang === "en" ? "en" : "ru"
+      })
+    }).catch(function(){});
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>

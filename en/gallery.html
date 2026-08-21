@@ -313,9 +313,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
         </div>
 
         <div class="g-card">
-          <div class="g-photos">
-            <img src="../Photos/web/shesty-1.jpg" alt="Artistes on flexible poles, a paired act" loading="lazy">
-            <img src="../Photos/web/shesty-2.jpg" alt="Flexible poles at a festival" loading="lazy">
+          <div class="g-photos single">
             <img src="../Photos/web/shesty-3.jpg" alt="Flexible poles, group act with stilt-walkers" loading="lazy">
           </div>
           <div class="g-body">
@@ -329,7 +327,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 
         <div class="g-card">
           <div class="g-photos single">
-            <img src="../Photos/web/turnik-1.jpg" alt="Pull-up bar for a prize — crowd interaction" loading="lazy">
+            <img src="../Photos/web/turnik-1.jpg" alt="Pull-up bar for a prize — crowd interaction" loading="lazy" style="object-position:top">
           </div>
           <div class="g-body">
             <p class="kind">05 · add-on to any act</p>
@@ -363,5 +361,22 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   </div>
 </footer>
 
+<script>
+(function(){
+  var STATS_ENDPOINT = "https://balashov-stats.YOUR-SUBDOMAIN.workers.dev"; // TODO: заменить после деплоя — см. _tools/StatsBot/README.md
+  try {
+    fetch(STATS_ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        page: location.pathname,
+        referrer: document.referrer ? new URL(document.referrer).hostname : "",
+        device: window.innerWidth < 768 ? "mobile" : "desktop",
+        lang: document.documentElement.lang === "en" ? "en" : "ru"
+      })
+    }).catch(function(){});
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>

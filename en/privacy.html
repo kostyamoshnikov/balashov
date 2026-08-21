@@ -240,7 +240,24 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
     <div class="body-copy">
       <p>The site, the Telegram bot and the VK group collect data only when you submit an enquiry yourself: your name, event date, format, contact (phone or e-mail) and any details you write.</p>
       <p>The form on the Booking page drafts an e-mail in your own mail client — sending isn't automatic, and nothing is stored on the site's server. The bots forward your enquiry to the organiser (Nikolai) as a direct message or working chat — data goes nowhere else and isn't stored in any bot database.</p>
-      <p>The site doesn't use tracking cookies and doesn't share data with third parties, except where visit statistics are enabled (Yandex Metrica — see below).</p>
+      <p>The site doesn't use tracking cookies and doesn't share data with third parties, except for anonymised visit statistics (Yandex Metrica — see below).</p>
+    </div>
+  </div>
+</section>
+
+<div class="marquee"></div>
+
+<section class="tinted">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="ribbon">Legal basis</span>
+      <h2 class="serif">Consent, purpose, retention</h2>
+    </div>
+    <div class="body-copy">
+      <p><b style="color:var(--cream)">Legal basis for processing</b> — your consent, given by checking the relevant box when you submit the enquiry form on the Booking page. Without this consent the form doesn't submit.</p>
+      <p><b style="color:var(--cream)">Purpose of processing</b> — one only: to contact you about your booking enquiry (confirm details, agree on date and terms). Data isn't used for newsletters, advertising, or anything you haven't explicitly asked for.</p>
+      <p><b style="color:var(--cream)">Retention period</b> — for as long as needed to handle your enquiry (usually until the event and any related settlement are complete), and no longer than 3 years from your last contact, unless you ask for earlier deletion (see "Your rights" below).</p>
+      <p><b style="color:var(--cream)">Where it's stored</b> — Telegram/VK correspondence is stored on those services' own servers under their terms; booking-form e-mails live in your own mailbox and Nikolai's, under your respective mail providers' terms. There's no separate database on the site's server — the site is static.</p>
     </div>
   </div>
 </section>
@@ -251,11 +268,12 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   <div class="wrap">
     <div class="section-head">
       <span class="ribbon">Statistics</span>
-      <h2 class="serif">Yandex Metrica</h2>
+      <h2 class="serif">Yandex Metrica and our own analytics</h2>
     </div>
     <div class="body-copy">
-      <p>If the Yandex Metrica counter is enabled on the site, it collects anonymised visit statistics (which pages are viewed, referral source) under Yandex's standard rules. The counter doesn't link this data to the name or contact details you leave in the booking form.</p>
-      <p>You can opt out via your browser settings (blocking JavaScript trackers or using a "Do Not Track" extension).</p>
+      <p>Yandex Metrica collects anonymised visit statistics (which pages are viewed, referral source) under Yandex's standard rules. The counter doesn't link this data to the name or contact details you leave in the booking form.</p>
+      <p>The site additionally uses its own page-view counter, independent of any external service. It records only the page path, the referring domain, device type (mobile/desktop), and page language — enough to understand which pages are most popular and where traffic comes from. IP address, cookies, or any persistent visitor identifier are never recorded — repeat visits from the same person are indistinguishable from visits by different people; the counter only tallies page views, not "unique visitors".</p>
+      <p>You can opt out of both counters at once via your browser settings (blocking JavaScript or using a "Do Not Track" extension).</p>
     </div>
   </div>
 </section>
@@ -267,7 +285,9 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <h2 class="serif">Ask us to check or delete your data</h2>
     </div>
     <div class="body-copy">
-      <p>Data controller: Nikolai Balashov (private individual). To find out what data is held about you, or to request its deletion, write to balashov.show.ru@gmail.com or call <a href="tel:+79119138374" style="color:var(--gold)">+7 911 913-83-74</a> — we'll respond within a reasonable time.</p>
+      <p>Data controller: Nikolai Balashov (private individual).</p>
+      <p>You're entitled at any time to: find out what data is held about you; ask for it to be corrected if wrong; withdraw your consent and ask for full deletion. To use any of these rights, write to <a href="mailto:balashov.show.ru@gmail.com" style="color:var(--gold)">balashov.show.ru@gmail.com</a> or call <a href="tel:+79119138374" style="color:var(--gold)">+7 911 913-83-74</a> — we'll respond within a reasonable time, usually within a few days.</p>
+      <p class="foot-note" style="margin-top:20px;text-align:left;opacity:.75">This page is written in plain language to explain what happens to your data, and isn't a substitute for professional legal advice. If you have concerns about a specific situation, please consult a lawyer.</p>
     </div>
   </div>
 </section>
@@ -280,5 +300,22 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   </div>
 </footer>
 
+<script>
+(function(){
+  var STATS_ENDPOINT = "https://balashov-stats.YOUR-SUBDOMAIN.workers.dev"; // TODO: заменить после деплоя — см. _tools/StatsBot/README.md
+  try {
+    fetch(STATS_ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        page: location.pathname,
+        referrer: document.referrer ? new URL(document.referrer).hostname : "",
+        device: window.innerWidth < 768 ? "mobile" : "desktop",
+        lang: document.documentElement.lang === "en" ? "en" : "ru"
+      })
+    }).catch(function(){});
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>

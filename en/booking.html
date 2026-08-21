@@ -229,6 +229,9 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   <div class="badge-glow"><img src="../Brand/logo-shou-balashova.jpg" alt="Shou Balashova"></div>
   <h1>Booking</h1>
   <p class="tag">Birthdays, weddings, corporate events, city festivals — across Russia</p>
+  <div class="cta-row" style="margin-top:20px">
+    <a class="cta primary" href="#bookingForm">Book this act</a>
+  </div>
 </div>
 
 <div class="marquee"></div>
@@ -322,6 +325,10 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
         <label for="details">Details (venue, act format, requests)</label>
         <textarea id="details"></textarea>
       </div>
+      <div class="field" style="display:flex;align-items:flex-start;gap:8px;flex-direction:row">
+        <input type="checkbox" id="consent" required style="width:auto;margin-top:3px;flex-shrink:0">
+        <label for="consent" style="font-size:12px;font-weight:400;text-transform:none;font-family:'Public Sans',sans-serif;letter-spacing:normal;color:var(--cream-soft)">I consent to the processing of my personal data under the <a href="privacy.html" target="_blank" style="color:var(--gold)">privacy policy</a></label>
+      </div>
       <button type="submit" class="submit-btn">Send enquiry</button>
       <p class="form-note">The button opens your e-mail client with the details filled in — sending is not automatic.</p>
       <p class="form-note">Fastest way — message the <a href="https://vk.ru/shou_spb" target="_blank" rel="noopener" style="color:var(--gold);font-weight:600">VK group</a> directly.</p>
@@ -358,5 +365,22 @@ document.getElementById('bookingForm').addEventListener('submit', function(e){
 });
 </script>
 
+<script>
+(function(){
+  var STATS_ENDPOINT = "https://balashov-stats.YOUR-SUBDOMAIN.workers.dev"; // TODO: заменить после деплоя — см. _tools/StatsBot/README.md
+  try {
+    fetch(STATS_ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        page: location.pathname,
+        referrer: document.referrer ? new URL(document.referrer).hostname : "",
+        device: window.innerWidth < 768 ? "mobile" : "desktop",
+        lang: document.documentElement.lang === "en" ? "en" : "ru"
+      })
+    }).catch(function(){});
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>

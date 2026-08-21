@@ -286,10 +286,10 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <p class="url">muzcomedy.ru</p>
     </a>
 
-    <a class="link-card" href="https://teamuz.ru/princessa-cirka/" target="_blank" rel="noopener">
+    <a class="link-card" href="https://muzcomedy.ru/about/persons/princessa_cirka/" target="_blank" rel="noopener">
       <p class="kind">Production page</p>
       <h4>"Princess of the Circus" — about the show</h4>
-      <p class="url">teamuz.ru/princessa-cirka</p>
+      <p class="url">muzcomedy.ru/about/persons/princessa_cirka</p>
     </a>
   </div>
 </section>
@@ -321,5 +321,22 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   </div>
 </footer>
 
+<script>
+(function(){
+  var STATS_ENDPOINT = "https://balashov-stats.YOUR-SUBDOMAIN.workers.dev"; // TODO: заменить после деплоя — см. _tools/StatsBot/README.md
+  try {
+    fetch(STATS_ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        page: location.pathname,
+        referrer: document.referrer ? new URL(document.referrer).hostname : "",
+        device: window.innerWidth < 768 ? "mobile" : "desktop",
+        lang: document.documentElement.lang === "en" ? "en" : "ru"
+      })
+    }).catch(function(){});
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>

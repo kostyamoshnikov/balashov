@@ -231,6 +231,20 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 .note{max-width:100%;margin:0 auto 26px;background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:14px;padding:14px 18px;font-family:'Space Mono';font-size:11px;color:var(--cream-soft);text-align:center}
 
 </style>
+<style>
+.g-photos img{cursor:zoom-in}
+.lightbox{display:none;position:fixed;inset:0;background:rgba(10,7,5,.94);z-index:999;align-items:center;justify-content:center;padding:20px}
+.lightbox.active{display:flex}
+.lightbox img{max-width:100%;max-height:85vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lightbox-close{position:absolute;top:18px;right:24px;font-size:34px;color:var(--cream);cursor:pointer;line-height:1;background:rgba(0,0,0,.35);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.lightbox-close:hover{color:var(--gold)}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:38px;color:var(--cream);cursor:pointer;background:rgba(0,0,0,.35);width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;user-select:none}
+.lightbox-nav:hover{color:var(--gold)}
+.lightbox-prev{left:16px}
+.lightbox-next{right:16px}
+.lightbox-counter{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-family:'Space Mono',monospace;font-size:12px;color:var(--cream-soft);letter-spacing:.1em}
+@media (max-width:600px){.lightbox-nav{width:42px;height:42px;font-size:28px}.lightbox-close{width:38px;height:38px;font-size:26px;top:10px;right:10px}}
+</style>
 </head>
 <body>
 
@@ -321,6 +335,8 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   </div>
 </section>
 
+
+
 <footer>
   <div class="inner">
     <div class="badge-glow"><img src="../Brand/logo-shou-balashova.jpg" alt="Шоу Балашова"></div>
@@ -337,5 +353,22 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   </div>
 </footer>
 
+<script>
+(function(){
+  var STATS_ENDPOINT = "https://balashov-stats.YOUR-SUBDOMAIN.workers.dev"; // TODO: заменить после деплоя — см. _tools/StatsBot/README.md
+  try {
+    fetch(STATS_ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        page: location.pathname,
+        referrer: document.referrer ? new URL(document.referrer).hostname : "",
+        device: window.innerWidth < 768 ? "mobile" : "desktop",
+        lang: document.documentElement.lang === "en" ? "en" : "ru"
+      })
+    }).catch(function(){});
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>

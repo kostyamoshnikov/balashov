@@ -149,9 +149,11 @@ section.tinted{background:rgba(253,217,69,.025)}
 /* ── repertoire cards ── */
 .acts{display:flex;flex-direction:column;gap:14px}
 .act{
+  display:block;text-decoration:none;cursor:pointer;transition:border-color .15s,transform .15s;
   background:var(--ink-2);border-radius:14px;padding:22px 20px;position:relative;
   border:1px solid var(--accent, rgba(253,217,69,.25));
 }
+.act:hover{border-color:var(--gold);transform:translateY(-2px)}
 .act .num{
   position:absolute;top:-12px;left:20px;width:30px;height:30px;border-radius:50%;
   background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:var(--ink);
@@ -179,6 +181,8 @@ section.tinted{background:rgba(253,217,69,.025)}
 .tl-row:first-child{border-top:1px dashed rgba(253,217,69,.15)}
 .tl-year{font-family:'Space Mono';font-size:12px;color:var(--gold);font-weight:700}
 .tl-body h4{font-family:'Public Sans';font-weight:600;font-size:14px;color:var(--cream)}
+.tl-body h4 a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(253,217,69,.35)}
+.tl-body h4 a:hover{border-color:var(--gold);color:var(--gold)}
 .tl-body p{font-family:'Public Sans';font-size:12.5px;color:var(--cream-soft);margin-top:3px}
 
 /* ── touring chips ── */
@@ -275,38 +279,34 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <h2 class="serif">Четыре коронных номера</h2>
     </div>
     <div class="acts">
-      <div class="act c1">
+      <a class="act c1" href="nomera/lestnitsa.html">
         <div class="num">01</div>
         <p class="kind">Эквилибристика</p>
         <h3>Жонглёр на вольностоящей лестнице</h3>
         <p>Классический стиль — чистая эквилибристика, 6 минут. Комический — в костюме джокера, с интерактивом и призами, 12 минут. Только баланс артиста, без страховки и опоры.</p>
-      
-        <a class="act-more" href="nomera/lestnitsa.html">Подробнее →</a>
-      </div>
-      <div class="act c2">
+        <span class="act-more">Подробнее →</span>
+      </a>
+      <a class="act c2" href="nomera/hodulist.html">
         <div class="num">02</div>
         <p class="kind">В любом образе</p>
         <h3>Ходулист</h3>
         <p>Сказочные, скоморошьи и тематические костюмы — под детский праздник, свадьбу, открытие ТЦ или городское событие. Живой интерактив с гостями.</p>
-      
-        <a class="act-more" href="nomera/hodulist.html">Подробнее →</a>
-      </div>
-      <div class="act c3">
+        <span class="act-more">Подробнее →</span>
+      </a>
+      <a class="act c3" href="nomera/shesty.html">
         <div class="num">03</div>
         <p class="kind">Редкий жанр</p>
         <h3>Гибкие шесты</h3>
         <p>Два шеста высотой 6 метров, гибкость до 2,5 м в каждую сторону, вращение вокруг оси. Работает круглый год, в помещении и на улице — необычный для России аттракцион с интерактивным шоу для гостей.</p>
-      
-        <a class="act-more" href="nomera/shesty.html">Подробнее →</a>
-      </div>
-      <div class="act c4">
+        <span class="act-more">Подробнее →</span>
+      </a>
+      <a class="act c4" href="nomera/truba-transformer.html">
         <div class="num">04</div>
         <p class="kind">Космический гость</p>
         <h3>Человек-пружинка</h3>
         <p>Яркий интерактивный персонаж для детских и городских праздников. Для взрослых гостей — версия «Труба-трансформер»: 6 разных цветов трубы, «съедает» и «выплёвывает» героя вечера.</p>
-      
-        <a class="act-more" href="nomera/truba-transformer.html">Подробнее →</a>
-      </div>
+        <span class="act-more">Подробнее →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -331,17 +331,17 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
     </div>
     <div class="tl-row">
       <div class="tl-year">2023 —</div>
-      <div class="tl-body"><h4>«Принцесса цирка» · Театр Музыкальной комедии</h4>
+      <div class="tl-body"><h4><a href="https://muzcomedy.ru/about/persons/princessa_cirka/" target="_blank" rel="noopener">«Принцесса цирка» · Театр Музыкальной комедии</a></h4>
       <p>Постановщик цирковых номеров и руководитель цирковой группы: жонглёр на лестнице и на ходулях.</p></div>
     </div>
     <div class="tl-row">
       <div class="tl-year">2018</div>
-      <div class="tl-body"><h4>Опера «Богема» · Михайловский театр</h4>
+      <div class="tl-body"><h4><a href="https://mikhailovsky.ru/afisha/performances/detail/1070493/" target="_blank" rel="noopener">Опера «Богема» · Михайловский театр</a></h4>
       <p>Жонглёр на ходулях в сцене «Ярмарка», позже — артист-каскадёр (контракт на 3 года).</p></div>
     </div>
     <div class="tl-row">
       <div class="tl-year">—</div>
-      <div class="tl-body"><h4>«Сон в летнюю ночь» · Мариинский театр</h4>
+      <div class="tl-body"><h4><a href="https://www.mariinsky.ru/playbill/repertoire/opera/son/" target="_blank" rel="noopener">«Сон в летнюю ночь» · Мариинский театр</a></h4>
       <p>Постановка Клаудии Шолти, постановка трюков акробатов — Дэвид Доулни.</p></div>
     </div>
   </div>
@@ -353,19 +353,19 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <span class="ribbon">Кино</span>
       <h2 class="serif">Фильмография</h2>
     </div>
-    <div class="tl-row"><div class="tl-year">2025</div><div class="tl-body"><h4>«Секс. До и после»</h4><p>Реж. Анна Мороз. Жонглёр во фраке на ходулях.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2025</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/series/5249437/" target="_blank" rel="noopener">«Секс. До и после»</a></h4><p>Реж. Дарья Мороз. Жонглёр во фраке на ходулях.</p></div></div>
     <div class="tl-row"><div class="tl-year">2024</div><div class="tl-body"><h4>«Фаворит» (Потёмкин)</h4><p>Факир-жонглёр с огнём.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4>«Капитан Волконогов бежал»</h4><p>Номер на шестах.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4>«Хорошие девочки попадают в рай»</h4><p>Сцена свадьбы.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2019</div><div class="tl-body"><h4>«Вертинский»</h4><p>Сцена застолья.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2018</div><div class="tl-body"><h4>«Бендер»</h4><p>Актёр второго плана, группа цирка.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2017</div><div class="tl-body"><h4>«Дуэлянт»</h4><p>Участие в съёмках.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2008</div><div class="tl-body"><h4>«Городок»</h4><p>Сериал.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4>«Августейший посол»</h4><p>Работа с огнём.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4>«Гаишники»</h4><p>Сериал, работа с огнём на ходулях.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4>«Ветка сирени»</h4><p>Реж. Павел Лунгин.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4>«Дом на Лиговке»</h4><p>Реж. Михаил Богин.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2003</div><div class="tl-body"><h4>«Удачи тебе, сыщик!»</h4><p>Реж. Александр Баширов.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/1402927/" target="_blank" rel="noopener">«Капитан Волконогов бежал»</a></h4><p>Номер на шестах.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/1402918/" target="_blank" rel="noopener">«Хорошие девочки попадают в рай»</a></h4><p>Сцена свадьбы.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2019</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/4360154/" target="_blank" rel="noopener">«Вертинский»</a></h4><p>Сцена застолья.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2018</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/1162781/" target="_blank" rel="noopener">«Бендер»</a></h4><p>Актёр второго плана, группа цирка.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2017</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/840234/" target="_blank" rel="noopener">«Дуэлянт»</a></h4><p>Участие в съёмках.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2008</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/451181/" target="_blank" rel="noopener">«Городок»</a></h4><p>Сериал.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/447113/" target="_blank" rel="noopener">«Августейший посол»</a></h4><p>Работа с огнём.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/412345/" target="_blank" rel="noopener">«Гаишники»</a></h4><p>Сериал, работа с огнём на ходулях.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/266536/" target="_blank" rel="noopener">«Ветка сирени»</a></h4><p>Реж. Павел Лунгин.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/470915/" target="_blank" rel="noopener">«Дом на Английской набережной»</a></h4><p>Реж. Михаил Богин.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2003</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/series/468089/" target="_blank" rel="noopener">«Удачи тебе, сыщик!»</a></h4><p>Реж. Александр Баширов.</p></div></div>
   </div>
 </section>
 
@@ -409,5 +409,22 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   </div>
 </footer>
 
+<script>
+(function(){
+  var STATS_ENDPOINT = "https://balashov-stats.YOUR-SUBDOMAIN.workers.dev"; // TODO: заменить после деплоя — см. _tools/StatsBot/README.md
+  try {
+    fetch(STATS_ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        page: location.pathname,
+        referrer: document.referrer ? new URL(document.referrer).hostname : "",
+        device: window.innerWidth < 768 ? "mobile" : "desktop",
+        lang: document.documentElement.lang === "en" ? "en" : "ru"
+      })
+    }).catch(function(){});
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>

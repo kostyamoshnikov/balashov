@@ -130,6 +130,8 @@ section.tinted{background:rgba(253,217,69,.025)}
 .body-copy b{color:var(--cream);font-weight:600}
 .body-copy a{color:var(--gold);text-decoration:underline;text-decoration-color:rgba(253,217,69,.4);text-underline-offset:2px}
 .body-copy a:hover{text-decoration-color:var(--gold)}
+.pull-quote{font-family:'Instrument Serif';font-style:italic;font-size:clamp(19px,3.6vw,25px);color:var(--gold);line-height:1.35;margin:24px 0;padding-left:18px;border-left:3px solid var(--crimson)}
+.body-photo{width:100%;border-radius:14px;margin:20px 0;display:block;object-fit:cover;max-height:320px}
 
 .stat-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
 .stat{background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:14px;padding:16px 18px;flex:1 1 130px;text-align:center}
@@ -247,6 +249,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
     </div>
     <div class="body-copy">
       <p>Nikolai Balashov was born in Ufa. In his own words, the circus studio he joined as a boy turned out to be "far more interesting" than hanging around the courtyard — so he stayed in the circus rather than on the street. Before the ring, he worked as a milling machine operator, a cinema projectionist and a trolleybus driver — "you should try everything in life, it always comes in useful" — and he says that experience has served him well as a performer too.</p>
+      <p class="pull-quote">"You should try everything in life — it always comes in useful"</p>
       <p>He began his touring career with the Tomsk Philharmonic — the early tours were gruelling: cold venues, several shows a day, constant travel, loading and unloading the equipment by hand.</p>
       <p>A circus artiste since 1984. Over forty years he has performed on stages and at festivals in Poland, Finland, Germany, Turkey, Israel, Cyprus, England, the UAE, Qatar, Taiwan, Macao and Hong Kong. Today "Shou Balashova" performs across Russia.</p>
     </div>
@@ -263,7 +266,8 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
     </div>
     <div class="body-copy">
       <p>The act began as an experiment: balancing on three plastic cups. "I kept inventing something new, dropping what didn't work, refining it," he says — and that's how the equilibrium-on-rolls act was born, the one that caught Moscow's attention and got him into Russia's Book of Records.</p>
-      <p>He hasn't performed the rolls act since turning fifty — his back won't allow it. But he still juggles on the <a href="nomera/ladder.html">free-standing ladder</a> to this day. He calls both genres extreme: "the state retires you after fifteen years in these genres, and you retire as an invalid. Not everyone is lucky, but I've been lucky — I haven't broken or dislocated anything yet."</p>
+      <p>He hasn't performed the rolls act since turning fifty — his back won't allow it. But he still juggles on the <a href="nomera/ladder.html">free-standing ladder</a> to this day. He calls both genres extreme: "the state retires you after fifteen years in these genres, and you retire as an invalid."</p>
+      <p class="pull-quote">"Not everyone is lucky, but I've been lucky — I haven't broken or dislocated anything yet"</p>
     </div>
   </div>
 </section>
@@ -276,7 +280,9 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
     </div>
     <div class="body-copy">
       <p><a href="nomera/flexible-poles.html"><b>Flexible poles</b></a> — a genre performed by only three or four theatres worldwide. The idea came from watching a Canadian or Australian circus troupe perform on Palace Square; he and a partner spent a full year building their own version, with plenty of trial and error. Today the act uses two 6-metre poles that flex up to 2.5 m to each side — a rare attraction for Russia that works year-round, indoors and outdoors. In the interactive part of the show, the artiste sways at the top and throws balloons to the crowd, while guests try to hit him with a soft ball; afterwards, willing volunteers can climb up and swing themselves.</p>
+      <img class="body-photo" src="../Photos/web/shesty-2.jpg" alt="Flexible poles at a festival" loading="lazy">
       <p><a href="nomera/transforming-tube.html"><b>The Transforming Tube</b></a> — he saw the act performed by an American artiste at a festival in Dubai and bought it. When the prop wore out, he sewed a new one himself — "heavy manual work", made in 6 different colours. The solo number "Cosmic Fantasy" runs eight minutes and uses three tubes; there's also a paired version, "the trained tube", where a dompteuse in white and a black tube act out a scene of confrontation.</p>
+      <img class="body-photo" src="../Photos/web/truba-2.jpg" alt="Two artistes in Transforming Tube costumes on stage" loading="lazy">
     </div>
   </div>
 </section>
@@ -358,5 +364,22 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   </div>
 </footer>
 
+<script>
+(function(){
+  var STATS_ENDPOINT = "https://balashov-stats.YOUR-SUBDOMAIN.workers.dev"; // TODO: заменить после деплоя — см. _tools/StatsBot/README.md
+  try {
+    fetch(STATS_ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        page: location.pathname,
+        referrer: document.referrer ? new URL(document.referrer).hostname : "",
+        device: window.innerWidth < 768 ? "mobile" : "desktop",
+        lang: document.documentElement.lang === "en" ? "en" : "ru"
+      })
+    }).catch(function(){});
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>
