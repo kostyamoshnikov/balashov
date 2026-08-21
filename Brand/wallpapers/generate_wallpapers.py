@@ -140,7 +140,7 @@ def build_full(size, out):
     y += int(w * 0.14)
     centered_text(d, "«Шоу Балашова»", f_show, y, w, GOLD)
     y += int(w * 0.09)
-    centered_text(d, "АРТИСТ ЦИРКА · С 1994 ГОДА", f_kicker, y, w, GREY, tracking=int(w * 0.012))
+    centered_text(d, "АРТИСТ ЦИРКА · С 1984 ГОДА", f_kicker, y, w, GREY, tracking=int(w * 0.012))
 
     line_y = int(h * 0.78)
     d.line([(w * 0.32, line_y), (w * 0.68, line_y)], fill=GOLD, width=3)

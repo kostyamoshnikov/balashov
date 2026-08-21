@@ -315,9 +315,9 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
     <div class="badge-glow"><img src="Brand/logo-shou-balashova.jpg" alt="Шоу Балашова"></div>
     <span class="ribbon">Booking</span>
     <h2 class="serif">Позвать Николая на площадку</h2>
-    <p class="tag">Дни рождения, свадьбы, корпоративы, городские праздники — Санкт-Петербург и Ленинградская область.</p>
+    <p class="tag">Дни рождения, свадьбы, корпоративы, городские праздники — выступления по всей России.</p>
     <div class="cta-row">
-      <a class="cta primary" href="mailto:booking@balashov-show.ru">Написать по booking</a>
+      <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
       <a class="cta ghost" href="booking.html">Условия и заявка</a>
     </div>
     <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
@@ -363,7 +363,7 @@ fetch("reviews-data.json")
   .catch(() => renderReviews([]));
 
 // звёздный рейтинг в форме
-let selectedRating = 5;
+let selectedRating = 0;
 const stars = document.querySelectorAll("#starInput span");
 function paintStars(n) {
   stars.forEach(s => s.classList.toggle("active", parseInt(s.dataset.v) <= n));
@@ -377,6 +377,10 @@ stars.forEach(s => s.addEventListener("click", () => {
 document.getElementById("reviewForm").addEventListener("submit", function (e) {
   e.preventDefault();
   const status = document.getElementById("formStatus");
+  if (selectedRating === 0) {
+    status.textContent = "Выберите оценку от 1 до 5 звёзд.";
+    return;
+  }
   const payload = {
     name: document.getElementById("rname").value,
     event: document.getElementById("revent").value,
@@ -395,8 +399,8 @@ document.getElementById("reviewForm").addEventListener("submit", function (e) {
       if (data.ok) {
         status.textContent = "Спасибо! Отзыв отправлен на модерацию.";
         this.reset();
-        selectedRating = 5;
-        paintStars(5);
+        selectedRating = 0;
+        paintStars(0);
       } else {
         status.textContent = data.error || "Не получилось отправить, попробуйте ещё раз.";
       }

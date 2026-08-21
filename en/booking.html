@@ -165,6 +165,8 @@ section.tinted{background:rgba(253,217,69,.025)}
 .format-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
 .format-grid .f{background:var(--ink-2);border:1px solid rgba(253,217,69,.18);border-radius:14px;padding:14px 12px;font-size:12px;text-align:center;color:var(--cream-soft)}
 .format-grid .f b{display:block;font-family:'Public Sans';font-weight:600;font-size:13.5px;margin-bottom:3px;color:var(--cream)}
+.format-grid a.f{text-decoration:none;display:block;cursor:pointer}
+.format-grid a.f:hover{border-color:rgba(253,217,69,.4)}
 
 .rider-box{background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:16px;padding:22px 20px;margin-top:20px}
 .rider-box .ribbon{margin-bottom:10px}
@@ -226,7 +228,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 <div class="page-hero">
   <div class="badge-glow"><img src="../Brand/logo-shou-balashova.jpg" alt="Shou Balashova"></div>
   <h1>Booking</h1>
-  <p class="tag">Birthdays, weddings, corporate events, city festivals — Saint Petersburg and the Leningrad region</p>
+  <p class="tag">Birthdays, weddings, corporate events, city festivals — across Russia</p>
 </div>
 
 <div class="marquee"></div>
@@ -238,13 +240,13 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <h2 class="serif">What you can book</h2>
     </div>
     <div class="format-grid">
-      <div class="f"><b>Ladder juggler</b>Classic style — pure equilibristics, 6 min. Comic style — joker costume, with interaction (balance on a roll, prizes), 12 min</div>
-      <div class="f"><b>Stilt-walker</b>Costumes for any theme: fairy-tale, jester, adult and children's events</div>
-      <div class="f"><b>Flexible poles</b>6 m tall, flexing up to 2.5 m to each side, rotating around their axis. Works year-round, indoors and outdoors</div>
-      <div class="f"><b>Spring-man</b>A cosmic alien — a bright interactive act for children's and city events</div>
-      <div class="f"><b>Flexible tube (kids)</b>The artiste plays with the children in a sling and "swallows" balls</div>
-      <div class="f"><b>Transforming Tube</b>6 colours, 6 min with interaction — "swallows" and "spits out" the guest of honour</div>
-      <div class="f"><b>Bar-hang for a prize</b>An add-on to any act — whoever hangs longest on the bar wins a prize</div>
+      <a class="f" href="nomera/ladder.html"><b>Ladder juggler</b>Classic style — pure equilibristics, 6 min. Comic style — joker costume, with interaction (balance on a roll, prizes), 12 min</a>
+      <a class="f" href="nomera/stilt-walker.html"><b>Stilt-walker</b>Costumes for any theme: fairy-tale, jester, adult and children's events</a>
+      <a class="f" href="nomera/flexible-poles.html"><b>Flexible poles</b>6 m tall, flexing up to 2.5 m to each side, rotating around their axis. Works year-round, indoors and outdoors</a>
+      <a class="f" href="nomera/transforming-tube.html"><b>Spring-man</b>A cosmic alien — a bright interactive act for children's and city events</a>
+      <a class="f" href="nomera/transforming-tube.html"><b>Flexible tube (kids)</b>The artiste plays with the children in a sling and "swallows" balls</a>
+      <a class="f" href="nomera/transforming-tube.html"><b>Transforming Tube</b>6 colours, 6 min with interaction — "swallows" and "spits out" the guest of honour</a>
+      <a class="f" href="nomera/pull-up-bar.html"><b>Pull-up bar for a prize</b>An add-on to any act — whoever hangs longest on the bar wins a prize</a>
       <div class="f"><b>Costumed guest greeting</b>Ded Moroz, Snegurochka, White Monster, black/white tailcoat, clown — costumes with gold, silver and glowing wings</div>
     </div>
 
@@ -278,7 +280,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
     <div class="rider-box">
       <span class="ribbon">Where we perform</span>
       <h3>Coverage area</h3>
-      <p style="font-family:'Public Sans';font-size:13px;color:var(--cream-soft)">Saint Petersburg and the Leningrad region. We bring our own equipment, artistes and transport.</p>
+      <p style="font-family:'Public Sans';font-size:13px;color:var(--cream-soft)">performing across Russia. We bring our own equipment, artistes and transport.</p>
       <p class="note"><a href="tel:+79119138374" style="color:var(--gold)">+7 911 913-83-74</a></p>
     </div>
   </div>
@@ -352,7 +354,7 @@ document.getElementById('bookingForm').addEventListener('submit', function(e){
     'Contact: ' + contact + '\n' +
     'Details: ' + (details || '—')
   );
-  window.location.href = 'mailto:booking@balashov-show.ru?subject=' + subject + '&body=' + body;
+  window.location.href = 'mailto:balashov.show.ru@gmail.com?subject=' + subject + '&body=' + body;
 });
 </script>
 

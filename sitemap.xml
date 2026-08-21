@@ -14,4 +14,14 @@
   <url><loc>https://balashov-show.ru/media.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://balashov-show.ru/reviews.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://balashov-show.ru/en/reviews.html</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://balashov-show.ru/nomera/lestnitsa.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://balashov-show.ru/nomera/hodulist.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://balashov-show.ru/nomera/truba-transformer.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://balashov-show.ru/nomera/shesty.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://balashov-show.ru/nomera/turnik.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://balashov-show.ru/en/nomera/ladder.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://balashov-show.ru/en/nomera/stilt-walker.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://balashov-show.ru/en/nomera/transforming-tube.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://balashov-show.ru/en/nomera/flexible-poles.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://balashov-show.ru/en/nomera/pull-up-bar.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
 </urlset>
