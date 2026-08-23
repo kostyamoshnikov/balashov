@@ -272,7 +272,9 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
     </div>
     <div class="body-copy">
       <p>Yandex Metrica collects anonymised visit statistics (which pages are viewed, referral source) under Yandex's standard rules. The counter doesn't link this data to the name or contact details you leave in the booking form.</p>
-      <p>The site additionally uses its own page-view counter, independent of any external service. It records only the page path, the referring domain, device type (mobile/desktop), and page language — enough to understand which pages are most popular and where traffic comes from. IP address, cookies, or any persistent visitor identifier are never recorded — repeat visits from the same person are indistinguishable from visits by different people; the counter only tallies page views, not "unique visitors".</p>
+      <p>The site additionally uses its own page-view and key-button-click counter, independent of any external service. It records the page path, event type (pageview or click), the referring domain, device type (mobile/desktop), and page language — enough to understand which pages and buttons are most popular and where traffic comes from.</p>
+      <p>Events from one visit are tagged with a random string held in the browser's <code>sessionStorage</code>, which <b style="color:var(--cream)">disappears on its own as soon as you close the tab</b> — it exists only so several actions (e.g. "opened an act page → viewed a photo → went to the booking form") can be recognised as one visit rather than several different people. This string doesn't survive closing the tab, doesn't link different visits from the same person, and isn't stored anywhere beyond the visit itself — it isn't the same thing as a persistent cookie identifier that tracks you across visits.</p>
+      <p>IP address, cookies, or any identifier that survives closing the tab are never recorded — the counter can't tell "unique visitors" apart or recognise you on a later visit.</p>
       <p>You can opt out of both counters at once via your browser settings (blocking JavaScript or using a "Do Not Track" extension).</p>
     </div>
   </div>
@@ -300,22 +302,6 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   </div>
 </footer>
 
-<script>
-(function(){
-  var STATS_ENDPOINT = "https://balashov-stats.YOUR-SUBDOMAIN.workers.dev"; // TODO: заменить после деплоя — см. _tools/StatsBot/README.md
-  try {
-    fetch(STATS_ENDPOINT, {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        page: location.pathname,
-        referrer: document.referrer ? new URL(document.referrer).hostname : "",
-        device: window.innerWidth < 768 ? "mobile" : "desktop",
-        lang: document.documentElement.lang === "en" ? "en" : "ru"
-      })
-    }).catch(function(){});
-  } catch(e) {}
-})();
-</script>
+<script src="../analytics.js" defer></script>
 </body>
 </html>

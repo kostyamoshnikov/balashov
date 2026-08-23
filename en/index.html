@@ -220,6 +220,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 {
   "@context": "https://schema.org",
   "@type": "EntertainmentBusiness",
+  "@id": "https://balashov-show.ru/#business",
   "name": "Shou Balashova",
   "alternateName": "Nikolai Balashov, circus artiste",
   "description": "Circus acts for events: juggler on a free-standing ladder, stilt-walker, flexible poles, transforming tube. Performing across Russia.",
@@ -294,28 +295,28 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <h2 class="serif">Four signature acts</h2>
     </div>
     <div class="acts">
-      <a class="act c1" href="nomera/ladder.html">
+      <a class="act c1" href="nomera/ladder.html" data-track="act_card_click:ladder">
         <div class="num">01</div>
         <p class="kind">Equilibristics</p>
         <h3>Juggler on a free-standing ladder</h3>
         <p>Classic style — pure equilibristics, 6 minutes. Comic style — a joker costume, with audience interaction and prizes, 12 minutes. Nothing but the artiste's balance, no safety line.</p>
         <span class="act-more">Read more →</span>
       </a>
-      <a class="act c2" href="nomera/stilt-walker.html">
+      <a class="act c2" href="nomera/stilt-walker.html" data-track="act_card_click:stilt-walker">
         <div class="num">02</div>
         <p class="kind">Any costume</p>
         <h3>Stilt-walker</h3>
         <p>Fairy-tale, jester and themed costumes — for children's parties, weddings, mall openings or city events. Live interaction with the guests.</p>
         <span class="act-more">Read more →</span>
       </a>
-      <a class="act c3" href="nomera/flexible-poles.html">
+      <a class="act c3" href="nomera/flexible-poles.html" data-track="act_card_click:flexible-poles">
         <div class="num">03</div>
         <p class="kind">Rare genre</p>
         <h3>Flexible poles</h3>
         <p>Two 6-metre poles that flex up to 2.5 m to each side and rotate around their axis. Works year-round, indoors and outdoors — an unusual attraction with an interactive show for guests.</p>
         <span class="act-more">Read more →</span>
       </a>
-      <a class="act c4" href="nomera/transforming-tube.html">
+      <a class="act c4" href="nomera/transforming-tube.html" data-track="act_card_click:transforming-tube">
         <div class="num">04</div>
         <p class="kind">Cosmic guest</p>
         <h3>Spring-man</h3>
@@ -416,28 +417,16 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Enquire about booking</a>
       <a class="cta ghost" href="booking.html">Terms &amp; enquiry</a>
     </div>
+    <!-- Telegram bot — uncomment and fill in @username after
+         deploying _tools/BookingBot (see README.md, section 5)
+    <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Telegram bot</a>
+    -->
     <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
     <p class="foot-note"><a href="privacy.html">Privacy Policy</a></p>
     <p class="foot-note">© Nikolai Balashov</p>
   </div>
 </footer>
 
-<script>
-(function(){
-  var STATS_ENDPOINT = "https://balashov-stats.YOUR-SUBDOMAIN.workers.dev"; // TODO: заменить после деплоя — см. _tools/StatsBot/README.md
-  try {
-    fetch(STATS_ENDPOINT, {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        page: location.pathname,
-        referrer: document.referrer ? new URL(document.referrer).hostname : "",
-        device: window.innerWidth < 768 ? "mobile" : "desktop",
-        lang: document.documentElement.lang === "en" ? "en" : "ru"
-      })
-    }).catch(function(){});
-  } catch(e) {}
-})();
-</script>
+<script src="../analytics.js" defer></script>
 </body>
 </html>

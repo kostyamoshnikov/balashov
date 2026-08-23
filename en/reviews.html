@@ -231,6 +231,15 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 .honeypot{position:absolute;left:-9999px;opacity:0;pointer-events:none}
 
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EntertainmentBusiness",
+  "@id": "https://balashov-show.ru/#business",
+  "name": "Shou Balashova",
+  "url": "https://balashov-show.ru/"
+}
+</script>
 </head>
 <body>
 
@@ -272,7 +281,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
     <div class="section-head">
       <span class="ribbon">Your review</span>
       <h2 class="serif">Were you at a show?</h2>
-      <p class="sub">Tell us how it went — reviews are moderated before publishing.</p>
+      <p class="sub">Tell us how it went — your review is published right away.</p>
     </div>
 
     <form class="form-card" id="reviewForm">
@@ -320,6 +329,10 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Enquire about booking</a>
       <a class="cta ghost" href="booking.html">Terms &amp; enquiry</a>
     </div>
+    <!-- Telegram bot — uncomment and fill in @username after
+         deploying _tools/BookingBot (see README.md, section 5)
+    <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Telegram bot</a>
+    -->
     <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
     <p class="foot-note"><a href="privacy.html">Privacy Policy</a></p>
     <p class="foot-note">© Nikolai Balashov</p>
@@ -355,12 +368,45 @@ function renderReviews(list) {
       <div class="date">${r.date || ""}</div>
     </div>
   `).join("");
+  updateAggregateRatingSchema(list);
 }
 
-fetch("../reviews-data.json")
+// Honest rating in structured data — computed from REAL loaded reviews,
+// never pre-baked. While there are no reviews yet, aggregateRating is
+// not added at all (schema.org implies at least one rating exists
+// under AggregateRating — "a rating from zero reviews" isn't honest).
+// Adapted from assets/reviews.js in the AELITA pack (reference).
+function updateAggregateRatingSchema(reviews) {
+  if (!reviews || !reviews.length) return;
+  try {
+    const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+    for (const script of scripts) {
+      let data;
+      try { data = JSON.parse(script.textContent); } catch (e) { continue; }
+      if (data["@id"] !== "https://balashov-show.ru/#business") continue;
+      const sum = reviews.reduce((s, r) => s + (Number(r.rating) || 0), 0);
+      const avg = Math.round((sum / reviews.length) * 10) / 10;
+      data.aggregateRating = {
+        "@type": "AggregateRating",
+        "ratingValue": avg,
+        "reviewCount": reviews.length,
+        "bestRating": 5,
+        "worstRating": 1,
+      };
+      script.textContent = JSON.stringify(data);
+    }
+  } catch (e) { /* structured data isn't critical for the page, fail silently */ }
+}
+
+fetch(REVIEWS_ENDPOINT + "?action=list")
   .then(r => r.json())
-  .then(renderReviews)
-  .catch(() => renderReviews([]));
+  .then(data => { if (!Array.isArray(data)) throw new Error("bad shape"); renderReviews(data); })
+  .catch(() => {
+    fetch("../reviews-data.json")
+      .then(r => r.json())
+      .then(renderReviews)
+      .catch(() => renderReviews([]));
+  });
 
 // звёздный рейтинг в форме
 let selectedRating = 0;
@@ -397,7 +443,9 @@ document.getElementById("reviewForm").addEventListener("submit", function (e) {
     .then(r => r.json())
     .then(data => {
       if (data.ok) {
-        status.textContent = "Thank you! Your review has been sent for moderation.";
+        status.textContent = data.published
+          ? "Thank you! Your review is now live."
+          : "Thank you! Your review is being reviewed and will appear soon.";
         this.reset();
         selectedRating = 0;
         paintStars(0);
@@ -409,22 +457,6 @@ document.getElementById("reviewForm").addEventListener("submit", function (e) {
 });
 </script>
 
-<script>
-(function(){
-  var STATS_ENDPOINT = "https://balashov-stats.YOUR-SUBDOMAIN.workers.dev"; // TODO: заменить после деплоя — см. _tools/StatsBot/README.md
-  try {
-    fetch(STATS_ENDPOINT, {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        page: location.pathname,
-        referrer: document.referrer ? new URL(document.referrer).hostname : "",
-        device: window.innerWidth < 768 ? "mobile" : "desktop",
-        lang: document.documentElement.lang === "en" ? "en" : "ru"
-      })
-    }).catch(function(){});
-  } catch(e) {}
-})();
-</script>
+<script src="../analytics.js" defer></script>
 </body>
 </html>

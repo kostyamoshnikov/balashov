@@ -132,6 +132,10 @@ FOOTER_RU = '''<footer>
       <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
       <a class="cta ghost" href="../booking.html">Условия и заявка</a>
     </div>
+    <!-- Бот Telegram — раскомментировать и вписать @username после
+         деплоя _tools/BookingBot (см. README.md, раздел 5)
+    <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Бот в Telegram</a>
+    -->
     <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
     <p class="foot-note"><a href="../privacy.html">Политика конфиденциальности</a></p>
     <p class="foot-note">© Николай Балашов</p>
@@ -262,6 +266,7 @@ function openLightbox(i) {{
   document.getElementById('lightboxImg').src = lbPhotos[lbIndex];
   document.getElementById('lightboxCounter').textContent = (lbIndex+1) + ' / ' + lbPhotos.length;
   document.getElementById('lightbox').classList.add('active');
+  if (window.__balashovTrack) window.__balashovTrack('click', 'lightbox_open:' + (lbIndex+1));
 }}
 function closeLightbox() {{ document.getElementById('lightbox').classList.remove('active'); }}
 function navLightbox(d) {{
@@ -278,24 +283,8 @@ document.addEventListener('keydown', function(e) {{
 </script>'''
 
 
-STATS_SNIPPET = '''<script>
-(function(){
-  var STATS_ENDPOINT = "https://balashov-stats.YOUR-SUBDOMAIN.workers.dev"; // TODO: заменить после деплоя — см. _tools/StatsBot/README.md
-  try {
-    fetch(STATS_ENDPOINT, {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        page: location.pathname,
-        referrer: document.referrer ? new URL(document.referrer).hostname : "",
-        device: window.innerWidth < 768 ? "mobile" : "desktop",
-        lang: document.documentElement.lang === "en" ? "en" : "ru"
-      })
-    }).catch(function(){});
-  } catch(e) {}
-})();
-</script>
-</body>'''
+STATS_SNIPPET_RU = '<script src="../analytics.js" defer></script>\n</body>'
+STATS_SNIPPET_EN = '<script src="../../analytics.js" defer></script>\n</body>'
 
 
 def build_ru(head_raw, i, act):
@@ -475,6 +464,10 @@ FOOTER_EN = '''<footer>
       <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Email booking</a>
       <a class="cta ghost" href="../booking.html">Terms and request form</a>
     </div>
+    <!-- Telegram bot — uncomment and fill in @username after
+         deploying _tools/BookingBot (see README.md, section 5)
+    <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Telegram bot</a>
+    -->
     <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
     <p class="foot-note"><a href="../privacy.html">Privacy policy</a></p>
     <p class="foot-note">© Nikolai Balashov</p>
@@ -656,7 +649,7 @@ def main():
     os.makedirs(outdir_ru, exist_ok=True)
     for i, act in enumerate(ACTS):
         html = build_ru(head_ru_raw, i, act)
-        html = html.replace("</body>", STATS_SNIPPET, 1)
+        html = html.replace("</body>", STATS_SNIPPET_RU, 1)
         with open(os.path.join(outdir_ru, f'{act["slug"]}.html'), "w", encoding="utf-8") as f:
             f.write(html)
         print("wrote", "nomera/" + act["slug"] + ".html")
@@ -665,7 +658,7 @@ def main():
     os.makedirs(outdir_en, exist_ok=True)
     for i, act in enumerate(ACTS_EN):
         html = build_en(head_en_raw, i, act)
-        html = html.replace("</body>", STATS_SNIPPET, 1)
+        html = html.replace("</body>", STATS_SNIPPET_EN, 1)
         with open(os.path.join(outdir_en, f'{act["slug"]}.html'), "w", encoding="utf-8") as f:
             f.write(html)
         print("wrote", "en/nomera/" + act["slug"] + ".html")

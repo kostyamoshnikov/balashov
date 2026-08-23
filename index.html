@@ -209,6 +209,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 {
   "@context": "https://schema.org",
   "@type": "EntertainmentBusiness",
+  "@id": "https://balashov-show.ru/#business",
   "name": "Шоу Балашова",
   "alternateName": "Николай Балашов, артист цирка",
   "description": "Цирковые номера для праздников: жонглёр на вольностоящей лестнице, ходулист, гибкие шесты, труба-трансформер. Выступления по всей России.",
@@ -279,28 +280,28 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <h2 class="serif">Четыре коронных номера</h2>
     </div>
     <div class="acts">
-      <a class="act c1" href="nomera/lestnitsa.html">
+      <a class="act c1" href="nomera/lestnitsa.html" data-track="act_card_click:lestnitsa">
         <div class="num">01</div>
         <p class="kind">Эквилибристика</p>
         <h3>Жонглёр на вольностоящей лестнице</h3>
         <p>Классический стиль — чистая эквилибристика, 6 минут. Комический — в костюме джокера, с интерактивом и призами, 12 минут. Только баланс артиста, без страховки и опоры.</p>
         <span class="act-more">Подробнее →</span>
       </a>
-      <a class="act c2" href="nomera/hodulist.html">
+      <a class="act c2" href="nomera/hodulist.html" data-track="act_card_click:hodulist">
         <div class="num">02</div>
         <p class="kind">В любом образе</p>
         <h3>Ходулист</h3>
         <p>Сказочные, скоморошьи и тематические костюмы — под детский праздник, свадьбу, открытие ТЦ или городское событие. Живой интерактив с гостями.</p>
         <span class="act-more">Подробнее →</span>
       </a>
-      <a class="act c3" href="nomera/shesty.html">
+      <a class="act c3" href="nomera/shesty.html" data-track="act_card_click:shesty">
         <div class="num">03</div>
         <p class="kind">Редкий жанр</p>
         <h3>Гибкие шесты</h3>
         <p>Два шеста высотой 6 метров, гибкость до 2,5 м в каждую сторону, вращение вокруг оси. Работает круглый год, в помещении и на улице — необычный для России аттракцион с интерактивным шоу для гостей.</p>
         <span class="act-more">Подробнее →</span>
       </a>
-      <a class="act c4" href="nomera/truba-transformer.html">
+      <a class="act c4" href="nomera/truba-transformer.html" data-track="act_card_click:truba-transformer">
         <div class="num">04</div>
         <p class="kind">Космический гость</p>
         <h3>Человек-пружинка</h3>
@@ -403,28 +404,16 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
       <a class="cta ghost" href="booking.html">Условия и заявка</a>
     </div>
+    <!-- Бот Telegram — раскомментировать и вписать @username после
+         деплоя _tools/BookingBot (см. README.md, раздел 5)
+    <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Бот в Telegram</a>
+    -->
     <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
     <p class="foot-note"><a href="privacy.html">Политика конфиденциальности</a></p>
     <p class="foot-note">© Николай Балашов</p>
   </div>
 </footer>
 
-<script>
-(function(){
-  var STATS_ENDPOINT = "https://balashov-stats.YOUR-SUBDOMAIN.workers.dev"; // TODO: заменить после деплоя — см. _tools/StatsBot/README.md
-  try {
-    fetch(STATS_ENDPOINT, {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        page: location.pathname,
-        referrer: document.referrer ? new URL(document.referrer).hostname : "",
-        device: window.innerWidth < 768 ? "mobile" : "desktop",
-        lang: document.documentElement.lang === "en" ? "en" : "ru"
-      })
-    }).catch(function(){});
-  } catch(e) {}
-})();
-</script>
+<script src="analytics.js" defer></script>
 </body>
 </html>

@@ -230,7 +230,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   <h1>Booking</h1>
   <p class="tag">Birthdays, weddings, corporate events, city festivals — across Russia</p>
   <div class="cta-row" style="margin-top:20px">
-    <a class="cta primary" href="#bookingForm">Book this act</a>
+    <a class="cta primary" href="#bookingForm" data-track="booking_hero_cta">Book this act</a>
   </div>
 </div>
 
@@ -285,6 +285,10 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <h3>Coverage area</h3>
       <p style="font-family:'Public Sans';font-size:13px;color:var(--cream-soft)">performing across Russia. We bring our own equipment, artistes and transport.</p>
       <p class="note"><a href="tel:+79119138374" style="color:var(--gold)">+7 911 913-83-74</a></p>
+      <!-- Telegram bot — uncomment and fill in @username after
+           deploying _tools/BookingBot (see README.md, section 5)
+      <p class="note"><a href="https://t.me/YOUR_BOT_USERNAME" style="color:var(--gold)">Telegram bot</a></p>
+      -->
     </div>
   </div>
 </section>
@@ -365,22 +369,6 @@ document.getElementById('bookingForm').addEventListener('submit', function(e){
 });
 </script>
 
-<script>
-(function(){
-  var STATS_ENDPOINT = "https://balashov-stats.YOUR-SUBDOMAIN.workers.dev"; // TODO: заменить после деплоя — см. _tools/StatsBot/README.md
-  try {
-    fetch(STATS_ENDPOINT, {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        page: location.pathname,
-        referrer: document.referrer ? new URL(document.referrer).hostname : "",
-        device: window.innerWidth < 768 ? "mobile" : "desktop",
-        lang: document.documentElement.lang === "en" ? "en" : "ru"
-      })
-    }).catch(function(){});
-  } catch(e) {}
-})();
-</script>
+<script src="../analytics.js" defer></script>
 </body>
 </html>

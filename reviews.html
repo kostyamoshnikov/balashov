@@ -231,6 +231,15 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 .honeypot{position:absolute;left:-9999px;opacity:0;pointer-events:none}
 
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EntertainmentBusiness",
+  "@id": "https://balashov-show.ru/#business",
+  "name": "Шоу Балашова",
+  "url": "https://balashov-show.ru/"
+}
+</script>
 </head>
 <body>
 
@@ -272,7 +281,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
     <div class="section-head">
       <span class="ribbon">Ваш отзыв</span>
       <h2 class="serif">Были на выступлении?</h2>
-      <p class="sub">Расскажите, как прошло — отзыв проходит модерацию перед публикацией.</p>
+      <p class="sub">Расскажите, как прошло — отзыв публикуется сразу.</p>
     </div>
 
     <form class="form-card" id="reviewForm">
@@ -320,6 +329,10 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
       <a class="cta ghost" href="booking.html">Условия и заявка</a>
     </div>
+    <!-- Бот Telegram — раскомментировать и вписать @username после
+         деплоя _tools/BookingBot (см. README.md, раздел 5)
+    <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Бот в Telegram</a>
+    -->
     <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
     <p class="foot-note"><a href="privacy.html">Политика конфиденциальности</a></p>
     <p class="foot-note">© Николай Балашов</p>
@@ -355,12 +368,51 @@ function renderReviews(list) {
       <div class="date">${r.date || ""}</div>
     </div>
   `).join("");
+  updateAggregateRatingSchema(list);
 }
 
-fetch("reviews-data.json")
+// Честный рейтинг в structured data — считается из РЕАЛЬНЫХ загруженных
+// отзывов, не выдуман заранее. Пока отзывов нет — aggregateRating не
+// добавляется вообще (schema.org подразумевает хотя бы один отзыв под
+// AggregateRating, «рейтинг из нуля отзывов» не бывает честным).
+// Адаптировано из assets/reviews.js пака AELITA (референс).
+function updateAggregateRatingSchema(reviews) {
+  if (!reviews || !reviews.length) return;
+  try {
+    const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+    for (const script of scripts) {
+      let data;
+      try { data = JSON.parse(script.textContent); } catch (e) { continue; }
+      if (data["@id"] !== "https://balashov-show.ru/#business") continue;
+      const sum = reviews.reduce((s, r) => s + (Number(r.rating) || 0), 0);
+      const avg = Math.round((sum / reviews.length) * 10) / 10;
+      data.aggregateRating = {
+        "@type": "AggregateRating",
+        "ratingValue": avg,
+        "reviewCount": reviews.length,
+        "bestRating": 5,
+        "worstRating": 1,
+      };
+      script.textContent = JSON.stringify(data);
+    }
+  } catch (e) { /* structured data — не критично для страницы, тихо пропускаем */ }
+}
+
+// Живой список опубликованных отзывов — идёт через ReviewsBot (тот
+// проксирует Google Sheets, не отдавая её URL в браузер). Если
+// эндпоинт ещё не задеплоен/недоступен — тихо откатываемся на
+// статический Site/reviews-data.json (тот же формат данных), чтобы
+// страница не осталась пустой. Пустой массив с живого эндпоинта —
+// легитимный ответ («отзывов пока нет»), не повод откатываться.
+fetch(REVIEWS_ENDPOINT + "?action=list")
   .then(r => r.json())
-  .then(renderReviews)
-  .catch(() => renderReviews([]));
+  .then(data => { if (!Array.isArray(data)) throw new Error("bad shape"); renderReviews(data); })
+  .catch(() => {
+    fetch("reviews-data.json")
+      .then(r => r.json())
+      .then(renderReviews)
+      .catch(() => renderReviews([]));
+  });
 
 // звёздный рейтинг в форме
 let selectedRating = 0;
@@ -397,7 +449,9 @@ document.getElementById("reviewForm").addEventListener("submit", function (e) {
     .then(r => r.json())
     .then(data => {
       if (data.ok) {
-        status.textContent = "Спасибо! Отзыв отправлен на модерацию.";
+        status.textContent = data.published
+          ? "Спасибо! Отзыв опубликован."
+          : "Спасибо! Отзыв отправлен на проверку — скоро появится на сайте.";
         this.reset();
         selectedRating = 0;
         paintStars(0);
@@ -409,22 +463,6 @@ document.getElementById("reviewForm").addEventListener("submit", function (e) {
 });
 </script>
 
-<script>
-(function(){
-  var STATS_ENDPOINT = "https://balashov-stats.YOUR-SUBDOMAIN.workers.dev"; // TODO: заменить после деплоя — см. _tools/StatsBot/README.md
-  try {
-    fetch(STATS_ENDPOINT, {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        page: location.pathname,
-        referrer: document.referrer ? new URL(document.referrer).hostname : "",
-        device: window.innerWidth < 768 ? "mobile" : "desktop",
-        lang: document.documentElement.lang === "en" ? "en" : "ru"
-      })
-    }).catch(function(){});
-  } catch(e) {}
-})();
-</script>
+<script src="analytics.js" defer></script>
 </body>
 </html>

@@ -342,6 +342,7 @@ function openLightbox(i) {
   document.getElementById('lightboxImg').src = lbPhotos[lbIndex];
   document.getElementById('lightboxCounter').textContent = (lbIndex+1) + ' / ' + lbPhotos.length;
   document.getElementById('lightbox').classList.add('active');
+  if (window.__balashovTrack) window.__balashovTrack('click', 'lightbox_open:' + (lbIndex+1));
 }
 function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
 function navLightbox(d) {
@@ -367,28 +368,16 @@ document.addEventListener('keydown', function(e) {
       <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
       <a class="cta ghost" href="../booking.html">Условия и заявка</a>
     </div>
+    <!-- Бот Telegram — раскомментировать и вписать @username после
+         деплоя _tools/BookingBot (см. README.md, раздел 5)
+    <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Бот в Telegram</a>
+    -->
     <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
     <p class="foot-note"><a href="../privacy.html">Политика конфиденциальности</a></p>
     <p class="foot-note">© Николай Балашов</p>
   </div>
 </footer>
 
-<script>
-(function(){
-  var STATS_ENDPOINT = "https://balashov-stats.YOUR-SUBDOMAIN.workers.dev"; // TODO: заменить после деплоя — см. _tools/StatsBot/README.md
-  try {
-    fetch(STATS_ENDPOINT, {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({
-        page: location.pathname,
-        referrer: document.referrer ? new URL(document.referrer).hostname : "",
-        device: window.innerWidth < 768 ? "mobile" : "desktop",
-        lang: document.documentElement.lang === "en" ? "en" : "ru"
-      })
-    }).catch(function(){});
-  } catch(e) {}
-})();
-</script>
+<script src="../analytics.js" defer></script>
 </body>
 </html>
