@@ -53,10 +53,41 @@
     }
   }
 
+  // UTM-метки рекламной кампании (utm_source/utm_medium/utm_campaign/
+  // utm_content) — считываются один раз с URL первой страницы визита
+  // (обычно это посадочная страница рекламного объявления) и хранятся
+  // в том же sessionStorage, что и session — сбрасываются вместе с ним
+  // при закрытии вкладки, не переживают между визитами. Нужны, чтобы
+  // события на СЛЕДУЮЩИХ страницах визита (например, посетитель зашёл
+  // с UTM-ссылки на booking.html, потом открыл галерею) тоже
+  // подхватывали исходную метку кампании — иначе видна была бы только
+  // самая первая страница визита, а весь остальной путь терял бы
+  // источник трафика.
+  function utmParams() {
+    try {
+      var stored = sessionStorage.getItem("balashov_utm");
+      var fromUrl = new URLSearchParams(location.search);
+      var hasNew = fromUrl.get("utm_source") || fromUrl.get("utm_campaign");
+      if (hasNew) {
+        var fresh = {
+          utm_source: fromUrl.get("utm_source") || "",
+          utm_medium: fromUrl.get("utm_medium") || "",
+          utm_campaign: fromUrl.get("utm_campaign") || "",
+          utm_content: fromUrl.get("utm_content") || "",
+        };
+        sessionStorage.setItem("balashov_utm", JSON.stringify(fresh));
+        return fresh;
+      }
+      if (stored) return JSON.parse(stored);
+    } catch (e) {}
+    return { utm_source: "", utm_medium: "", utm_campaign: "", utm_content: "" };
+  }
+
   var buffer = [];
   var flushTimer = null;
 
   function track(type, detail) {
+    var utm = utmParams();
     buffer.push({
       type: type, // "pageview" | "click"
       page: location.pathname,
@@ -65,6 +96,10 @@
       device: deviceType(),
       lang: pageLang(),
       session: sessionId(),
+      utm_source: utm.utm_source,
+      utm_medium: utm.utm_medium,
+      utm_campaign: utm.utm_campaign,
+      utm_content: utm.utm_content,
     });
     if (!flushTimer) {
       flushTimer = setTimeout(function () { flush(false); }, 8000);
