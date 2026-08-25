@@ -311,8 +311,12 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
         <label for="rtext">Отзыв</label>
         <textarea id="rtext" required minlength="10" maxlength="1000" placeholder="Что понравилось, какой номер запомнился..."></textarea>
       </div>
+      <div class="field" style="display:flex;align-items:flex-start;gap:8px;flex-direction:row">
+        <input type="checkbox" id="reviewConsent" required style="width:auto;margin-top:3px;flex-shrink:0">
+        <label for="reviewConsent" style="font-size:12px;font-weight:400;text-transform:none;font-family:'Public Sans',sans-serif;letter-spacing:normal;color:var(--cream-soft)">Согласен(на) на обработку персональных данных согласно <a href="privacy.html" target="_blank" style="color:var(--gold)">политике конфиденциальности</a></label>
+      </div>
       <button type="submit" class="submit-btn">Отправить отзыв</button>
-      <p class="form-note" id="formStatus">Отзыв читает Николай лично и публикует после проверки — обычно в течение нескольких дней.</p>
+      <p class="form-note" id="formStatus">Отзыв публикуется сразу после проверки спам-фильтром — обычно мгновенно.</p>
     </form>
   </div>
 </section>
@@ -464,5 +468,6 @@ document.getElementById("reviewForm").addEventListener("submit", function (e) {
 </script>
 
 <script src="analytics.js" defer></script>
+<script src="vk-pixel.js" defer></script>
 </body>
 </html>

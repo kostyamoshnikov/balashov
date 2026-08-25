@@ -283,8 +283,8 @@ document.addEventListener('keydown', function(e) {{
 </script>'''
 
 
-STATS_SNIPPET_RU = '<script src="../analytics.js" defer></script>\n</body>'
-STATS_SNIPPET_EN = '<script src="../../analytics.js" defer></script>\n</body>'
+STATS_SNIPPET_RU = '<script src="../analytics.js" defer></script>\n<script src="../vk-pixel.js" defer></script>\n</body>'
+STATS_SNIPPET_EN = '<script src="../../analytics.js" defer></script>\n<script src="../../vk-pixel.js" defer></script>\n</body>'
 
 
 def build_ru(head_raw, i, act):

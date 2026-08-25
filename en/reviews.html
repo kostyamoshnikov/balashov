@@ -311,8 +311,12 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
         <label for="rtext">Review</label>
         <textarea id="rtext" required minlength="10" maxlength="1000" placeholder="What did you like, which act stood out..."></textarea>
       </div>
+      <div class="field" style="display:flex;align-items:flex-start;gap:8px;flex-direction:row">
+        <input type="checkbox" id="reviewConsent" required style="width:auto;margin-top:3px;flex-shrink:0">
+        <label for="reviewConsent" style="font-size:12px;font-weight:400;text-transform:none;font-family:'Public Sans',sans-serif;letter-spacing:normal;color:var(--cream-soft)">I consent to the processing of my personal data under the <a href="privacy.html" target="_blank" style="color:var(--gold)">privacy policy</a></label>
+      </div>
       <button type="submit" class="submit-btn">Submit review</button>
-      <p class="form-note" id="formStatus">Nikolai reads every review personally and publishes it after checking — usually within a few days.</p>
+      <p class="form-note" id="formStatus">Reviews are published right after passing the spam filter — usually instantly.</p>
     </form>
   </div>
 </section>
@@ -458,5 +462,6 @@ document.getElementById("reviewForm").addEventListener("submit", function (e) {
 </script>
 
 <script src="../analytics.js" defer></script>
+<script src="../vk-pixel.js" defer></script>
 </body>
 </html>
