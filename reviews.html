@@ -223,7 +223,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 .field input,.field select,.field textarea{width:100%;border:1.5px solid rgba(253,217,69,.25);border-radius:10px;padding:11px 13px;font-family:'Public Sans';font-size:14px;color:var(--cream);background:var(--ink)}
 .field textarea{resize:vertical;min-height:90px}
 .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
-.star-input{display:flex;gap:6px;font-size:26px}
+.star-input{display:flex;gap:6px;font-size:34px}
 .star-input span{cursor:pointer;color:rgba(253,217,69,.3);transition:color .1s}
 .star-input span.active{color:var(--gold)}
 .submit-btn{width:100%;border:none;border-radius:10px;padding:15px;margin-top:6px;font-family:'Space Mono';font-size:13px;letter-spacing:.04em;font-weight:700;background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:var(--ink);cursor:pointer}
@@ -310,6 +310,10 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <div class="field">
         <label for="rtext">Отзыв</label>
         <textarea id="rtext" required minlength="10" maxlength="1000" placeholder="Что понравилось, какой номер запомнился..."></textarea>
+      </div>
+      <div class="field" style="display:flex;align-items:flex-start;gap:8px;flex-direction:row">
+        <input type="checkbox" id="publishConsent" required style="width:auto;margin-top:3px;flex-shrink:0">
+        <label for="publishConsent" style="font-size:12px;font-weight:400;text-transform:none;font-family:'Public Sans',sans-serif;letter-spacing:normal;color:var(--cream-soft)">Согласен(на) на публикацию отзыва на сайте</label>
       </div>
       <div class="field" style="display:flex;align-items:flex-start;gap:8px;flex-direction:row">
         <input type="checkbox" id="reviewConsent" required style="width:auto;margin-top:3px;flex-shrink:0">
