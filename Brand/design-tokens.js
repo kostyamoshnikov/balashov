@@ -1,5 +1,5 @@
 /**
- * «Шоу Балашова» — дизайн-токены реального бренда (по логотипу vk.ru/shou_spb).
+ * «Шоу Балашова» — дизайн-токены реального бренда (по логотипу vk.ru/show_balashov).
  * Используется генераторами документов (Documents/_sources/build_*.js).
  */
 module.exports = {
@@ -24,6 +24,6 @@ module.exports = {
   contact: {
     email: "balashov.show.ru@gmail.com",
     phone: "+7 911 913-83-74",
-    vk: "https://vk.ru/shou_spb",
+    vk: "https://vk.ru/show_balashov",
   },
 };

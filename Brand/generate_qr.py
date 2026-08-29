@@ -33,7 +33,7 @@ utm_* — см. код там), а потом уводит на VK. Это от�
 """
 import qrcode
 
-BASE_URL = "https://vk.ru/shou_spb"
+BASE_URL = "https://vk.ru/show_balashov"
 
 # место размещения -> имя файла
 PLACEMENTS = {

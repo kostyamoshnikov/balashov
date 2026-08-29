@@ -146,7 +146,7 @@ def build_full(size, out):
     d.line([(w * 0.32, line_y), (w * 0.68, line_y)], fill=GOLD, width=3)
 
     y2 = line_y + int(h * 0.025)
-    for line in ["balashov-show.ru", "vk.ru/shou_spb"]:
+    for line in ["balashov-show.ru", "vk.ru/show_balashov"]:
         centered_text(d, line, f_contact, y2, w, GOLD)
         y2 += int(h * 0.032)
 
