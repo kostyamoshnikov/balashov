@@ -96,8 +96,17 @@ a{color:inherit}
 
 .site-nav{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;padding:18px 20px;font-family:'Space Mono';font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;position:relative;z-index:2;background:var(--ink)}
 .site-nav a{color:var(--cream-soft);text-decoration:none;padding-bottom:3px;border-bottom:2px solid transparent}
+/* Область нажатия пунктов меню: сам текст даёт всего ~22px по высоте,
+   а палец уверенно попадает от 44px (рекомендация WCAG/Apple/Google).
+   Увеличиваем только на touch-устройствах и только вертикальные
+   отступы — визуально меню не меняется, подчёркивание активного
+   пункта остаётся на месте. */
+@media (pointer:coarse){
+  .site-nav a{display:inline-block;padding-top:19px}
+}
 .site-nav a.current,.site-nav a:hover{color:var(--gold);border-bottom-color:var(--gold)}
 .site-nav a.lang-switch{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px}
+.site-nav a.vk-link{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px;color:var(--gold)}
 .site-nav a.lang-switch:hover{border-color:var(--gold)}
 
 .badge-glow{position:relative;margin:0 auto}
@@ -221,11 +230,12 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   <a href="media.html">Медиа</a>
   <a href="reviews.html">Отзывы</a>
     <a href="booking.html">Booking</a>
+  <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="en/privacy.html" class="lang-switch">EN</a>
 </nav>
 
 <div class="page-hero">
-  <div class="badge-glow"><img src="Brand/logo-shou-balashova.jpg" alt="Шоу Балашова"></div>
+  <div class="badge-glow"><img src="Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
   <h1>Конфиденциальность</h1>
   <p class="tag">Коротко о том, что происходит с оставленными данными</p>
 </div>
@@ -300,6 +310,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 
 <footer>
   <div class="inner">
+    <p class="foot-note"><a href="cookies.html">Файлы cookie</a></p>
     <p class="foot-note">© Николай Балашов</p>
   </div>
 </footer>

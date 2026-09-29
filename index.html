@@ -131,8 +131,17 @@ h1.name{
 /* ── nav ── */
 .site-nav{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;padding:18px 20px;font-family:'Space Mono';font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;position:relative;z-index:2;background:var(--ink)}
 .site-nav a{color:var(--cream-soft);text-decoration:none;padding-bottom:3px;border-bottom:2px solid transparent}
+/* Область нажатия пунктов меню: сам текст даёт всего ~22px по высоте,
+   а палец уверенно попадает от 44px (рекомендация WCAG/Apple/Google).
+   Увеличиваем только на touch-устройствах и только вертикальные
+   отступы — визуально меню не меняется, подчёркивание активного
+   пункта остаётся на месте. */
+@media (pointer:coarse){
+  .site-nav a{display:inline-block;padding-top:19px}
+}
 .site-nav a.current,.site-nav a:hover{color:var(--gold);border-bottom-color:var(--gold)}
 .site-nav a.lang-switch{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px}
+.site-nav a.vk-link{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px;color:var(--gold)}
 .site-nav a.lang-switch:hover{border-color:var(--gold)}
 
 /* ── sections ── */
@@ -163,7 +172,7 @@ section.tinted{background:rgba(253,217,69,.025)}
 }
 .act h3{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-size:20px;margin-top:8px;color:var(--cream)}
 .act .kind{font-family:'Space Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);opacity:.85}
-.act p{font-size:13.5px;color:var(--cream-soft);margin-top:8px}
+.act p{font-size:15px;color:var(--cream-soft);margin-top:8px}
 .act.c1{--accent:rgba(200,30,30,.4)}
 .act.c2{--accent:rgba(254,177,39,.35)}
 .act.c3{--accent:rgba(253,217,69,.3)}
@@ -184,7 +193,7 @@ section.tinted{background:rgba(253,217,69,.025)}
 .tl-body h4{font-family:'Public Sans';font-weight:600;font-size:14px;color:var(--cream)}
 .tl-body h4 a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(253,217,69,.35)}
 .tl-body h4 a:hover{border-color:var(--gold);color:var(--gold)}
-.tl-body p{font-family:'Public Sans';font-size:12.5px;color:var(--cream-soft);margin-top:3px}
+.tl-body p{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);margin-top:3px}
 
 /* ── touring chips ── */
 .tour-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dotted rgba(253,217,69,.15);font-family:'Space Mono';font-size:12px}
@@ -203,6 +212,9 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 .cta.ghost{background:transparent;border:1px solid rgba(253,217,69,.4);color:var(--gold)}
 .foot-note{margin-top:26px;font-family:'Space Mono';font-size:10.5px;color:var(--cream-soft);opacity:.65}
 .foot-note a{color:var(--cream-soft)}
+.foot-phone{margin-top:26px;font-family:'Space Mono';font-size:22px;font-weight:700;letter-spacing:.02em}
+.foot-phone a{color:var(--gold);text-decoration:none}
+.foot-phone a:hover{text-decoration:underline}
 
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
 </style>
@@ -215,8 +227,8 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   "alternateName": "Николай Балашов, артист цирка",
   "description": "Цирковые номера для праздников: жонглёр на вольностоящей лестнице, ходулист, гибкие шесты, труба-трансформер. Выступления по всей России и за рубежом.",
   "url": "https://balashov-show.ru/",
-  "logo": "https://balashov-show.ru/Brand/logo-shou-balashova.jpg",
-  "image": "https://balashov-show.ru/Brand/logo-shou-balashova.jpg",
+  "logo": "https://balashov-show.ru/Brand/logo-shou-balashova-web.jpg",
+  "image": "https://balashov-show.ru/Brand/logo-shou-balashova-web.jpg",
   "telephone": "+7-911-913-83-74",
   "email": "balashov.show.ru@gmail.com",
   "areaServed": { "@type": "Country", "name": "Россия" },
@@ -239,17 +251,18 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   <a href="media.html">Медиа</a>
   <a href="reviews.html">Отзывы</a>
     <a href="booking.html">Booking</a>
+  <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="en/index.html" class="lang-switch">EN</a>
 </nav>
 
 <header>
   <div class="badge-glow">
-    <img src="Brand/logo-shou-balashova.jpg" alt="Шоу Балашова">
+    <img src="Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова">
   </div>
   <p class="kicker">Артист цирка · с 1984 года</p>
-  <h1 class="name gold-text">Николай Балашов</h1>
+  <h1 class="name gold-text" data-editable="home_h1">Николай Балашов</h1>
   <p class="showname">«Шоу Балашова»</p>
-  <p class="tag">Жонглёр, эквилибрист, артист на ходулях и гибких шестах — цирковые номера для праздников по всей России и за рубежом.</p>
+  <p class="tag" data-editable="home_tag">Жонглёр, эквилибрист, артист на ходулях и гибких шестах — цирковые номера для праздников по всей России и за рубежом.</p>
   <div class="hero-strip">
     <span>Лестница</span><span>Ходулист</span><span>Гибкие шесты</span><span>Труба-трансформер</span><span>Рекорд России · 2009</span>
   </div>
@@ -299,7 +312,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
         <div class="num">03</div>
         <p class="kind">Редкий жанр</p>
         <h3>Гибкие шесты</h3>
-        <p>Два шеста высотой 6 метров, гибкость до 2,5 м в каждую сторону, вращение вокруг оси. Работает круглый год, в помещении и на улице — необычный для России аттракцион с интерактивным шоу для гостей.</p>
+        <p>Два шеста высотой 6 метров, гибкость до 2,5 м на сторону, вращение вокруг оси. Работает круглый год, в помещении и на улице — необычный для России аттракцион с интерактивным шоу для гостей.</p>
         <span class="act-more">Подробнее →</span>
       </a>
       <a class="act c4" href="nomera/truba-transformer.html" data-track="act_card_click:truba-transformer">
@@ -309,6 +322,10 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
         <p>Яркий интерактивный персонаж для детских и городских праздников. Для взрослых гостей — версия «Труба-трансформер»: 6 разных цветов трубы, «съедает» и «выплёвывает» героя вечера.</p>
         <span class="act-more">Подробнее →</span>
       </a>
+    </div>
+    <div class="cta-row" style="margin-top:34px">
+      <a class="cta primary" href="booking.html#bookingForm" data-track="midpage_cta_repertoire">Заказать номер</a>
+      <a class="cta ghost" href="gallery.html">Все номера и фото</a>
     </div>
   </div>
 </section>
@@ -396,26 +413,27 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 <footer>
   <div class="inner">
     <div class="badge-glow" style="width:96px;height:96px;margin-bottom:14px">
-      <img src="Brand/logo-shou-balashova.jpg" alt="Шоу Балашова">
+      <img src="Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова">
     </div>
     <span class="ribbon">Booking</span>
     <h2 class="serif">Позвать Николая на площадку</h2>
-    <p class="tag">Дни рождения, свадьбы, корпоративы, городские праздники — по всей России и за рубежом.</p>
+    <p class="tag" data-editable="footer_tag">Дни рождения, свадьбы, корпоративы, городские праздники — по всей России и за рубежом.</p>
     <div class="cta-row">
       <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
-      <a class="cta ghost" href="booking.html">Условия и заявка</a>
+      <a class="cta ghost" href="booking.html#bookingForm">Условия и заявка</a>
     </div>
     <!-- Бот Telegram — раскомментировать и вписать @username после
          деплоя _tools/BookingBot (см. README.md, раздел 5)
     <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Бот в Telegram</a>
     -->
-    <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
-    <p class="foot-note"><a href="privacy.html">Политика конфиденциальности</a></p>
+    <p class="foot-phone"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
+    <p class="foot-note"><a href="privacy.html">Политика конфиденциальности</a> · <a href="cookies.html">Файлы cookie</a></p>
     <p class="foot-note">© Николай Балашов</p>
   </div>
 </footer>
 
 <script src="analytics.js" defer></script>
 <script src="vk-pixel.js" defer></script>
+<script src="site-content.js" defer></script>
 </body>
 </html>

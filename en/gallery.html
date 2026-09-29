@@ -96,8 +96,17 @@ a{color:inherit}
 
 .site-nav{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;padding:18px 20px;font-family:'Space Mono';font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;position:relative;z-index:2;background:var(--ink)}
 .site-nav a{color:var(--cream-soft);text-decoration:none;padding-bottom:3px;border-bottom:2px solid transparent}
+/* Область нажатия пунктов меню: сам текст даёт всего ~22px по высоте,
+   а палец уверенно попадает от 44px (рекомендация WCAG/Apple/Google).
+   Увеличиваем только на touch-устройствах и только вертикальные
+   отступы — визуально меню не меняется, подчёркивание активного
+   пункта остаётся на месте. */
+@media (pointer:coarse){
+  .site-nav a{display:inline-block;padding-top:19px}
+}
 .site-nav a.current,.site-nav a:hover{color:var(--gold);border-bottom-color:var(--gold)}
 .site-nav a.lang-switch{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px}
+.site-nav a.vk-link{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px;color:var(--gold)}
 .site-nav a.lang-switch:hover{border-color:var(--gold)}
 
 .badge-glow{position:relative;margin:0 auto}
@@ -226,7 +235,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 .g-body{padding:6px 20px 22px}
 .g-body .kind{font-family:'Space Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);opacity:.9}
 .g-body h3{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-size:21px;margin:6px 0 8px;color:var(--cream)}
-.g-body p{font-size:13px;color:var(--cream-soft)}
+.g-body p{font-size:15px;color:var(--cream-soft)}
 .g-more{display:inline-block;margin-top:10px;font-family:'Space Mono';font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(253,217,69,.4)}
 .g-more:hover{border-color:var(--gold)}
 .note{max-width:100%;margin:0 auto 26px;background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:14px;padding:14px 18px;font-family:'Space Mono';font-size:11px;color:var(--cream-soft);text-align:center}
@@ -242,13 +251,14 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   <a href="media.html">Media</a>
   <a href="reviews.html">Reviews</a>
     <a href="booking.html">Booking</a>
+  <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="../gallery.html" class="lang-switch">RU</a>
 </nav>
 
 <div class="page-hero">
-  <div class="badge-glow"><img src="../Brand/logo-shou-balashova.jpg" alt="Shou Balashova"></div>
-  <h1>Gallery</h1>
-  <p class="tag">Five acts, one principle: balance above the ground</p>
+  <div class="badge-glow"><img src="../Brand/logo-shou-balashova-web.jpg" alt="Shou Balashova"></div>
+  <h1 data-editable="gallery_h1_en">Gallery</h1>
+  <p class="tag" data-editable="gallery_tag_en">Five acts, one principle: balance above the ground</p>
 </div>
 
 <div class="marquee"></div>
@@ -348,25 +358,26 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 
 <footer>
   <div class="inner">
-    <div class="badge-glow"><img src="../Brand/logo-shou-balashova.jpg" alt="Shou Balashova"></div>
+    <div class="badge-glow"><img src="../Brand/logo-shou-balashova-web.jpg" alt="Shou Balashova"></div>
     <span class="ribbon">Booking</span>
     <h2 class="serif">Book Nikolai for your event</h2>
-    <p class="tag">Birthdays, weddings, corporate events, city festivals — performing across Russia and abroad.</p>
+    <p class="tag" data-editable="footer_tag_en">Birthdays, weddings, corporate events, city festivals — performing across Russia and abroad.</p>
     <div class="cta-row">
       <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Enquire about booking</a>
-      <a class="cta ghost" href="booking.html">Terms &amp; enquiry</a>
+      <a class="cta ghost" href="booking.html#bookingForm">Terms &amp; enquiry</a>
     </div>
     <!-- Telegram bot — uncomment and fill in @username after
          deploying _tools/BookingBot (see README.md, section 5)
     <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Telegram bot</a>
     -->
     <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
-    <p class="foot-note"><a href="privacy.html">Privacy Policy</a></p>
+    <p class="foot-note"><a href="privacy.html">Privacy Policy</a> · <a href="cookies.html">Cookies</a></p>
     <p class="foot-note">© Nikolai Balashov</p>
   </div>
 </footer>
 
 <script src="../analytics.js" defer></script>
 <script src="../vk-pixel.js" defer></script>
+<script src="../site-content.js" defer></script>
 </body>
 </html>

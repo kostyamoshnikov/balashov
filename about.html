@@ -96,8 +96,17 @@ a{color:inherit}
 
 .site-nav{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;padding:18px 20px;font-family:'Space Mono';font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;position:relative;z-index:2;background:var(--ink)}
 .site-nav a{color:var(--cream-soft);text-decoration:none;padding-bottom:3px;border-bottom:2px solid transparent}
+/* Область нажатия пунктов меню: сам текст даёт всего ~22px по высоте,
+   а палец уверенно попадает от 44px (рекомендация WCAG/Apple/Google).
+   Увеличиваем только на touch-устройствах и только вертикальные
+   отступы — визуально меню не меняется, подчёркивание активного
+   пункта остаётся на месте. */
+@media (pointer:coarse){
+  .site-nav a{display:inline-block;padding-top:19px}
+}
 .site-nav a.current,.site-nav a:hover{color:var(--gold);border-bottom-color:var(--gold)}
 .site-nav a.lang-switch{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px}
+.site-nav a.vk-link{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px;color:var(--gold)}
 .site-nav a.lang-switch:hover{border-color:var(--gold)}
 
 .badge-glow{position:relative;margin:0 auto}
@@ -136,6 +145,8 @@ section.tinted{background:rgba(253,217,69,.025)}
 
 .stat-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
 .stat{background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:14px;padding:16px 18px;flex:1 1 130px;text-align:center}
+a.stat{display:block;text-decoration:none;transition:border-color .15s,transform .15s}
+a.stat:hover{border-color:var(--gold);transform:translateY(-2px)}
 .stat b{display:block;font-family:'Bricolage Grotesque';font-weight:800;font-size:24px;color:var(--gold)}
 .stat span{font-family:'Space Mono';font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--cream-soft)}
 
@@ -224,7 +235,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   "jobTitle": "Артист цирка",
   "description": "Жонглёр, эквилибрист, артист на ходулях и гибких шестах. В цирке с 1984 года. Официальный рекорд России 2009 года — «Самый хрупкий баланс».",
   "url": "https://balashov-show.ru/about.html",
-  "image": "https://balashov-show.ru/Brand/logo-shou-balashova.jpg",
+  "image": "https://balashov-show.ru/Brand/logo-shou-balashova-web.jpg",
   "birthPlace": { "@type": "Place", "name": "Уфа, Россия" },
   "worksFor": { "@id": "https://balashov-show.ru/#business" },
   "sameAs": ["https://vk.ru/show_balashov"]
@@ -240,13 +251,14 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   <a href="media.html">Медиа</a>
   <a href="reviews.html">Отзывы</a>
     <a href="booking.html">Booking</a>
+  <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="en/about.html" class="lang-switch">EN</a>
 </nav>
 
 <div class="page-hero">
-  <div class="badge-glow"><img src="Brand/logo-shou-balashova.jpg" alt="Шоу Балашова"></div>
-  <h1>О нём</h1>
-  <p class="tag">Из Уфы — в Книгу рекордов России, в театр и в воздух</p>
+  <div class="badge-glow"><img src="Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
+  <h1 data-editable="about_h1">О нём</h1>
+  <p class="tag" data-editable="about_tag">Из Уфы — в Книгу рекордов России, в театр и в воздух</p>
 </div>
 
 <div class="marquee"></div>
@@ -256,8 +268,8 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
     <div class="stat-row">
       <div class="stat"><b>0</b><span>травм за карьеру</span></div>
       <div class="stat"><b>40+</b><span>лет в цирке</span></div>
-      <div class="stat"><b>Россия и мир</b><span>география выступлений</span></div>
-      <div class="stat"><b>2009</b><span>рекорд России</span></div>
+      <a class="stat" href="#tours"><b>Россия и мир</b><span>география выступлений</span></a>
+      <a class="stat" href="#record"><b>2009</b><span>рекорд России</span></a>
     </div>
     <div class="section-head">
       <span class="ribbon">Биография</span>
@@ -267,14 +279,14 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <p>Николай Балашов родился в Уфе. По собственным словам, цирковая студия в детстве оказалась «намного интереснее», чем дворовая компания — так и остался в цирке, а не на улице. До манежа успел поработать фрезеровщиком, киномехаником и водителем троллейбуса — «в жизни нужно всё попробовать, тогда оно всегда пригодится», и опыт этот, по его словам, в профессии артиста тоже пригодился.</p>
       <p class="pull-quote">«В жизни нужно всё попробовать — тогда оно всегда пригодится»</p>
       <p>Концертную деятельность начал в Томской филармонии — гастроли были тяжёлые: холодные площадки, несколько концертов в день, постоянные переезды, погрузки и разгрузки реквизита своими руками.</p>
-      <p>С 1984 года — артист цирка. За сорок лет объехал сцены и фестивали Польши, Финляндии, Германии, Турции, Израиля, Кипра, Англии, ОАЭ, Катара, Тайваня, Макао и Гонконга. Сегодня «Шоу Балашова» работает по всей России, а по договорённости выезжает и за рубеж.</p>
+      <p id="tours">С 1984 года — артист цирка. За сорок лет объехал сцены и фестивали Польши, Финляндии, Германии, Турции, Израиля, Кипра, Англии, ОАЭ, Катара, Тайваня, Макао и Гонконга. Сегодня «Шоу Балашова» работает по всей России, а по договорённости выезжает и за рубеж.</p>
     </div>
   </div>
 </section>
 
 <div class="marquee"></div>
 
-<section class="tinted">
+<section class="tinted" id="record">
   <div class="wrap">
     <div class="section-head">
       <span class="ribbon">Рекорд России · 2009</span>
@@ -282,7 +294,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
     </div>
     <div class="body-copy">
       <p>Номер начинался как эксперимент: устоять на трёх пластиковых стаканах. «Что-то новое придумывал, старое убирал из номера, усовершенствовал», — так родился эквилибр на катушках, которым заинтересовалась Москва: этот номер и внёс артиста в Книгу рекордов России.</p>
-      <p>На катушках Николай не работает с пятидесяти лет — сказывается спина. А вот на <a href="nomera/lestnitsa.html">вольностоящей лестнице</a> жонглирует до сих пор. Оба жанра он называет экстремальными: «государство, отработав эти жанры 15 лет, уже отправляет на пенсию, и на пенсию уходишь инвалидом».</p>
+      <p>Катушки Николай отложил — жанр слишком нагружает спину для многолетней практики. А вот на <a href="nomera/lestnitsa.html">вольностоящей лестнице</a> жонглирует до сих пор. Оба жанра он называет экстремальными: «государство, отработав эти жанры 15 лет, уже отправляет на пенсию, и на пенсию уходишь инвалидом».</p>
       <p class="pull-quote">«Не всем везёт, но мне повезло — я ещё ничего не ломал, не вывихивал»</p>
     </div>
   </div>
@@ -295,10 +307,14 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <h2 class="serif">Номера, которых почти нет в мире</h2>
     </div>
     <div class="body-copy">
-      <p><a href="nomera/shesty.html"><b>Гибкие шесты</b></a> — жанр, в котором в мире работают всего три-четыре театра. Идею подсмотрел у канадского или австралийского цирка, выступавшего на Дворцовой площади — с партнёром делали свой вариант целый год, с большим количеством проб и ошибок. Сегодня в арсенале два шеста высотой 6 метров с гибкостью до 2,5 м в каждую сторону — редкий для России аттракцион, который работает круглый год, в помещении и на улице. В интерактивной части шоу артист наверху раскачивается и кидает в публику шары, а зрители пытаются попасть в него мягким мячом; после — желающие могут подняться и покачаться сами.</p>
+      <p><a href="nomera/shesty.html"><b>Гибкие шесты</b></a> — жанр, в котором в мире работают всего три-четыре театра. Идею подсмотрел у канадского или австралийского цирка, выступавшего на Дворцовой площади — с партнёром делали свой вариант целый год, с большим количеством проб и ошибок. Сегодня в арсенале два шеста высотой 6 метров с гибкостью до 2,5 м на сторону — редкий для России аттракцион, который работает круглый год, в помещении и на улице. В интерактивной части шоу артист наверху раскачивается и кидает в публику шары, а зрители пытаются попасть в него мягким мячом; после — желающие могут подняться и покачаться сами.</p>
       <img class="body-photo" src="Photos/web/shesty-2.jpg" alt="Гибкие шесты на фестивале" loading="lazy">
       <p><a href="nomera/truba-transformer.html"><b>Труба-трансформер</b></a> — увидел номер у американского артиста на фестивале в Дубае и купил его. Когда реквизит истёрся, сшил новый сам — «тяжёлая ручная работа», реквизит сшит в 6 разных цветах. Сольный номер «Космическая фантазия» идёт 8 минут и состоит из трёх труб; есть и парный вариант — «дрессированная труба», где дрессировщица в белом и чёрная труба разыгрывают сцену противостояния.</p>
       <img class="body-photo" src="Photos/web/truba-2.jpg" alt="Два артиста в костюмах труба-трансформер на сцене" loading="lazy">
+    </div>
+    <div class="cta-row" style="margin-top:30px">
+      <a class="cta primary" href="booking.html#bookingForm" data-track="midpage_cta_about">Заказать номер</a>
+      <a class="cta ghost" href="gallery.html">Все номера и фото</a>
     </div>
   </div>
 </section>
@@ -380,25 +396,26 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 
 <footer>
   <div class="inner">
-    <div class="badge-glow"><img src="Brand/logo-shou-balashova.jpg" alt="Шоу Балашова"></div>
+    <div class="badge-glow"><img src="Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
     <span class="ribbon">Booking</span>
     <h2 class="serif">Позвать Николая на площадку</h2>
-    <p class="tag">Дни рождения, свадьбы, корпоративы, городские праздники — по всей России и за рубежом.</p>
+    <p class="tag" data-editable="footer_tag">Дни рождения, свадьбы, корпоративы, городские праздники — по всей России и за рубежом.</p>
     <div class="cta-row">
       <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
-      <a class="cta ghost" href="booking.html">Условия и заявка</a>
+      <a class="cta ghost" href="booking.html#bookingForm">Условия и заявка</a>
     </div>
     <!-- Бот Telegram — раскомментировать и вписать @username после
          деплоя _tools/BookingBot (см. README.md, раздел 5)
     <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Бот в Telegram</a>
     -->
     <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
-    <p class="foot-note"><a href="privacy.html">Политика конфиденциальности</a></p>
+    <p class="foot-note"><a href="privacy.html">Политика конфиденциальности</a> · <a href="cookies.html">Файлы cookie</a></p>
     <p class="foot-note">© Николай Балашов</p>
   </div>
 </footer>
 
 <script src="analytics.js" defer></script>
 <script src="vk-pixel.js" defer></script>
+<script src="site-content.js" defer></script>
 </body>
 </html>

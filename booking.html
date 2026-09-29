@@ -96,8 +96,17 @@ a{color:inherit}
 
 .site-nav{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;padding:18px 20px;font-family:'Space Mono';font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;position:relative;z-index:2;background:var(--ink)}
 .site-nav a{color:var(--cream-soft);text-decoration:none;padding-bottom:3px;border-bottom:2px solid transparent}
+/* Область нажатия пунктов меню: сам текст даёт всего ~22px по высоте,
+   а палец уверенно попадает от 44px (рекомендация WCAG/Apple/Google).
+   Увеличиваем только на touch-устройствах и только вертикальные
+   отступы — визуально меню не меняется, подчёркивание активного
+   пункта остаётся на месте. */
+@media (pointer:coarse){
+  .site-nav a{display:inline-block;padding-top:19px}
+}
 .site-nav a.current,.site-nav a:hover{color:var(--gold);border-bottom-color:var(--gold)}
 .site-nav a.lang-switch{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px}
+.site-nav a.vk-link{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px;color:var(--gold)}
 .site-nav a.lang-switch:hover{border-color:var(--gold)}
 
 .badge-glow{position:relative;margin:0 auto}
@@ -164,17 +173,20 @@ section.tinted{background:rgba(253,217,69,.025)}
 .record p.prose{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);margin-top:12px;max-width:46ch;margin-left:auto;margin-right:auto}
 
 .format-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-.format-grid .f{background:var(--ink-2);border:1px solid rgba(253,217,69,.18);border-radius:14px;padding:14px 12px;font-size:12px;text-align:center;color:var(--cream-soft)}
-.format-grid .f b{display:block;font-family:'Public Sans';font-weight:600;font-size:13.5px;margin-bottom:3px;color:var(--cream)}
+.format-grid .f{background:var(--ink-2);border:1px solid rgba(253,217,69,.18);border-radius:14px;padding:14px 12px;font-size:13px;text-align:center;color:var(--cream-soft)}
+.format-grid .f b{display:block;font-family:'Public Sans';font-weight:600;font-size:14px;margin-bottom:3px;color:var(--cream)}
 .format-grid a.f{text-decoration:none;display:block;cursor:pointer}
 .format-grid a.f:hover{border-color:rgba(253,217,69,.4)}
 
 .rider-box{background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:16px;padding:22px 20px;margin-top:20px}
 .rider-box .ribbon{margin-bottom:10px}
 .rider-box h3{font-family:'Instrument Serif';font-style:italic;font-size:19px;color:var(--cream);margin-bottom:8px}
-.rider-box ul{margin:8px 0 0 18px;font-family:'Public Sans';font-size:12.5px;color:var(--cream-soft)}
+.rider-box ul{margin:8px 0 0 18px;font-family:'Public Sans';font-size:14px;color:var(--cream-soft)}
 .rider-box li{margin-bottom:6px}
-.rider-box .note{font-family:'Space Mono';font-size:10px;color:var(--cream-soft);opacity:.7;margin-top:10px}
+.rider-box .note{font-family:'Space Mono';font-size:12px;color:var(--cream-soft);opacity:.8;margin-top:10px}
+.faq-q{font-family:'Public Sans';font-weight:600;font-size:15px;color:var(--cream);margin-top:18px}
+.faq-q:first-of-type{margin-top:10px}
+.faq-a{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);margin-top:5px;line-height:1.6}
 
 .form-card{background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:18px;padding:24px 20px;margin-top:16px}
 .field{margin-bottom:15px}
@@ -183,6 +195,16 @@ section.tinted{background:rgba(253,217,69,.025)}
 .field textarea{resize:vertical;min-height:70px}
 .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
 .submit-btn{width:100%;border:none;border-radius:10px;padding:15px;margin-top:6px;font-family:'Space Mono';font-size:13px;letter-spacing:.04em;font-weight:700;background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:var(--ink);cursor:pointer}
+/* Чекбокс согласия — на touch-устройствах браузерный дефолт (~13px)
+   заметно меньше минимума WCAG 2.2 SC 2.5.8 (24×24 px), палец легко
+   промахивается. На мышь/трекпад 13px попасть легко — увеличиваем
+   только для pointer:coarse (тот же приём, что уже применён к клетке
+   места в паке AELITA — там 16px, здесь 13px, но логика та же).
+   Не относится к вопросу "весь сайт крупнее шрифт" из TASKS.md —
+   это конкретная фиксированная WCAG-проблема, не общая настройка. */
+@media (pointer:coarse){
+  input[type="checkbox"]{width:24px!important;height:24px!important}
+}
 .form-note{font-family:'Public Sans';font-size:12px;color:var(--cream-soft);margin-top:12px;text-align:center}
 
 .link-card{background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:16px;padding:18px 20px;margin-bottom:12px;display:block;text-decoration:none;color:inherit}
@@ -223,13 +245,14 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   <a href="media.html">Медиа</a>
   <a href="reviews.html">Отзывы</a>
     <a href="booking.html" class="current">Booking</a>
+  <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="en/booking.html" class="lang-switch">EN</a>
 </nav>
 
 <div class="page-hero">
-  <div class="badge-glow"><img src="Brand/logo-shou-balashova.jpg" alt="Шоу Балашова"></div>
-  <h1>Booking</h1>
-  <p class="tag">Дни рождения, свадьбы, корпоративы, городские праздники — по всей России и за рубежом</p>
+  <div class="badge-glow"><img src="Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
+  <h1 data-editable="booking_h1">Booking</h1>
+  <p class="tag" data-editable="booking_tag">Дни рождения, свадьбы, корпоративы, городские праздники — по всей России и за рубежом</p>
   <div class="cta-row" style="margin-top:20px">
     <a class="cta primary" href="#bookingForm" data-track="booking_hero_cta">Заказать номер</a>
   </div>
@@ -299,6 +322,43 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <p class="note"><a href="files/Nikolai_Balashov_CommercialOffer.pdf" target="_blank" rel="noopener" data-track="download_commercial_offer" style="color:var(--gold)">Коммерческое предложение (PDF)</a></p>
       <p class="note">Полный технический райдер под конкретную площадку — отдельным файлом по запросу после согласования формата (шаблон с плейсхолдерами под каждую конкретную площадку, поэтому не выкладываем как общий файл).</p>
     </div>
+
+    <!-- Частые вопросы — собраны из фактов, уже разбросанных по паку
+         (тайминги номеров, райдер гибких шестов, процесс бронирования
+         из коммерческого предложения). Стоят ПЕРЕД формой заявки:
+         человек прочитал про номера и райдер, но ещё не заполняет
+         форму — самый момент снять оставшиеся сомнения.
+         ⚠️ Сознательно НЕ отвечаем на вопросы, по которым нет фактов
+         от Николая (цена, предоплата, отмена/перенос) — вместо
+         выдуманного ответа честно отправляем спросить. См. TASKS.md. -->
+    <div class="rider-box" style="margin-top:26px">
+      <span class="ribbon">Частые вопросы</span>
+      <h3>Что обычно спрашивают перед заказом</h3>
+
+      <p class="faq-q">Сколько длится выступление?</p>
+      <p class="faq-a">Зависит от номера: жонглёр на лестнице — 6 минут в классическом варианте и 12 в комическом, труба-трансформер — 6 минут с интерактивом. Несколько номеров можно объединить в программу, хронометраж согласовываем под ваш сценарий.</p>
+
+      <p class="faq-q">Сколько нужно времени на монтаж?</p>
+      <p class="faq-a">Зависит от номера. Самый долгий в подготовке — гибкие шесты: около 1 ч 40 мин на установку двух шестов. Остальные номера требуют заметно меньше. Точный тайминг под вашу площадку — в полном райдере.</p>
+
+      <p class="faq-q">Что нужно от площадки?</p>
+      <p class="faq-a">Для большинства номеров — свободное ровное место и высота от 4,5 м. Для гибких шестов нужна высота от 9 м (подходят в том числе торговые центры), вес оборудования — 120 кг. Номера с открытым огнём согласовываются с площадкой отдельно.</p>
+
+      <p class="faq-q">Сколько выступлений можно поставить в один день?</p>
+      <p class="faq-a">До 5 рабочих сетов в день. Если в тот же день проводится дополнительная репетиция — не более двух сетов.</p>
+
+      <p class="faq-q">Вы выезжаете в другие города?</p>
+      <p class="faq-a">Да, работаем по всей России, а по договорённости — и за рубежом (за плечами гастроли в 11 странах). Приезжаем со своим реквизитом и артистами. При выезде в другой город организатор обеспечивает проживание, трёхразовое питание и тёплое помещение для ожидания между выходами.</p>
+
+      <p class="faq-q">Сколько стоит?</p>
+      <p class="faq-a">Фиксированного прайса нет — стоимость зависит от номера, хронометража, даты и города. Пришлите бриф через форму ниже: дату, город и формат мероприятия — ответим с расчётом в течение 1–2 дней.</p>
+
+      <p class="faq-q">За сколько бронировать дату?</p>
+      <p class="faq-a">Чем раньше, тем лучше — особенно на новогодние и майские праздники, когда даты разбирают заранее. Если дата уже близко, всё равно напишите или позвоните: свободное окно может найтись.</p>
+
+      <p class="faq-q">Как проходит оформление?</p>
+      <p class="faq-a">Присылаете бриф → в течение 1–2 дней получаете расчёт и предложение по номерам → согласовываете детали и технический райдер → бронируете дату. Для юрлиц оформляем договор оказания услуг и счёт на оплату. По вопросам предоплаты, отмены и переноса мероприятия лучше сразу спросить напрямую — <a href="tel:+79119138374" style="color:var(--gold);white-space:nowrap">+7 911 913-83-74</a>.</p>
+    </div>
   </div>
 </section>
 
@@ -313,7 +373,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 
     <form class="form-card" id="bookingForm">
       <div class="field">
-        <label for="name">Имя</label>
+        <label for="name">Имя <span style="color:var(--gold)">*</span></label>
         <input type="text" id="name" required>
       </div>
       <div class="field">
@@ -331,20 +391,22 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
         </select>
       </div>
       <div class="field">
-        <label for="contact">Контакт (телефон или e-mail)</label>
+        <label for="contact">Контакт (телефон или e-mail) <span style="color:var(--gold)">*</span></label>
         <input type="text" id="contact" required>
       </div>
       <div class="field">
         <label for="details">Детали (место, формат номера, пожелания)</label>
         <textarea id="details"></textarea>
       </div>
+      <p style="font-size:12px;color:var(--cream-soft);margin:-4px 0 4px">* обязательные поля</p>
       <div class="field" style="display:flex;align-items:flex-start;gap:8px;flex-direction:row">
         <input type="checkbox" id="consent" required style="width:auto;margin-top:3px;flex-shrink:0">
         <label for="consent" style="font-size:12px;font-weight:400;text-transform:none;font-family:'Public Sans',sans-serif;letter-spacing:normal;color:var(--cream-soft)">Согласен(на) на обработку персональных данных согласно <a href="privacy.html" target="_blank" style="color:var(--gold)">политике конфиденциальности</a></label>
       </div>
       <button type="submit" class="submit-btn">Отправить заявку</button>
       <p class="form-note">Кнопка откроет письмо в почтовом клиенте с заполненными данными — отправка не автоматическая.</p>
-      <p class="form-note">Быстрее всего — написать напрямую в <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" style="color:var(--gold);font-weight:600">группу VK</a>.</p>
+      <p class="form-note" id="formStatus"></p>
+      <p class="form-note">Если почта на телефоне не настроена — просто позвоните: <a href="tel:+79119138374" style="color:var(--gold);font-weight:600;white-space:nowrap">+7 911 913-83-74</a>, или напишите в <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" style="color:var(--gold);font-weight:600">группу VK</a>.</p>
     </form>
   </div>
 </section>
@@ -353,7 +415,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 
 <footer>
   <div class="inner">
-    <p class="foot-note"><a href="privacy.html">Политика конфиденциальности</a></p>
+    <p class="foot-note"><a href="privacy.html">Политика конфиденциальности</a> · <a href="cookies.html">Файлы cookie</a></p>
     <p class="foot-note">© Николай Балашов</p>
   </div>
 </footer>
@@ -375,10 +437,23 @@ document.getElementById('bookingForm').addEventListener('submit', function(e){
     'Детали: ' + (details || '—')
   );
   window.location.href = 'mailto:balashov.show.ru@gmail.com?subject=' + subject + '&body=' + body;
+
+  // Обратная связь после нажатия. Раньше её не было вовсе: страница
+  // никак не менялась, и человек не понимал, сработало или нет — а
+  // почтовый клиент открывается не у всех (на телефонах часто не
+  // настроен). Показываем подсказку с запасным путём.
+  var st = document.getElementById('formStatus');
+  if (st) {
+    st.innerHTML = 'Должно открыться письмо в вашей почтовой программе — проверьте и отправьте его.<br>' +
+      'Ничего не открылось? Позвоните: <a href="tel:+79119138374" style="color:var(--gold);white-space:nowrap">+7 911 913-83-74</a> ' +
+      'или напишите в <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" style="color:var(--gold)">группу VK</a>.';
+    st.style.color = 'var(--gold)';
+  }
 });
 </script>
 
 <script src="analytics.js" defer></script>
 <script src="vk-pixel.js" defer></script>
+<script src="site-content.js" defer></script>
 </body>
 </html>

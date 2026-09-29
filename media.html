@@ -96,8 +96,17 @@ a{color:inherit}
 
 .site-nav{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;padding:18px 20px;font-family:'Space Mono';font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;position:relative;z-index:2;background:var(--ink)}
 .site-nav a{color:var(--cream-soft);text-decoration:none;padding-bottom:3px;border-bottom:2px solid transparent}
+/* Область нажатия пунктов меню: сам текст даёт всего ~22px по высоте,
+   а палец уверенно попадает от 44px (рекомендация WCAG/Apple/Google).
+   Увеличиваем только на touch-устройствах и только вертикальные
+   отступы — визуально меню не меняется, подчёркивание активного
+   пункта остаётся на месте. */
+@media (pointer:coarse){
+  .site-nav a{display:inline-block;padding-top:19px}
+}
 .site-nav a.current,.site-nav a:hover{color:var(--gold);border-bottom-color:var(--gold)}
 .site-nav a.lang-switch{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px}
+.site-nav a.vk-link{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px;color:var(--gold)}
 .site-nav a.lang-switch:hover{border-color:var(--gold)}
 
 .badge-glow{position:relative;margin:0 auto}
@@ -187,11 +196,11 @@ section.tinted{background:rgba(253,217,69,.025)}
 .link-card:hover{border-color:rgba(253,217,69,.45)}
 .link-card .kind{font-family:'Space Mono';font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
 .link-card h4{font-family:'Public Sans';font-weight:600;font-size:15px;margin:5px 0 4px;color:var(--cream)}
-.link-card p{font-family:'Public Sans';font-size:13px;color:var(--cream-soft);margin-bottom:6px}
+.link-card p{font-family:'Public Sans';font-size:15px;color:var(--cream-soft);margin-bottom:6px}
 .link-card .url{font-family:'Space Mono';font-size:11px;color:var(--flame);word-break:break-all}
 
 .note-box{background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:16px;padding:18px 20px;margin-top:22px}
-.note-box p{font-family:'Public Sans';font-size:13px;color:var(--cream-soft);line-height:1.6}
+.note-box p{font-family:'Public Sans';font-size:15px;color:var(--cream-soft);line-height:1.6}
 .note-box .eyebrow-plain{font-family:'Space Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:6px}
 
 footer{background:linear-gradient(180deg,var(--ink-2),var(--ink));padding:52px 20px 40px;text-align:center;position:relative}
@@ -221,13 +230,14 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   <a href="media.html" class="current">Медиа</a>
   <a href="reviews.html">Отзывы</a>
     <a href="booking.html">Booking</a>
+  <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="en/media.html" class="lang-switch">EN</a>
 </nav>
 
 <div class="page-hero">
-  <div class="badge-glow"><img src="Brand/logo-shou-balashova.jpg" alt="Шоу Балашова"></div>
-  <h1>Медиа</h1>
-  <p class="tag">Что о Николае можно найти в открытом доступе</p>
+  <div class="badge-glow"><img src="Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
+  <h1 data-editable="media_h1">Медиа</h1>
+  <p class="tag" data-editable="media_tag">Что о Николае можно найти в открытом доступе</p>
 </div>
 
 <div class="marquee"></div>
@@ -308,25 +318,26 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 
 <footer>
   <div class="inner">
-    <div class="badge-glow"><img src="Brand/logo-shou-balashova.jpg" alt="Шоу Балашова"></div>
+    <div class="badge-glow"><img src="Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
     <span class="ribbon">Booking</span>
     <h2 class="serif">Позвать Николая на площадку</h2>
-    <p class="tag">Дни рождения, свадьбы, корпоративы, городские праздники — по всей России и за рубежом.</p>
+    <p class="tag" data-editable="footer_tag">Дни рождения, свадьбы, корпоративы, городские праздники — по всей России и за рубежом.</p>
     <div class="cta-row">
       <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
-      <a class="cta ghost" href="booking.html">Условия и заявка</a>
+      <a class="cta ghost" href="booking.html#bookingForm">Условия и заявка</a>
     </div>
     <!-- Бот Telegram — раскомментировать и вписать @username после
          деплоя _tools/BookingBot (см. README.md, раздел 5)
     <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Бот в Telegram</a>
     -->
     <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
-    <p class="foot-note"><a href="privacy.html">Политика конфиденциальности</a></p>
+    <p class="foot-note"><a href="privacy.html">Политика конфиденциальности</a> · <a href="cookies.html">Файлы cookie</a></p>
     <p class="foot-note">© Николай Балашов</p>
   </div>
 </footer>
 
 <script src="analytics.js" defer></script>
 <script src="vk-pixel.js" defer></script>
+<script src="site-content.js" defer></script>
 </body>
 </html>

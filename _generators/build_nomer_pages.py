@@ -53,8 +53,8 @@ ACTS = [
     "photos":["lestnitsa-1.jpg","lestnitsa-2.jpg","lestnitsa-3.jpg"],
     "photo_alts":["Жонглёр на вольностоящей лестнице — выступление перед зрителями","Жонглёр на вольностоящей лестнице зимой","Жонглёр на вольностоящей лестнице, студийное фото"],
     "body":[
-      "Классический вариант — чистая эквилибристика на вольностоящей лестнице без страховки и опоры, 6 минут.",
-      "Комический вариант — тот же баланс, но в костюме джокера, с интерактивом и призами для зрителей, 12 минут.",
+      "Классический вариант — жонглирование с балансом на вольностоящей лестнице, без страховки и опоры, 6 минут.",
+      "Комический вариант — тот же баланс и жонглирование, но в костюме джокера, с интерактивом и призами для зрителей, 12 минут.",
       "Формат подходит и для сцены, и для открытой площадки: свадьбы, корпоративы, городские праздники."
     ],
     "stats":[("6 мин","классика"),("12 мин","комический")],
@@ -68,7 +68,7 @@ ACTS = [
     "photos":[],
     "photo_alts":[],
     "body":[
-      "Разные образы под тематику события: сказочные и скоморошьи костюмы, тематические персонажи — для детского праздника, свадьбы, открытия ТЦ или городского события.",
+      "Разные образы под тематику события: сказочные и скоморошьи костюмы, тематические персонажи — для детского праздника, свадьбы, открытия ТЦ или городского события. Есть и строгий вариант — чёрный и белый фраки, классика для тематического вечера.",
       "Живой интерактив с гостями прямо в толпе — фотографии, шутки, вовлечение зрителей любого возраста.",
       "Для номера на ходулях с элементами открытого огня требуется отдельное согласование с площадкой."
     ],
@@ -99,8 +99,8 @@ ACTS = [
     "photos":["shesty-1.jpg","shesty-2.jpg","shesty-3.jpg"],
     "photo_alts":["Артисты на гибких шестах, парный номер","Гибкие шесты на фестивале","Гибкие шесты, групповой номер с ходулистами"],
     "body":[
-      "Два шеста высотой 6 метров, гибкость до 2,5 м в каждую сторону, вращение вокруг оси — необычный для России аттракцион.",
-      "Жанр придуман самим Николаем с партнёром за год работы, во вдохновении канадским и австралийским уличным цирком на Дворцовой площади — сегодня его исполняют всего 3–4 театра в мире.",
+      "Два шеста высотой 6 метров, гибкость до 2,5 м на сторону, вращение вокруг оси — необычный для России аттракцион.",
+      "Идею подсмотрели у канадского и австралийского уличного цирка на Дворцовой площади — свой вариант Николай с партнёром дорабатывали целый год. Сегодня этот жанр исполняют всего 3–4 театра в мире.",
       "Работает круглый год, в помещении и на улице, с интерактивным шоу для гостей."
     ],
     "stats":[("6 м","высота шеста"),("2,5 м","гибкость на сторону"),("3–4","театра в мире")],
@@ -124,13 +124,13 @@ ACTS = [
 
 FOOTER_RU = '''<footer>
   <div class="inner">
-    <div class="badge-glow"><img src="../Brand/logo-shou-balashova.jpg" alt="Шоу Балашова"></div>
+    <div class="badge-glow"><img src="../Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
     <span class="ribbon">Booking</span>
     <h2 class="serif">Позвать Николая на площадку</h2>
     <p class="tag">Дни рождения, свадьбы, корпоративы, городские праздники — выступления по всей России.</p>
     <div class="cta-row">
       <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
-      <a class="cta ghost" href="../booking.html">Условия и заявка</a>
+      <a class="cta ghost" href="../booking.html#bookingForm">Условия и заявка</a>
     </div>
     <!-- Бот Telegram — раскомментировать и вписать @username после
          деплоя _tools/BookingBot (см. README.md, раздел 5)
@@ -232,6 +232,13 @@ def prevnext(acts, i):
 
 
 LIGHTBOX_CSS = '''<style>
+/* Хлебные крошки. Текущая страница — не ссылка (кликать на то, где
+   уже находишься, бессмысленно), поэтому обычный span вместо ссылки. */
+.breadcrumbs{max-width:1080px;margin:0 auto;padding:14px 20px 0;font-family:'Space Mono',monospace;font-size:12px;color:var(--cream-soft)}
+.breadcrumbs a{color:var(--cream-soft);text-decoration:none;border-bottom:1px solid rgba(253,217,69,.3)}
+.breadcrumbs a:hover{color:var(--gold);border-color:var(--gold)}
+.breadcrumbs span{margin:0 7px;opacity:.5}
+.breadcrumbs .current{color:var(--gold);opacity:1;margin:0}
 .g-photos img{cursor:zoom-in}
 .lightbox{display:none;position:fixed;inset:0;background:rgba(10,7,5,.94);z-index:999;align-items:center;justify-content:center;padding:20px}
 .lightbox.active{display:flex}
@@ -298,6 +305,7 @@ def build_ru(head_raw, i, act):
   <a href="../media.html">Медиа</a>
   <a href="../reviews.html">Отзывы</a>
     <a href="../booking.html">Booking</a>
+  <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="../en/nomera/{act["en_slug"]}.html" class="lang-switch">EN</a>
 </nav>'''
 
@@ -308,8 +316,31 @@ def build_ru(head_raw, i, act):
 
 {nav}
 
+<!-- Хлебные крошки: со страницы номера должно быть видно, что она
+     часть галереи, а не отдельный «остров». Микроразметка
+     BreadcrumbList — чтобы структуру видел и поисковик (Яндекс/Google
+     показывают такую цепочку в результатах вместо голого URL). -->
+<nav class="breadcrumbs" aria-label="Хлебные крошки">
+  <a href="../index.html">Главная</a>
+  <span aria-hidden="true">→</span>
+  <a href="../gallery.html">Галерея</a>
+  <span aria-hidden="true">→</span>
+  <span class="current" aria-current="page">{act["title"]}</span>
+</nav>
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://balashov-show.ru/"}},
+    {{"@type": "ListItem", "position": 2, "name": "Галерея", "item": "https://balashov-show.ru/gallery.html"}},
+    {{"@type": "ListItem", "position": 3, "name": "{act["title"]}"}}
+  ]
+}}
+</script>
+
 <div class="page-hero">
-  <div class="badge-glow"><img src="../Brand/logo-shou-balashova.jpg" alt="Шоу Балашова"></div>
+  <div class="badge-glow"><img src="../Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
   <p class="mono" style="color:var(--gold);letter-spacing:.2em;font-size:11px;margin-bottom:6px">НОМЕР {act["num"]} · {act["kind"].upper()}</p>
   <h1>{act["title"]}</h1>
   <p class="tag">{act["tag"]}</p>
@@ -335,7 +366,7 @@ def build_ru(head_raw, i, act):
     </div>
 
     <div class="cta-row" style="margin-top:26px">
-      <a class="cta primary" href="../booking.html">Заказать номер</a>
+      <a class="cta primary" href="../booking.html#bookingForm">Заказать номер</a>
       <a class="cta ghost" href="../gallery.html">Все номера</a>
     </div>
   </div>
@@ -385,8 +416,8 @@ ACTS_EN = [
     "photos":["lestnitsa-1.jpg","lestnitsa-2.jpg","lestnitsa-3.jpg"],
     "photo_alts":["Juggler on a free-standing ladder performing for an audience","Juggler on a free-standing ladder in winter","Juggler on a free-standing ladder, studio photo"],
     "body":[
-      "The classic version — pure equilibristics on a free-standing ladder, no safety rig, no support, 6 minutes.",
-      "The comic version — the same balance act, but in a jester's costume, with audience interaction and prizes, 12 minutes.",
+      "The classic version — juggling with balance on a free-standing ladder, no safety rig, no support, 6 minutes.",
+      "The comic version — the same balance and juggling, but in a jester's costume, with audience interaction and prizes, 12 minutes.",
       "Works both on stage and outdoors: weddings, corporate events, city festivals."
     ],
     "stats":[("6 min","classic"),("12 min","comic")],
@@ -400,7 +431,7 @@ ACTS_EN = [
     "photos":[],
     "photo_alts":[],
     "body":[
-      "Different characters to match the event: fairy-tale and jester costumes, themed personas — for a children's party, wedding, mall opening or city event.",
+      "Different characters to match the event: fairy-tale and jester costumes, themed personas — for a children's party, wedding, mall opening or city event. A more formal option is also available — black and white tailcoats, a classic choice for a themed evening.",
       "Live interaction with guests right in the crowd — photos, jokes, engagement for all ages.",
       "For the fire-element version of the stilt act, a separate approval with the venue is required."
     ],
@@ -431,8 +462,8 @@ ACTS_EN = [
     "photos":["shesty-1.jpg","shesty-2.jpg","shesty-3.jpg"],
     "photo_alts":["Artistes on flexible poles, a paired act","Flexible poles at a festival","Flexible poles, a group act with stilt-walkers"],
     "body":[
-      "Two 6-metre poles, bending up to 2.5 m to each side, rotating on their axis — an act rarely seen in Russia.",
-      "The genre was devised by Nikolai and a partner over a year of work, inspired by Canadian and Australian street circus on Palace Square — today only 3–4 theatres in the world perform it.",
+      "Two 6-metre poles, bending up to 2.5 m to one side, rotating on their axis — an act rarely seen in Russia.",
+      "The idea came from watching Canadian and Australian street circus on Palace Square — Nikolai and a partner spent a full year developing their own version. Today only 3–4 theatres in the world perform this genre.",
       "Works year-round, indoors and outdoors, with interactive audience moments."
     ],
     "stats":[("6 m","pole height"),("2.5 m","bend per side"),("3–4","theatres worldwide")],
@@ -456,13 +487,13 @@ ACTS_EN = [
 
 FOOTER_EN = '''<footer>
   <div class="inner">
-    <div class="badge-glow"><img src="../../Brand/logo-shou-balashova.jpg" alt="Shou Balashova"></div>
+    <div class="badge-glow"><img src="../../Brand/logo-shou-balashova-web.jpg" alt="Shou Balashova"></div>
     <span class="ribbon">Booking</span>
     <h2 class="serif">Book Nikolai for your event</h2>
     <p class="tag">Birthdays, weddings, corporate events, city festivals — performing across Russia.</p>
     <div class="cta-row">
       <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Email booking</a>
-      <a class="cta ghost" href="../booking.html">Terms and request form</a>
+      <a class="cta ghost" href="../booking.html#bookingForm">Terms and request form</a>
     </div>
     <!-- Telegram bot — uncomment and fill in @username after
          deploying _tools/BookingBot (see README.md, section 5)
@@ -518,7 +549,14 @@ def make_head_en(head_raw, title, desc, slug, ru_slug):
     )
     # en/gallery.html уже на 1 уровень глубже (Site/en/), наша страница на 2 -> ещё один ../
     h = h.replace('href="../Brand/', 'href="../../Brand/')
-    h = h.replace('href="../site.webmanifest"', 'href="../../site.webmanifest"')
+    # site.webmanifest — НЕ как Brand/: это язык-специфичный файл рядом
+    # с самим en/gallery.html (Site/en/site.webmanifest), в исходном
+    # <head> ссылка на него БЕЗ префикса вообще (та же папка). Страница
+    # номера на 1 уровень глубже (Site/en/nomera/) — нужен один "../",
+    # не два. Раньше здесь ошибочно предполагалось, что в исходнике уже
+    # есть один "../" (шаблон для замены никогда не совпадал — ссылка
+    # утекала в готовые файлы без префикса вообще, вела не туда).
+    h = h.replace('href="site.webmanifest"', 'href="../site.webmanifest"')
     return h
 
 
@@ -568,6 +606,7 @@ def build_en(head_raw, i, act):
   <a href="../media.html">Media</a>
   <a href="../reviews.html">Reviews</a>
     <a href="../booking.html">Booking</a>
+  <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="../../nomera/{act["ru_slug"]}.html" class="lang-switch">RU</a>
 </nav>'''
     body_paras = "\n".join(f'      <p>{p}</p>' for p in act["body"])
@@ -577,8 +616,28 @@ def build_en(head_raw, i, act):
 
 {nav}
 
+<!-- Breadcrumbs — see the RU builder above for the rationale. -->
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <a href="../../en/index.html">Home</a>
+  <span aria-hidden="true">→</span>
+  <a href="../../en/gallery.html">Gallery</a>
+  <span aria-hidden="true">→</span>
+  <span class="current" aria-current="page">{act["title"]}</span>
+</nav>
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://balashov-show.ru/en/"}},
+    {{"@type": "ListItem", "position": 2, "name": "Gallery", "item": "https://balashov-show.ru/en/gallery.html"}},
+    {{"@type": "ListItem", "position": 3, "name": "{act["title"]}"}}
+  ]
+}}
+</script>
+
 <div class="page-hero">
-  <div class="badge-glow"><img src="../../Brand/logo-shou-balashova.jpg" alt="Shou Balashova"></div>
+  <div class="badge-glow"><img src="../../Brand/logo-shou-balashova-web.jpg" alt="Shou Balashova"></div>
   <p class="mono" style="color:var(--gold);letter-spacing:.2em;font-size:11px;margin-bottom:6px">ACT {act["num"]} · {act["kind"].upper()}</p>
   <h1>{act["title"]}</h1>
   <p class="tag">{act["tag"]}</p>
@@ -604,7 +663,7 @@ def build_en(head_raw, i, act):
     </div>
 
     <div class="cta-row" style="margin-top:26px">
-      <a class="cta primary" href="../booking.html">Book this act</a>
+      <a class="cta primary" href="../booking.html#bookingForm">Book this act</a>
       <a class="cta ghost" href="../gallery.html">All acts</a>
     </div>
   </div>

@@ -25,6 +25,9 @@ h1{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-size:22
 h1 .en{display:block;font-size:16px;color:var(--cream-soft);margin-top:4px}
 p{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);margin-bottom:24px}
 .links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.fallback-phone{margin-top:22px;font-family:'Space Mono',monospace;font-size:14px}
+.fallback-phone a{color:var(--gold);text-decoration:none;font-weight:700;white-space:nowrap}
+.fallback-phone a:hover{text-decoration:underline}
 .cta{display:inline-block;font-family:'Space Mono';font-size:12px;letter-spacing:.04em;padding:12px 22px;text-decoration:none;font-weight:700;border-radius:6px}
 .cta.primary{background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:var(--ink)}
 .cta.ghost{background:transparent;border:1px solid rgba(253,217,69,.4);color:var(--gold)}
@@ -32,14 +35,20 @@ p{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);margin-bottom
 </head>
 <body>
 <div class="wrap">
-  <div class="badge-glow"><img src="Brand/logo-shou-balashova.jpg" alt="Шоу Балашова"></div>
+  <div class="badge-glow"><img src="Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
   <div class="code">404</div>
   <h1>Такой страницы нет<span class="en">This page doesn't exist</span></h1>
   <p>Возможно, ссылка устарела или в адресе опечатка.<br>The link may be outdated, or there's a typo in the address.</p>
   <div class="links">
     <a class="cta primary" href="/index.html">На главную</a>
+    <a class="cta ghost" href="/booking.html#bookingForm">Заказать номер</a>
     <a class="cta ghost" href="/en/index.html">EN Home</a>
   </div>
+  <!-- Телефон прямо здесь, а не только на главной: на 404 нередко
+       попадают по устаревшей ссылке с визитки или листовки — то есть
+       это может быть уже заинтересованный человек, и заставлять его
+       заново искать контакт по сайту незачем. -->
+  <p class="fallback-phone">Или просто позвоните: <a href="tel:+79119138374">+7 911 913-83-74</a></p>
 </div>
 </body>
 </html>

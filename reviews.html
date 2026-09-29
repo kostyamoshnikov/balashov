@@ -96,8 +96,17 @@ a{color:inherit}
 
 .site-nav{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;padding:18px 20px;font-family:'Space Mono';font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;position:relative;z-index:2;background:var(--ink)}
 .site-nav a{color:var(--cream-soft);text-decoration:none;padding-bottom:3px;border-bottom:2px solid transparent}
+/* Область нажатия пунктов меню: сам текст даёт всего ~22px по высоте,
+   а палец уверенно попадает от 44px (рекомендация WCAG/Apple/Google).
+   Увеличиваем только на touch-устройствах и только вертикальные
+   отступы — визуально меню не меняется, подчёркивание активного
+   пункта остаётся на месте. */
+@media (pointer:coarse){
+  .site-nav a{display:inline-block;padding-top:19px}
+}
 .site-nav a.current,.site-nav a:hover{color:var(--gold);border-bottom-color:var(--gold)}
 .site-nav a.lang-switch{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px}
+.site-nav a.vk-link{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px;color:var(--gold)}
 .site-nav a.lang-switch:hover{border-color:var(--gold)}
 
 .badge-glow{position:relative;margin:0 auto}
@@ -181,6 +190,16 @@ section.tinted{background:rgba(253,217,69,.025)}
 .field textarea{resize:vertical;min-height:70px}
 .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
 .submit-btn{width:100%;border:none;border-radius:10px;padding:15px;margin-top:6px;font-family:'Space Mono';font-size:13px;letter-spacing:.04em;font-weight:700;background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:var(--ink);cursor:pointer}
+/* Чекбокс согласия — на touch-устройствах браузерный дефолт (~13px)
+   заметно меньше минимума WCAG 2.2 SC 2.5.8 (24×24 px), палец легко
+   промахивается. На мышь/трекпад 13px попасть легко — увеличиваем
+   только для pointer:coarse (тот же приём, что уже применён к клетке
+   места в паке AELITA — там 16px, здесь 13px, но логика та же).
+   Не относится к вопросу "весь сайт крупнее шрифт" из TASKS.md —
+   это конкретная фиксированная WCAG-проблема, не общая настройка. */
+@media (pointer:coarse){
+  input[type="checkbox"]{width:24px!important;height:24px!important}
+}
 .form-note{font-family:'Public Sans';font-size:12px;color:var(--cream-soft);margin-top:12px;text-align:center}
 
 .link-card{background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:16px;padding:18px 20px;margin-bottom:12px;display:block;text-decoration:none;color:inherit}
@@ -251,13 +270,14 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   <a href="media.html">Медиа</a>
   <a href="reviews.html" class="current">Отзывы</a>
   <a href="booking.html">Booking</a>
+  <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="en/reviews.html" class="lang-switch">EN</a>
 </nav>
 
 <div class="page-hero">
-  <div class="badge-glow"><img src="Brand/logo-shou-balashova.jpg" alt="Шоу Балашова"></div>
-  <h1>Отзывы</h1>
-  <p class="tag">Что говорят гости о выступлениях</p>
+  <div class="badge-glow"><img src="Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
+  <h1 data-editable="reviews_h1">Отзывы</h1>
+  <p class="tag" data-editable="reviews_tag">Что говорят гости о выступлениях</p>
 </div>
 
 <div class="marquee"></div>
@@ -269,8 +289,13 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <h2 class="serif">Отзывы с мероприятий</h2>
     </div>
 
+    <!-- Начальное содержимое — не «Загрузка…», а осмысленный текст:
+         если JavaScript не отработает (медленная сеть, блокировщик,
+         старый браузер), посетитель увидит нормальное сообщение, а не
+         вечную загрузку. Скрипт ниже заменяет этот блок, только когда
+         реально получил список отзывов. -->
     <div id="reviewsList">
-      <div class="empty-state"><p>Загрузка отзывов…</p></div>
+      <div class="empty-state"><p>Отзывов пока нет — станьте первым, кто расскажет о выступлении.</p></div>
     </div>
   </div>
 </section>
@@ -289,7 +314,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
 
       <div class="field">
-        <label for="rname">Ваше имя</label>
+        <label for="rname">Ваше имя <span style="color:var(--gold)">*</span></label>
         <input type="text" id="rname" required maxlength="80">
       </div>
       <div class="field">
@@ -303,15 +328,16 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
         </select>
       </div>
       <div class="field">
-        <label>Оценка</label>
+        <label>Оценка <span style="color:var(--gold)">*</span></label>
         <div class="star-input" id="starInput">
           <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
         </div>
       </div>
       <div class="field">
-        <label for="rtext">Отзыв</label>
+        <label for="rtext">Отзыв <span style="color:var(--gold)">*</span></label>
         <textarea id="rtext" required minlength="10" maxlength="1000" placeholder="Что понравилось, какой номер запомнился..."></textarea>
       </div>
+      <p style="font-size:12px;color:var(--cream-soft);margin:-4px 0 4px">* обязательные поля</p>
       <div class="field" style="display:flex;align-items:flex-start;gap:8px;flex-direction:row">
         <input type="checkbox" id="publishConsent" required style="width:auto;margin-top:3px;flex-shrink:0">
         <label for="publishConsent" style="font-size:12px;font-weight:400;text-transform:none;font-family:'Public Sans',sans-serif;letter-spacing:normal;color:var(--cream-soft)">Согласен(на) на публикацию отзыва на сайте</label>
@@ -330,20 +356,20 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 
 <footer>
   <div class="inner">
-    <div class="badge-glow"><img src="Brand/logo-shou-balashova.jpg" alt="Шоу Балашова"></div>
+    <div class="badge-glow"><img src="Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
     <span class="ribbon">Booking</span>
     <h2 class="serif">Позвать Николая на площадку</h2>
-    <p class="tag">Дни рождения, свадьбы, корпоративы, городские праздники — по всей России и за рубежом.</p>
+    <p class="tag" data-editable="footer_tag">Дни рождения, свадьбы, корпоративы, городские праздники — по всей России и за рубежом.</p>
     <div class="cta-row">
       <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
-      <a class="cta ghost" href="booking.html">Условия и заявка</a>
+      <a class="cta ghost" href="booking.html#bookingForm">Условия и заявка</a>
     </div>
     <!-- Бот Telegram — раскомментировать и вписать @username после
          деплоя _tools/BookingBot (см. README.md, раздел 5)
     <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Бот в Telegram</a>
     -->
     <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
-    <p class="foot-note"><a href="privacy.html">Политика конфиденциальности</a></p>
+    <p class="foot-note"><a href="privacy.html">Политика конфиденциальности</a> · <a href="cookies.html">Файлы cookie</a></p>
     <p class="foot-note">© Николай Балашов</p>
   </div>
 </footer>
@@ -474,5 +500,6 @@ document.getElementById("reviewForm").addEventListener("submit", function (e) {
 
 <script src="analytics.js" defer></script>
 <script src="vk-pixel.js" defer></script>
+<script src="site-content.js" defer></script>
 </body>
 </html>

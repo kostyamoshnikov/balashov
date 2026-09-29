@@ -96,8 +96,17 @@ a{color:inherit}
 
 .site-nav{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;padding:18px 20px;font-family:'Space Mono';font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;position:relative;z-index:2;background:var(--ink)}
 .site-nav a{color:var(--cream-soft);text-decoration:none;padding-bottom:3px;border-bottom:2px solid transparent}
+/* Область нажатия пунктов меню: сам текст даёт всего ~22px по высоте,
+   а палец уверенно попадает от 44px (рекомендация WCAG/Apple/Google).
+   Увеличиваем только на touch-устройствах и только вертикальные
+   отступы — визуально меню не меняется, подчёркивание активного
+   пункта остаётся на месте. */
+@media (pointer:coarse){
+  .site-nav a{display:inline-block;padding-top:19px}
+}
 .site-nav a.current,.site-nav a:hover{color:var(--gold);border-bottom-color:var(--gold)}
 .site-nav a.lang-switch{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px}
+.site-nav a.vk-link{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px;color:var(--gold)}
 .site-nav a.lang-switch:hover{border-color:var(--gold)}
 
 .badge-glow{position:relative;margin:0 auto}
@@ -226,13 +235,20 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 .g-body{padding:6px 20px 22px}
 .g-body .kind{font-family:'Space Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);opacity:.9}
 .g-body h3{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-size:21px;margin:6px 0 8px;color:var(--cream)}
-.g-body p{font-size:13px;color:var(--cream-soft)}
+.g-body p{font-size:15px;color:var(--cream-soft)}
 .g-more{display:inline-block;margin-top:10px;font-family:'Space Mono';font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(253,217,69,.4)}
 .g-more:hover{border-color:var(--gold)}
 .note{max-width:100%;margin:0 auto 26px;background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:14px;padding:14px 18px;font-family:'Space Mono';font-size:11px;color:var(--cream-soft);text-align:center}
 
 </style>
 <style>
+/* Хлебные крошки. Текущая страница — не ссылка (кликать на то, где
+   уже находишься, бессмысленно), поэтому обычный span вместо ссылки. */
+.breadcrumbs{max-width:1080px;margin:0 auto;padding:14px 20px 0;font-family:'Space Mono',monospace;font-size:12px;color:var(--cream-soft)}
+.breadcrumbs a{color:var(--cream-soft);text-decoration:none;border-bottom:1px solid rgba(253,217,69,.3)}
+.breadcrumbs a:hover{color:var(--gold);border-color:var(--gold)}
+.breadcrumbs span{margin:0 7px;opacity:.5}
+.breadcrumbs .current{color:var(--gold);opacity:1;margin:0}
 .g-photos img{cursor:zoom-in}
 .lightbox{display:none;position:fixed;inset:0;background:rgba(10,7,5,.94);z-index:999;align-items:center;justify-content:center;padding:20px}
 .lightbox.active{display:flex}
@@ -256,11 +272,35 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   <a href="../media.html">Медиа</a>
   <a href="../reviews.html">Отзывы</a>
     <a href="../booking.html">Booking</a>
+  <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="../en/nomera/stilt-walker.html" class="lang-switch">EN</a>
 </nav>
 
+<!-- Хлебные крошки: со страницы номера должно быть видно, что она
+     часть галереи, а не отдельный «остров». Микроразметка
+     BreadcrumbList — чтобы структуру видел и поисковик (Яндекс/Google
+     показывают такую цепочку в результатах вместо голого URL). -->
+<nav class="breadcrumbs" aria-label="Хлебные крошки">
+  <a href="../index.html">Главная</a>
+  <span aria-hidden="true">→</span>
+  <a href="../gallery.html">Галерея</a>
+  <span aria-hidden="true">→</span>
+  <span class="current" aria-current="page">Ходулист</span>
+</nav>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://balashov-show.ru/"},
+    {"@type": "ListItem", "position": 2, "name": "Галерея", "item": "https://balashov-show.ru/gallery.html"},
+    {"@type": "ListItem", "position": 3, "name": "Ходулист"}
+  ]
+}
+</script>
+
 <div class="page-hero">
-  <div class="badge-glow"><img src="../Brand/logo-shou-balashova.jpg" alt="Шоу Балашова"></div>
+  <div class="badge-glow"><img src="../Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
   <p class="mono" style="color:var(--gold);letter-spacing:.2em;font-size:11px;margin-bottom:6px">НОМЕР 02 · В ЛЮБОМ ОБРАЗЕ</p>
   <h1>Ходулист</h1>
   <p class="tag">Сказочные, скоморошьи и тематические костюмы под любой праздник</p>
@@ -293,7 +333,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
     </div>
 
     <div class="body-copy">
-      <p>Разные образы под тематику события: сказочные и скоморошьи костюмы, тематические персонажи — для детского праздника, свадьбы, открытия ТЦ или городского события.</p>
+      <p>Разные образы под тематику события: сказочные и скоморошьи костюмы, тематические персонажи — для детского праздника, свадьбы, открытия ТЦ или городского события. Есть и строгий вариант — чёрный и белый фраки, классика для тематического вечера.</p>
       <p>Живой интерактив с гостями прямо в толпе — фотографии, шутки, вовлечение зрителей любого возраста.</p>
       <p>Для номера на ходулях с элементами открытого огня требуется отдельное согласование с площадкой.</p>
     </div>
@@ -304,7 +344,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
     </div>
 
     <div class="cta-row" style="margin-top:26px">
-      <a class="cta primary" href="../booking.html">Заказать номер</a>
+      <a class="cta primary" href="../booking.html#bookingForm">Заказать номер</a>
       <a class="cta ghost" href="../gallery.html">Все номера</a>
     </div>
   </div>
@@ -340,13 +380,13 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 
 <footer>
   <div class="inner">
-    <div class="badge-glow"><img src="../Brand/logo-shou-balashova.jpg" alt="Шоу Балашова"></div>
+    <div class="badge-glow"><img src="../Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
     <span class="ribbon">Booking</span>
     <h2 class="serif">Позвать Николая на площадку</h2>
     <p class="tag">Дни рождения, свадьбы, корпоративы, городские праздники — выступления по всей России.</p>
     <div class="cta-row">
       <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
-      <a class="cta ghost" href="../booking.html">Условия и заявка</a>
+      <a class="cta ghost" href="../booking.html#bookingForm">Условия и заявка</a>
     </div>
     <!-- Бот Telegram — раскомментировать и вписать @username после
          деплоя _tools/BookingBot (см. README.md, раздел 5)

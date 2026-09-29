@@ -96,8 +96,17 @@ a{color:inherit}
 
 .site-nav{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;padding:18px 20px;font-family:'Space Mono';font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;position:relative;z-index:2;background:var(--ink)}
 .site-nav a{color:var(--cream-soft);text-decoration:none;padding-bottom:3px;border-bottom:2px solid transparent}
+/* Область нажатия пунктов меню: сам текст даёт всего ~22px по высоте,
+   а палец уверенно попадает от 44px (рекомендация WCAG/Apple/Google).
+   Увеличиваем только на touch-устройствах и только вертикальные
+   отступы — визуально меню не меняется, подчёркивание активного
+   пункта остаётся на месте. */
+@media (pointer:coarse){
+  .site-nav a{display:inline-block;padding-top:19px}
+}
 .site-nav a.current,.site-nav a:hover{color:var(--gold);border-bottom-color:var(--gold)}
 .site-nav a.lang-switch{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px}
+.site-nav a.vk-link{border:1px solid rgba(253,217,69,.3);border-radius:999px;padding:3px 10px;color:var(--gold)}
 .site-nav a.lang-switch:hover{border-color:var(--gold)}
 
 .badge-glow{position:relative;margin:0 auto}
@@ -164,17 +173,20 @@ section.tinted{background:rgba(253,217,69,.025)}
 .record p.prose{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);margin-top:12px;max-width:46ch;margin-left:auto;margin-right:auto}
 
 .format-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-.format-grid .f{background:var(--ink-2);border:1px solid rgba(253,217,69,.18);border-radius:14px;padding:14px 12px;font-size:12px;text-align:center;color:var(--cream-soft)}
-.format-grid .f b{display:block;font-family:'Public Sans';font-weight:600;font-size:13.5px;margin-bottom:3px;color:var(--cream)}
+.format-grid .f{background:var(--ink-2);border:1px solid rgba(253,217,69,.18);border-radius:14px;padding:14px 12px;font-size:13px;text-align:center;color:var(--cream-soft)}
+.format-grid .f b{display:block;font-family:'Public Sans';font-weight:600;font-size:14px;margin-bottom:3px;color:var(--cream)}
 .format-grid a.f{text-decoration:none;display:block;cursor:pointer}
 .format-grid a.f:hover{border-color:rgba(253,217,69,.4)}
 
 .rider-box{background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:16px;padding:22px 20px;margin-top:20px}
 .rider-box .ribbon{margin-bottom:10px}
 .rider-box h3{font-family:'Instrument Serif';font-style:italic;font-size:19px;color:var(--cream);margin-bottom:8px}
-.rider-box ul{margin:8px 0 0 18px;font-family:'Public Sans';font-size:12.5px;color:var(--cream-soft)}
+.rider-box ul{margin:8px 0 0 18px;font-family:'Public Sans';font-size:14px;color:var(--cream-soft)}
 .rider-box li{margin-bottom:6px}
-.rider-box .note{font-family:'Space Mono';font-size:10px;color:var(--cream-soft);opacity:.7;margin-top:10px}
+.rider-box .note{font-family:'Space Mono';font-size:12px;color:var(--cream-soft);opacity:.8;margin-top:10px}
+.faq-q{font-family:'Public Sans';font-weight:600;font-size:15px;color:var(--cream);margin-top:18px}
+.faq-q:first-of-type{margin-top:10px}
+.faq-a{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);margin-top:5px;line-height:1.6}
 
 .form-card{background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:18px;padding:24px 20px;margin-top:16px}
 .field{margin-bottom:15px}
@@ -183,6 +195,16 @@ section.tinted{background:rgba(253,217,69,.025)}
 .field textarea{resize:vertical;min-height:70px}
 .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
 .submit-btn{width:100%;border:none;border-radius:10px;padding:15px;margin-top:6px;font-family:'Space Mono';font-size:13px;letter-spacing:.04em;font-weight:700;background:linear-gradient(160deg,var(--gold),var(--gold-deep));color:var(--ink);cursor:pointer}
+/* Чекбокс согласия — на touch-устройствах браузерный дефолт (~13px)
+   заметно меньше минимума WCAG 2.2 SC 2.5.8 (24×24 px), палец легко
+   промахивается. На мышь/трекпад 13px попасть легко — увеличиваем
+   только для pointer:coarse (тот же приём, что уже применён к клетке
+   места в паке AELITA — там 16px, здесь 13px, но логика та же).
+   Не относится к вопросу "весь сайт крупнее шрифт" из TASKS.md —
+   это конкретная фиксированная WCAG-проблема, не общая настройка. */
+@media (pointer:coarse){
+  input[type="checkbox"]{width:24px!important;height:24px!important}
+}
 .form-note{font-family:'Public Sans';font-size:12px;color:var(--cream-soft);margin-top:12px;text-align:center}
 
 .link-card{background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:16px;padding:18px 20px;margin-bottom:12px;display:block;text-decoration:none;color:inherit}
@@ -223,13 +245,14 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
   <a href="media.html">Media</a>
   <a href="reviews.html">Reviews</a>
     <a href="booking.html" class="current">Booking</a>
+  <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="../booking.html" class="lang-switch">RU</a>
 </nav>
 
 <div class="page-hero">
-  <div class="badge-glow"><img src="../Brand/logo-shou-balashova.jpg" alt="Shou Balashova"></div>
-  <h1>Booking</h1>
-  <p class="tag">Birthdays, weddings, corporate events, city festivals — across Russia and abroad</p>
+  <div class="badge-glow"><img src="../Brand/logo-shou-balashova-web.jpg" alt="Shou Balashova"></div>
+  <h1 data-editable="booking_h1_en">Booking</h1>
+  <p class="tag" data-editable="booking_tag_en">Birthdays, weddings, corporate events, city festivals — across Russia and abroad</p>
   <div class="cta-row" style="margin-top:20px">
     <a class="cta primary" href="#bookingForm" data-track="booking_hero_cta">Book this act</a>
   </div>
@@ -246,7 +269,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
     <div class="format-grid">
       <a class="f" href="nomera/ladder.html"><b>Ladder juggler</b>Classic style — pure equilibristics, 6 min. Comic style — joker costume, with interaction (balance on a roll, prizes), 12 min</a>
       <a class="f" href="nomera/stilt-walker.html"><b>Stilt-walker</b>Costumes for any theme: fairy-tale, jester, adult and children's events</a>
-      <a class="f" href="nomera/flexible-poles.html"><b>Flexible poles</b>6 m tall, flexing up to 2.5 m to each side, rotating around their axis. Works year-round, indoors and outdoors</a>
+      <a class="f" href="nomera/flexible-poles.html"><b>Flexible poles</b>6 m tall, flexing up to 2.5 m to one side, rotating around their axis. Works year-round, indoors and outdoors</a>
       <a class="f" href="nomera/transforming-tube.html"><b>Spring-man</b>A cosmic alien — a bright interactive act for children's and city events</a>
       <a class="f" href="nomera/transforming-tube.html"><b>Flexible tube (kids)</b>The artiste plays with the children in a sling and "swallows" balls</a>
       <a class="f" href="nomera/transforming-tube.html"><b>Transforming Tube</b>6 colours, 6 min with interaction — "swallows" and "spits out" the guest of honour</a>
@@ -270,7 +293,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <span class="ribbon">Flexible poles · technical details</span>
       <h3>What to know when booking</h3>
       <ul>
-        <li>2 poles in stock — 6 m tall, flexing up to 2.5 m to each side, rotating around their axis</li>
+        <li>2 poles in stock — 6 m tall, flexing up to 2.5 m to one side, rotating around their axis</li>
         <li>Total equipment weight — 120 kg</li>
         <li>Rigging both poles takes about 1 h 40 min</li>
         <li>Minimum ceiling height for installation — from 9 m (works in shopping malls too)</li>
@@ -299,6 +322,43 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
       <p class="note"><a href="../files/Nikolai_Balashov_CommercialOffer_EN.pdf" target="_blank" rel="noopener" data-track="download_commercial_offer" style="color:var(--gold)">Commercial offer (PDF)</a></p>
       <p class="note">Full technical rider for a specific venue — sent as a separate file on request, once the format is agreed (it's a per-venue template with placeholders, not something we publish as a generic file).</p>
     </div>
+
+    <!-- FAQ — assembled from facts already scattered across the pack
+         (act timings, flexible-poles rider, booking process from the
+         commercial offer). Placed BEFORE the enquiry form: the visitor
+         has read about the acts and the rider but hasn't started
+         filling the form yet — the right moment to clear remaining
+         doubts. ⚠️ Deliberately NOT answering questions we have no
+         facts for (price, prepayment, cancellation) — instead of
+         inventing an answer we honestly point to a direct call. -->
+    <div class="rider-box" style="margin-top:26px">
+      <span class="ribbon">FAQ</span>
+      <h3>What people usually ask before booking</h3>
+
+      <p class="faq-q">How long is a performance?</p>
+      <p class="faq-a">Depends on the act: the ladder juggler runs 6 minutes in the classic version and 12 in the comic one; the transforming tube — 6 minutes with audience interaction. Several acts can be combined into a programme, with timing agreed around your schedule.</p>
+
+      <p class="faq-q">How much set-up time is needed?</p>
+      <p class="faq-a">Depends on the act. The longest to set up is the flexible poles — about 1 hr 40 min for two poles. Other acts need considerably less. Exact timings for your venue are in the full rider.</p>
+
+      <p class="faq-q">What does the venue need to provide?</p>
+      <p class="faq-a">For most acts — clear level ground and 4.5 m of height. The flexible poles need 9 m or more (shopping centres work well); the equipment weighs 120 kg. Acts involving open flame are agreed with the venue separately.</p>
+
+      <p class="faq-q">How many performances fit into one day?</p>
+      <p class="faq-a">Up to 5 working sets per day. If an additional rehearsal takes place the same day — no more than two sets.</p>
+
+      <p class="faq-q">Do you travel to other cities?</p>
+      <p class="faq-a">Yes — across Russia, and abroad by arrangement (11 countries toured to date). We bring our own equipment and artistes. For out-of-town engagements the organiser provides accommodation, three meals a day and a warm room to wait in between appearances.</p>
+
+      <p class="faq-q">How much does it cost?</p>
+      <p class="faq-a">There's no fixed price list — it depends on the act, running time, date and city. Send a brief through the form below (date, city, event format) and you'll get a quote within 1–2 days.</p>
+
+      <p class="faq-q">How far in advance should we book?</p>
+      <p class="faq-a">The earlier the better — especially for the New Year and May holidays, when dates go early. If your date is already close, write or call anyway: a slot may still be free.</p>
+
+      <p class="faq-q">How is it all arranged?</p>
+      <p class="faq-a">You send a brief → within 1–2 days you get a quote and act suggestions → you agree the details and technical rider → you book the date. For companies we prepare a service agreement and an invoice. For questions about prepayment, cancellation or rescheduling it's best to ask directly — <a href="tel:+79119138374" style="color:var(--gold);white-space:nowrap">+7 911 913-83-74</a>.</p>
+    </div>
   </div>
 </section>
 
@@ -313,7 +373,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 
     <form class="form-card" id="bookingForm">
       <div class="field">
-        <label for="name">Name</label>
+        <label for="name">Name <span style="color:var(--gold)">*</span></label>
         <input type="text" id="name" required>
       </div>
       <div class="field">
@@ -331,20 +391,22 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
         </select>
       </div>
       <div class="field">
-        <label for="contact">Contact (phone or e-mail)</label>
+        <label for="contact">Contact (phone or e-mail) <span style="color:var(--gold)">*</span></label>
         <input type="text" id="contact" required>
       </div>
       <div class="field">
         <label for="details">Details (venue, act format, requests)</label>
         <textarea id="details"></textarea>
       </div>
+      <p style="font-size:12px;color:var(--cream-soft);margin:-4px 0 4px">* required fields</p>
       <div class="field" style="display:flex;align-items:flex-start;gap:8px;flex-direction:row">
         <input type="checkbox" id="consent" required style="width:auto;margin-top:3px;flex-shrink:0">
         <label for="consent" style="font-size:12px;font-weight:400;text-transform:none;font-family:'Public Sans',sans-serif;letter-spacing:normal;color:var(--cream-soft)">I consent to the processing of my personal data under the <a href="privacy.html" target="_blank" style="color:var(--gold)">privacy policy</a></label>
       </div>
       <button type="submit" class="submit-btn">Send enquiry</button>
       <p class="form-note">The button opens your e-mail client with the details filled in — sending is not automatic.</p>
-      <p class="form-note">Fastest way — message the <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" style="color:var(--gold);font-weight:600">VK group</a> directly.</p>
+      <p class="form-note" id="formStatus"></p>
+      <p class="form-note">If e-mail isn't set up on your phone — just call: <a href="tel:+79119138374" style="color:var(--gold);font-weight:600;white-space:nowrap">+7 911 913-83-74</a>, or message the <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" style="color:var(--gold);font-weight:600">VK group</a>.</p>
     </form>
   </div>
 </section>
@@ -353,7 +415,7 @@ footer .tag{font-family:'Public Sans';font-size:13.5px;color:var(--cream-soft);m
 
 <footer>
   <div class="inner">
-    <p class="foot-note"><a href="privacy.html">Privacy Policy</a></p>
+    <p class="foot-note"><a href="privacy.html">Privacy Policy</a> · <a href="cookies.html">Cookies</a></p>
     <p class="foot-note">© Nikolai Balashov</p>
   </div>
 </footer>
@@ -375,10 +437,22 @@ document.getElementById('bookingForm').addEventListener('submit', function(e){
     'Details: ' + (details || '—')
   );
   window.location.href = 'mailto:balashov.show.ru@gmail.com?subject=' + subject + '&body=' + body;
+
+  // See the RU version for the rationale: without this the page gave
+  // no feedback at all after clicking, and the mail client does not
+  // open on every device.
+  var st = document.getElementById('formStatus');
+  if (st) {
+    st.innerHTML = 'Your e-mail client should now open with the message ready — please check and send it.<br>' +
+      'Nothing opened? Call <a href="tel:+79119138374" style="color:var(--gold);white-space:nowrap">+7 911 913-83-74</a> ' +
+      'or message the <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" style="color:var(--gold)">VK group</a>.';
+    st.style.color = 'var(--gold)';
+  }
 });
 </script>
 
 <script src="../analytics.js" defer></script>
 <script src="../vk-pixel.js" defer></script>
+<script src="../site-content.js" defer></script>
 </body>
 </html>
