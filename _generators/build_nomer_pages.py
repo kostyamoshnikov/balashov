@@ -341,7 +341,7 @@ def build_ru(head_raw, i, act):
 
 <div class="page-hero">
   <div class="badge-glow"><img src="../Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
-  <p class="mono" style="color:var(--gold);letter-spacing:.2em;font-size:11px;margin-bottom:6px">НОМЕР {act["num"]} · {act["kind"].upper()}</p>
+  <p class="mono" style="color:var(--gold);letter-spacing:.2em;font-size:12px;margin-bottom:6px">НОМЕР {act["num"]} · {act["kind"].upper()}</p>
   <h1>{act["title"]}</h1>
   <p class="tag">{act["tag"]}</p>
 </div>
@@ -638,7 +638,7 @@ def build_en(head_raw, i, act):
 
 <div class="page-hero">
   <div class="badge-glow"><img src="../../Brand/logo-shou-balashova-web.jpg" alt="Shou Balashova"></div>
-  <p class="mono" style="color:var(--gold);letter-spacing:.2em;font-size:11px;margin-bottom:6px">ACT {act["num"]} · {act["kind"].upper()}</p>
+  <p class="mono" style="color:var(--gold);letter-spacing:.2em;font-size:12px;margin-bottom:6px">ACT {act["num"]} · {act["kind"].upper()}</p>
   <h1>{act["title"]}</h1>
   <p class="tag">{act["tag"]}</p>
 </div>
@@ -721,6 +721,34 @@ def main():
         with open(os.path.join(outdir_en, f'{act["slug"]}.html'), "w", encoding="utf-8") as f:
             f.write(html)
         print("wrote", "en/nomera/" + act["slug"] + ".html")
+
+    write_acts_js()
+
+
+def write_acts_js():
+    """pack-v121: Site/acts.js — названия номеров для формы заявки.
+
+    booking.html?act=<слаг> подставляет в поле «Детали» «Интересует
+    номер: <название>» (ТЗ, задача 9.3; ссылки с ?act= появятся на
+    страницах номеров в задаче 6). Названия берутся ОТСЮДА, из тех же
+    ACTS/ACTS_EN, что и страницы номеров, — не дублируются руками в
+    booking.html. Принимаются оба слага (русский и английский), чтобы
+    ссылка с любой языковой версии работала на любой форме.
+    """
+    import json
+    en_by_ru = {a["ru_slug"]: a for a in ACTS_EN}
+    data = {}
+    for a in ACTS:
+        en = en_by_ru[a["slug"]]
+        entry = {"ru": a["title"], "en": en["title"]}
+        data[a["slug"]] = entry
+        data[en["slug"]] = entry
+    js = ("// СОБРАНО Site/_generators/build_nomer_pages.py — не править руками.\n"
+          "// Названия номеров для booking.html?act=<слаг> (pack-v121).\n"
+          "window.BALASHOV_ACTS = " + json.dumps(data, ensure_ascii=False, indent=1, sort_keys=True) + ";\n")
+    with open(os.path.join(SITE_DIR, "acts.js"), "w", encoding="utf-8") as f:
+        f.write(js)
+    print("wrote acts.js")
 
 
 if __name__ == "__main__":

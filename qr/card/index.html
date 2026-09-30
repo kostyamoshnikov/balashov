@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Шоу Балашова — переходим в группу VK</title>
+<!-- Страница-редирект для QR-кода (визитка). СОБРАНО
+     Site/Brand/generate_qr.py — не править руками, правка сотрётся при
+     следующем запуске. Зачем она нужна — см. шапку generate_qr.py.
+     В sitemap.xml не входит, в поиске не показывается (noindex). -->
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="../../favicon.ico">
+<meta http-equiv="refresh" content="2; url=https://vk.ru/show_balashov?utm_source=qr&amp;utm_medium=print&amp;utm_campaign=businesscard">
+<style>
+html,body{margin:0;background:#0A0705;color:#FBF3E4;font-family:'Public Sans',-apple-system,'Segoe UI',Roboto,Arial,sans-serif}
+main{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;box-sizing:border-box}
+h1{font-size:20px;font-weight:600;margin:0 0 12px}
+p{font-size:16px;line-height:1.6;margin:0 0 16px;color:#E8DCC4}
+a{color:#FDD945}
+.go{display:inline-block;padding:14px 24px;border:1.5px solid #FDD945;border-radius:999px;text-decoration:none;font-weight:600}
+.small{font-size:14px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Открываем группу «Шоу Балашова» во ВКонтакте…</h1>
+  <p>Если ничего не произошло — нажмите кнопку.</p>
+  <p><a class="go" href="https://vk.ru/show_balashov?utm_source=qr&amp;utm_medium=print&amp;utm_campaign=businesscard">Перейти в группу VK</a></p>
+  <p class="small">Сайт артиста: <a href="../../index.html">balashov-show.ru</a> · <span lang="en">Opening VK…</span></p>
+</main>
+<!-- Своя статистика: просмотр этой страницы = переход по QR с носителя
+     «визитка» (путь /qr/card/). Пока StatsBot не
+     задеплоен, событие никуда не уходит — переход в VK работает всё равно. -->
+<script src="../../analytics.js"></script>
+<script>
+(function () {
+  var target = 'https://vk.ru/show_balashov?utm_source=qr&utm_medium=print&utm_campaign=businesscard';
+  // PRESERVE_QUERY (приём AELITA pack-v422): если к адресу QR дописали
+  // свои utm_* (например, для отдельного тиража), они заменяют метки по
+  // умолчанию — иначе при переходе они бы потерялись.
+  try {
+    var inc = new URLSearchParams(location.search), out = new URL(target);
+    inc.forEach(function (v, k) { if (/^utm_/i.test(k)) out.searchParams.set(k, v); });
+    target = out.toString();
+  } catch (e) {}
+  // Сначала отдаём событие статистике (sendBeacon переживает уход со
+  // страницы), потом уходим. replace — чтобы кнопка «Назад» в VK не
+  // возвращала на эту промежуточную страницу.
+  try { if (window.__balashovFlush) window.__balashovFlush(); } catch (e) {}
+  location.replace(target);
+})();
+</script>
+</body>
+</html>
