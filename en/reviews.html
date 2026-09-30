@@ -6,21 +6,21 @@
 <title>Reviews — Nikolai Balashov, "Shou Balashova"</title>
 <meta name="description" content="Guest reviews of Nikolai Balashov's performances — leave one or read others.">
 <link rel="icon" type="image/png" href="../Brand/favicon-32.png">
-<link rel="canonical" href="https://balashov-show.ru/en/reviews.html">
-<link rel="alternate" hreflang="ru" href="https://balashov-show.ru/reviews.html">
-<link rel="alternate" hreflang="en" href="https://balashov-show.ru/en/reviews.html">
-<link rel="alternate" hreflang="x-default" href="https://balashov-show.ru/reviews.html">
+<link rel="canonical" href="https://show-balashov.ru/en/reviews.html">
+<link rel="alternate" hreflang="ru" href="https://show-balashov.ru/reviews.html">
+<link rel="alternate" hreflang="en" href="https://show-balashov.ru/en/reviews.html">
+<link rel="alternate" hreflang="x-default" href="https://show-balashov.ru/reviews.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Shou Balashova">
 <meta property="og:title" content="Reviews — Nikolai Balashov">
 <meta property="og:description" content="Guest reviews of Nikolai Balashov's performances.">
-<meta property="og:url" content="https://balashov-show.ru/en/reviews.html">
-<meta property="og:image" content="https://balashov-show.ru/Brand/og-image.png">
+<meta property="og:url" content="https://show-balashov.ru/en/reviews.html">
+<meta property="og:image" content="https://show-balashov.ru/Brand/og-image.png">
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Reviews — Nikolai Balashov">
 <meta name="twitter:description" content="Guest reviews of Nikolai Balashov's performances.">
-<meta name="twitter:image" content="https://balashov-show.ru/Brand/og-image.png">
+<meta name="twitter:image" content="https://show-balashov.ru/Brand/og-image.png">
 <link rel="manifest" href="site.webmanifest">
 <link rel="apple-touch-icon" href="../Brand/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -255,9 +255,9 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
 {
   "@context": "https://schema.org",
   "@type": "EntertainmentBusiness",
-  "@id": "https://balashov-show.ru/#business",
+  "@id": "https://show-balashov.ru/#business",
   "name": "Shou Balashova",
-  "url": "https://balashov-show.ru/"
+  "url": "https://show-balashov.ru/"
 }
 </script>
 </head>
@@ -417,7 +417,7 @@ function updateAggregateRatingSchema(reviews) {
     for (const script of scripts) {
       let data;
       try { data = JSON.parse(script.textContent); } catch (e) { continue; }
-      if (data["@id"] !== "https://balashov-show.ru/#business") continue;
+      if (data["@id"] !== "https://show-balashov.ru/#business") continue;
       const sum = reviews.reduce((s, r) => s + (Number(r.rating) || 0), 0);
       const avg = Math.round((sum / reviews.length) * 10) / 10;
       data.aggregateRating = {

@@ -71,17 +71,17 @@ def shell(template_path, title, tag, body_html, current_file):
     # Префикс en/ для английских версий — определяем по шаблону, из
     # которого страница собрана (Site/en/privacy.html -> en/).
     prefix = "en/" if "/en/" in template_path.replace(os.sep, "/") else ""
-    c = re.sub(r'(<link rel="canonical" href="https://balashov-show\.ru/)[^"]*(")',
+    c = re.sub(r'(<link rel="canonical" href="https://show-balashov\.ru/)[^"]*(")',
                rf"\1{prefix}{current_file}\2", c, count=1)
-    c = re.sub(r'(<meta property="og:url" content="https://balashov-show\.ru/)[^"]*(")',
+    c = re.sub(r'(<meta property="og:url" content="https://show-balashov\.ru/)[^"]*(")',
                rf"\1{prefix}{current_file}\2", c, count=1)
 
     # 6. hreflang и переключатель языка — в паке принято, что у каждой
     # страницы есть языковая пара (это проверяет verify_pack.py).
     # Подставляем ссылки на EN-версию этой же страницы.
-    c = re.sub(r'(hreflang="ru" href="https://balashov-show\.ru/)[^"]*(")', rf"\1{current_file}\2", c, count=1)
-    c = re.sub(r'(hreflang="en" href="https://balashov-show\.ru/en/)[^"]*(")', rf"\1{current_file}\2", c, count=1)
-    c = re.sub(r'(hreflang="x-default" href="https://balashov-show\.ru/)[^"]*(")', rf"\1{current_file}\2", c, count=1)
+    c = re.sub(r'(hreflang="ru" href="https://show-balashov\.ru/)[^"]*(")', rf"\1{current_file}\2", c, count=1)
+    c = re.sub(r'(hreflang="en" href="https://show-balashov\.ru/en/)[^"]*(")', rf"\1{current_file}\2", c, count=1)
+    c = re.sub(r'(hreflang="x-default" href="https://show-balashov\.ru/)[^"]*(")', rf"\1{current_file}\2", c, count=1)
     c = re.sub(r'(<a href=")[^"]*(" class="lang-switch">EN</a>)', rf"\1en/{current_file}\2", c, count=1)
     return c
 

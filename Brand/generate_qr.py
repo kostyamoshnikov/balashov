@@ -5,7 +5,7 @@ QR-коды для печатных материалов «Шоу Балашов
 на сайте, на которые эти QR ведут.
 
 КАК УСТРОЕНО С pack-v120
-  QR на бумаге  →  https://balashov-show.ru/qr/<слаг>/   (своя страница)
+  QR на бумаге  →  https://show-balashov.ru/qr/<слаг>/   (своя страница)
                 →  https://vk.ru/show_balashov?utm_source=qr&utm_medium=print&utm_campaign=<носитель>
 
 Раньше QR вёл прямо в группу VK. Когда группу переименовали
@@ -50,7 +50,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 SITE_DIR = os.path.normpath(os.path.join(HERE, '..'))
 sys.path.insert(0, os.path.normpath(os.path.join(HERE, '..', '..', '_tools', 'DesignSystem')))
 
-SITE_URL = 'https://balashov-show.ru'
+SITE_URL = 'https://show-balashov.ru'
 VK_URL = 'https://vk.ru/show_balashov'
 
 # Носитель → слаг страницы, файл картинки, подпись. Единственный
@@ -116,7 +116,7 @@ a{{color:#FDD945}}
   <h1>Открываем группу «Шоу Балашова» во ВКонтакте…</h1>
   <p>Если ничего не произошло — нажмите кнопку.</p>
   <p><a class="go" href="{t_attr}">Перейти в группу VK</a></p>
-  <p class="small">Сайт артиста: <a href="../../index.html">balashov-show.ru</a> · <span lang="en">Opening VK…</span></p>
+  <p class="small">Сайт артиста: <a href="../../index.html">show-balashov.ru</a> · <span lang="en">Opening VK…</span></p>
 </main>
 <!-- Своя статистика: просмотр этой страницы = переход по QR с носителя
      «{html.escape(p['label'])}» (путь /qr/{p['slug']}/). Пока StatsBot не

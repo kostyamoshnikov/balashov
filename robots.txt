@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://balashov-show.ru/sitemap.xml
+Sitemap: https://show-balashov.ru/sitemap.xml

@@ -30,7 +30,7 @@ import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE_DIR = os.path.abspath(os.path.join(HERE, ".."))
-SITE = "https://balashov-show.ru"
+SITE = "https://show-balashov.ru"
 
 
 def extract_head(path):
@@ -158,19 +158,19 @@ def make_head_ru(head_raw, title, desc, slug, en_slug):
         f'<meta name="description" content="{desc}">'
     )
     h = h.replace(
-        '<link rel="canonical" href="https://balashov-show.ru/gallery.html">',
+        '<link rel="canonical" href="https://show-balashov.ru/gallery.html">',
         f'<link rel="canonical" href="{SITE}/nomera/{slug}.html">'
     )
     h = h.replace(
-        '<link rel="alternate" hreflang="ru" href="https://balashov-show.ru/gallery.html">',
+        '<link rel="alternate" hreflang="ru" href="https://show-balashov.ru/gallery.html">',
         f'<link rel="alternate" hreflang="ru" href="{SITE}/nomera/{slug}.html">'
     )
     h = h.replace(
-        '<link rel="alternate" hreflang="en" href="https://balashov-show.ru/en/gallery.html">',
+        '<link rel="alternate" hreflang="en" href="https://show-balashov.ru/en/gallery.html">',
         f'<link rel="alternate" hreflang="en" href="{SITE}/en/nomera/{en_slug}.html">'
     )
     h = h.replace(
-        '<link rel="alternate" hreflang="x-default" href="https://balashov-show.ru/gallery.html">',
+        '<link rel="alternate" hreflang="x-default" href="https://show-balashov.ru/gallery.html">',
         f'<link rel="alternate" hreflang="x-default" href="{SITE}/nomera/{slug}.html">'
     )
     h = h.replace('<meta property="og:title" content="Галерея — Николай Балашов">', f'<meta property="og:title" content="{title} — Николай Балашов">')
@@ -178,7 +178,7 @@ def make_head_ru(head_raw, title, desc, slug, en_slug):
         '<meta property="og:description" content="Номера: лестница, ходулист, труба-трансформер, гибкие шесты.">',
         f'<meta property="og:description" content="{desc}">'
     )
-    h = h.replace('<meta property="og:url" content="https://balashov-show.ru/gallery.html">', f'<meta property="og:url" content="{SITE}/nomera/{slug}.html">')
+    h = h.replace('<meta property="og:url" content="https://show-balashov.ru/gallery.html">', f'<meta property="og:url" content="{SITE}/nomera/{slug}.html">')
     h = h.replace('<meta name="twitter:title" content="Галерея — Николай Балашов">', f'<meta name="twitter:title" content="{title} — Николай Балашов">')
     h = h.replace(
         '<meta name="twitter:description" content="Номера: лестница, ходулист, труба-трансформер, гибкие шесты.">',
@@ -332,8 +332,8 @@ def build_ru(head_raw, i, act):
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://balashov-show.ru/"}},
-    {{"@type": "ListItem", "position": 2, "name": "Галерея", "item": "https://balashov-show.ru/gallery.html"}},
+    {{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://show-balashov.ru/"}},
+    {{"@type": "ListItem", "position": 2, "name": "Галерея", "item": "https://show-balashov.ru/gallery.html"}},
     {{"@type": "ListItem", "position": 3, "name": "{act["title"]}"}}
   ]
 }}
@@ -521,19 +521,19 @@ def make_head_en(head_raw, title, desc, slug, ru_slug):
         f'<meta name="description" content="{desc}">'
     )
     h = h.replace(
-        '<link rel="canonical" href="https://balashov-show.ru/en/gallery.html">',
+        '<link rel="canonical" href="https://show-balashov.ru/en/gallery.html">',
         f'<link rel="canonical" href="{SITE}/en/nomera/{slug}.html">'
     )
     h = h.replace(
-        '<link rel="alternate" hreflang="ru" href="https://balashov-show.ru/gallery.html">',
+        '<link rel="alternate" hreflang="ru" href="https://show-balashov.ru/gallery.html">',
         f'<link rel="alternate" hreflang="ru" href="{SITE}/nomera/{ru_slug}.html">'
     )
     h = h.replace(
-        '<link rel="alternate" hreflang="en" href="https://balashov-show.ru/en/gallery.html">',
+        '<link rel="alternate" hreflang="en" href="https://show-balashov.ru/en/gallery.html">',
         f'<link rel="alternate" hreflang="en" href="{SITE}/en/nomera/{slug}.html">'
     )
     h = h.replace(
-        '<link rel="alternate" hreflang="x-default" href="https://balashov-show.ru/gallery.html">',
+        '<link rel="alternate" hreflang="x-default" href="https://show-balashov.ru/gallery.html">',
         f'<link rel="alternate" hreflang="x-default" href="{SITE}/nomera/{ru_slug}.html">'
     )
     h = h.replace('<meta property="og:title" content="Gallery — Nikolai Balashov">', f'<meta property="og:title" content="{title} — Nikolai Balashov">')
@@ -541,7 +541,7 @@ def make_head_en(head_raw, title, desc, slug, ru_slug):
         '<meta property="og:description" content="Acts: ladder, stilt-walker, transforming tube, flexible poles.">',
         f'<meta property="og:description" content="{desc}">'
     )
-    h = h.replace('<meta property="og:url" content="https://balashov-show.ru/en/gallery.html">', f'<meta property="og:url" content="{SITE}/en/nomera/{slug}.html">')
+    h = h.replace('<meta property="og:url" content="https://show-balashov.ru/en/gallery.html">', f'<meta property="og:url" content="{SITE}/en/nomera/{slug}.html">')
     h = h.replace('<meta name="twitter:title" content="Gallery — Nikolai Balashov">', f'<meta name="twitter:title" content="{title} — Nikolai Balashov">')
     h = h.replace(
         '<meta name="twitter:description" content="Acts: ladder, stilt-walker, transforming tube, flexible poles.">',
@@ -629,8 +629,8 @@ def build_en(head_raw, i, act):
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://balashov-show.ru/en/"}},
-    {{"@type": "ListItem", "position": 2, "name": "Gallery", "item": "https://balashov-show.ru/en/gallery.html"}},
+    {{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://show-balashov.ru/en/"}},
+    {{"@type": "ListItem", "position": 2, "name": "Gallery", "item": "https://show-balashov.ru/en/gallery.html"}},
     {{"@type": "ListItem", "position": 3, "name": "{act["title"]}"}}
   ]
 }}
