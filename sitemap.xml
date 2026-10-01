@@ -6,6 +6,7 @@
   <url><loc>https://show-balashov.ru/booking.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://show-balashov.ru/privacy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://show-balashov.ru/cookies.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://show-balashov.ru/consent.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://show-balashov.ru/terms.html</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
   <url><loc>https://show-balashov.ru/en/index.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://show-balashov.ru/en/about.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
@@ -13,6 +14,7 @@
   <url><loc>https://show-balashov.ru/en/booking.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://show-balashov.ru/en/privacy.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
   <url><loc>https://show-balashov.ru/en/cookies.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://show-balashov.ru/en/consent.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
   <url><loc>https://show-balashov.ru/en/terms.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://show-balashov.ru/en/media.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
   <url><loc>https://show-balashov.ru/media.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>

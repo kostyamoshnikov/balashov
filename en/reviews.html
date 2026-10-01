@@ -250,6 +250,11 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
 .form-note{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);margin-top:12px;text-align:center}
 .honeypot{position:absolute;left:-9999px;opacity:0;pointer-events:none}
 
+.rv-scope{border:1px solid rgba(253,217,69,.2);border-radius:12px;padding:12px 14px;margin:4px 0 12px}
+.rv-scope legend{font-family:'Space Mono';font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding:0 6px}
+.rv-opt{display:flex;align-items:flex-start;gap:8px;font-family:'Public Sans',sans-serif;font-size:14px;font-weight:400;text-transform:none;letter-spacing:normal;color:var(--cream-soft);margin:8px 0;cursor:pointer}
+.rv-opt input{width:auto;margin-top:3px;flex-shrink:0}
+.review-card .noquote{font-size:12px;color:var(--cream-soft);opacity:.8;margin-top:6px;font-style:italic}
 </style>
 <script type="application/ld+json">
 {
@@ -260,6 +265,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   "url": "https://show-balashov.ru/"
 }
 </script>
+<link rel="stylesheet" href="../site-mobile.css">
 </head>
 <body>
 
@@ -273,11 +279,13 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="../reviews.html" class="lang-switch">RU</a>
 </nav>
+<script src="../nav.js"></script>
 
 <div class="page-hero">
   <div class="badge-glow"><img src="../Brand/logo-shou-balashova-web.jpg" alt="Shou Balashova"></div>
   <h1 data-editable="reviews_h1_en">Reviews</h1>
   <p class="tag" data-editable="reviews_tag_en">What guests say about the shows</p>
+  <div class="cta-row hero-cta"><a class="cta primary" href="booking.html#bookingForm" data-track="hero_cta">Book an act</a></div>
 </div>
 
 <div class="marquee"></div>
@@ -337,13 +345,23 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
         <label for="rtext">Review</label>
         <textarea id="rtext" required minlength="10" maxlength="1000" autocomplete="off" placeholder="What did you like, which act stood out..."></textarea>
       </div>
+      <!-- pack-v125: автор сам задаёт условия распространения (ст. 10.1
+           152-ФЗ, приказ РКН № 18). Подмена имени — на бэкенде
+           (Code.gs publishedReviews), не в браузере. -->
+      <fieldset class="field rv-scope">
+        <legend>How to publish your review</legend>
+        <label class="rv-opt"><input type="radio" name="name_scope" value="name" checked> under my name</label>
+        <label class="rv-opt"><input type="radio" name="name_scope" value="alias"> under a pseudonym</label>
+        <label class="rv-opt"><input type="radio" name="name_scope" value="anon"> without a name — signed “Guest”</label>
+        <label class="rv-opt"><input type="checkbox" id="noQuote"> Do not use my review outside this website (social media, posters, newsletters)</label>
+      </fieldset>
       <div class="field" style="display:flex;align-items:flex-start;gap:8px;flex-direction:row">
         <input type="checkbox" id="publishConsent" required style="width:auto;margin-top:3px;flex-shrink:0">
-        <label for="publishConsent" style="font-size:14px;font-weight:400;text-transform:none;font-family:'Public Sans',sans-serif;letter-spacing:normal;color:var(--cream-soft)">I consent to publishing my review on this website</label>
+        <label for="publishConsent" style="font-size:14px;font-weight:400;text-transform:none;font-family:'Public Sans',sans-serif;letter-spacing:normal;color:var(--cream-soft)">I consent to publishing my review on this website (<a href="consent.html#reviews" target="_blank" style="color:var(--gold)">consent text</a>)</label>
       </div>
       <div class="field" style="display:flex;align-items:flex-start;gap:8px;flex-direction:row">
         <input type="checkbox" id="reviewConsent" required style="width:auto;margin-top:3px;flex-shrink:0">
-        <label for="reviewConsent" style="font-size:14px;font-weight:400;text-transform:none;font-family:'Public Sans',sans-serif;letter-spacing:normal;color:var(--cream-soft)">I consent to the processing of my personal data under the <a href="privacy.html" target="_blank" style="color:var(--gold)">privacy policy</a></label>
+        <label for="reviewConsent" style="font-size:14px;font-weight:400;text-transform:none;font-family:'Public Sans',sans-serif;letter-spacing:normal;color:var(--cream-soft)">I consent to the processing of my personal data (<a href="consent.html#processing" target="_blank" style="color:var(--gold)">consent text</a>)</label>
       </div>
       <button type="submit" class="submit-btn">Submit review</button>
       <p class="form-note" id="formStatus">Reviews are published right after passing the spam filter — usually instantly.</p>
@@ -353,6 +371,11 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
 
 <div class="marquee"></div>
 
+<section class="end-cta">
+  <div class="wrap">
+    <div class="cta-row"><a class="cta primary" href="booking.html#bookingForm" data-track="end_cta">Book an act</a></div>
+  </div>
+</section>
 <footer>
   <div class="inner">
     <div class="badge-glow"><img src="../Brand/logo-shou-balashova-web.jpg" alt="Shou Balashova"></div>
@@ -368,7 +391,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
     <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Telegram bot</a>
     -->
     <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
-    <p class="foot-note"><a href="privacy.html">Privacy Policy</a> · <a href="cookies.html">Cookies</a></p>
+    <p class="foot-note"><a href="privacy.html">Privacy Policy</a> · <a href="cookies.html">Cookies</a> · <a href="consent.html">Data processing consent</a></p>
     <p class="foot-note">© Nikolai Balashov</p>
   </div>
 </footer>
@@ -396,10 +419,11 @@ function renderReviews(list) {
   el.innerHTML = list.map(r => `
     <div class="review-card">
       <div class="stars">${starsHtml(r.rating || 5)}</div>
-      <div class="name">${escapeHtml(r.name)}</div>
+      <div class="name">${r.anon ? "Guest" : escapeHtml(r.name)}</div>
       <div class="event">${escapeHtml(r.event || "")}</div>
       <div class="text">${escapeHtml(r.text)}</div>
       <div class="date">${r.date || ""}</div>
+      ${r.noQuote ? '<div class="noquote">The author has not allowed this review to be used outside the website</div>' : ""}
     </div>
   `).join("");
   updateAggregateRatingSchema(list);
@@ -442,6 +466,17 @@ fetch(REVIEWS_ENDPOINT + "?action=list")
       .catch(() => renderReviews([]));
   });
 
+// pack-v125: подпись поля имени следует выбору условий публикации
+(function () {
+  const lbl = document.querySelector('label[for="rname"]');
+  const star = lbl.querySelector("span");
+  const T = { name: "Your name", alias: "Pseudonym", anon: "Your name (not published)" };
+  document.querySelectorAll('input[name="name_scope"]').forEach(r => r.addEventListener("change", () => {
+    lbl.textContent = T[r.value] + " ";
+    if (star) lbl.appendChild(star);
+  }));
+})();
+
 // звёздный рейтинг в форме
 let selectedRating = 0;
 const stars = document.querySelectorAll("#starInput span");
@@ -467,6 +502,8 @@ document.getElementById("reviewForm").addEventListener("submit", function (e) {
     rating: selectedRating,
     text: document.getElementById("rtext").value,
     website: document.querySelector('input[name="website"]').value, // honeypot
+    name_scope: (document.querySelector('input[name="name_scope"]:checked') || {}).value || "name",
+    no_quote: document.getElementById("noQuote").checked,
   };
   status.textContent = "Sending…";
   fetch(REVIEWS_ENDPOINT, {

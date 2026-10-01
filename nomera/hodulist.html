@@ -241,6 +241,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
 .note{max-width:100%;margin:0 auto 26px;background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:14px;padding:14px 18px;font-family:'Space Mono';font-size:14px;color:var(--cream-soft);text-align:center}
 
 </style>
+<link rel="stylesheet" href="../site-mobile.css">
 <style>
 /* Хлебные крошки. Текущая страница — не ссылка (кликать на то, где
    уже находишься, бессмысленно), поэтому обычный span вместо ссылки. */
@@ -267,7 +268,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
 
 <nav class="site-nav">
   <a href="../index.html">Главная</a>
-  <a href="../about.html">О нём</a>
+  <a href="../about.html">О нём</a>
   <a href="../gallery.html">Галерея</a>
   <a href="../media.html">Медиа</a>
   <a href="../reviews.html">Отзывы</a>
@@ -275,6 +276,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="../en/nomera/stilt-walker.html" class="lang-switch">EN</a>
 </nav>
+<script src="../nav.js"></script>
 
 <!-- Хлебные крошки: со страницы номера должно быть видно, что она
      часть галереи, а не отдельный «остров». Микроразметка
@@ -301,9 +303,11 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
 
 <div class="page-hero">
   <div class="badge-glow"><img src="../Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
-  <p class="mono" style="color:var(--gold);letter-spacing:.2em;font-size:12px;margin-bottom:6px">НОМЕР 02 · В ЛЮБОМ ОБРАЗЕ</p>
+  <p class="mono" style="color:var(--gold);letter-spacing:.2em;font-size:12px;margin-bottom:6px">НОМЕР 02 · В ЛЮБОМ ОБРАЗЕ</p>
   <h1>Ходулист</h1>
-  <p class="tag">Сказочные, скоморошьи и тематические костюмы под любой праздник</p>
+  <p class="tag">Сказочные, скоморошьи и тематические костюмы под любой праздник</p>
+  <!-- pack-v123: кнопка на первом экране; ?act= подставляет номер в форму (acts.js) -->
+  <div class="cta-row hero-cta"><a class="cta primary" href="../booking.html?act=hodulist#bookingForm" data-track="hero_cta:hodulist">Заказать этот номер</a></div>
 </div>
 
 <div class="marquee"></div>
@@ -324,7 +328,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
                 <circle cx="60" cy="6" r="5" fill="#FDD945"/>
               </svg>
             </div>
-            <p class="note" style="margin-top:12px">Фото номера скоро появится в галерее.</p>
+            <p class="note" style="margin-top:12px">Фото номера скоро появится в галерее.</p>
     </div>
 
     <div class="stat-row">
@@ -333,14 +337,14 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
     </div>
 
     <div class="body-copy">
-      <p>Разные образы под тематику события: сказочные и скоморошьи костюмы, тематические персонажи — для детского праздника, свадьбы, открытия ТЦ или городского события. Есть и строгий вариант — чёрный и белый фраки, классика для тематического вечера.</p>
-      <p>Живой интерактив с гостями прямо в толпе — фотографии, шутки, вовлечение зрителей любого возраста.</p>
-      <p>Для номера на ходулях с элементами открытого огня требуется отдельное согласование с площадкой.</p>
+      <p>Разные образы под тематику события: сказочные и скоморошьи костюмы, тематические персонажи — для детского праздника, свадьбы, открытия ТЦ или городского события. Есть и строгий вариант — чёрный и белый фраки, классика для тематического вечера.</p>
+      <p>Живой интерактив с гостями прямо в толпе — фотографии, шутки, вовлечение зрителей любого возраста.</p>
+      <p>Для номера на ходулях с элементами открытого огня требуется отдельное согласование с площадкой.</p>
     </div>
 
     <div class="note" style="margin-top:26px;text-align:left">
       <b style="color:var(--cream);display:block;margin-bottom:6px;font-family:'Public Sans'">Технический райдер · кратко</b>
-      Высота потолка/навеса от 4,5 м. Для варианта с открытым огнём — разрешение и место, согласуется отдельно с площадкой.
+      Высота потолка/навеса от 4,5 м. Для варианта с открытым огнём — разрешение и место, согласуется отдельно с площадкой.
     </div>
 
     <div class="cta-row" style="margin-top:26px">
@@ -362,14 +366,14 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
         <div class="act c2">
           <div class="num">01</div>
           <p class="kind">← Предыдущий</p>
-          <h3>Жонглёр на вольностоящей лестнице</h3>
+          <h3>Жонглёр на вольностоящей лестнице</h3>
         </div>
       </a>
       <a href="truba-transformer.html" style="text-decoration:none;flex:1 1 45%">
         <div class="act c3">
           <div class="num">03</div>
           <p class="kind">Следующий →</p>
-          <h3>Труба-трансформер и Человек-пружинка</h3>
+          <h3>Труба-трансформер и Человек-пружинка</h3>
         </div>
       </a>
     </div>
@@ -382,18 +386,18 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   <div class="inner">
     <div class="badge-glow"><img src="../Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
     <span class="ribbon">Booking</span>
-    <h2 class="serif">Позвать Николая на площадку</h2>
-    <p class="tag">Дни рождения, свадьбы, корпоративы, городские праздники — выступления по всей России.</p>
+    <h2 class="serif">Позвать Николая на площадку</h2>
+    <p class="tag">Дни рождения, свадьбы, корпоративы, городские праздники — выступления по всей России.</p>
     <div class="cta-row">
-      <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
-      <a class="cta ghost" href="../booking.html#bookingForm">Условия и заявка</a>
+      <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
+      <a class="cta ghost" href="../booking.html#bookingForm">Условия и заявка</a>
     </div>
     <!-- Бот Telegram — раскомментировать и вписать @username после
          деплоя _tools/BookingBot (см. README.md, раздел 5)
     <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Бот в Telegram</a>
     -->
     <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
-    <p class="foot-note"><a href="../privacy.html">Политика конфиденциальности</a></p>
+    <p class="foot-note"><a href="../privacy.html">Политика конфиденциальности</a> · <a href="../consent.html">Согласие на обработку данных</a></p>
     <p class="foot-note">© Николай Балашов</p>
   </div>
 </footer>

@@ -241,12 +241,13 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
 .note{max-width:100%;margin:0 auto 26px;background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:14px;padding:14px 18px;font-family:'Space Mono';font-size:14px;color:var(--cream-soft);text-align:center}
 
 </style>
+<link rel="stylesheet" href="site-mobile.css">
 </head>
 <body>
 
 <nav class="site-nav">
   <a href="index.html">Главная</a>
-  <a href="about.html">О нём</a>
+  <a href="about.html">О нём</a>
   <a href="gallery.html" class="current">Галерея</a>
   <a href="media.html">Медиа</a>
   <a href="reviews.html">Отзывы</a>
@@ -254,18 +255,20 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="en/gallery.html" class="lang-switch">EN</a>
 </nav>
+<script src="nav.js"></script>
 
 <div class="page-hero">
   <div class="badge-glow"><img src="Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
   <h1 data-editable="gallery_h1">Галерея</h1>
-  <p class="tag" data-editable="gallery_tag">Пять номеров — один принцип: баланс над землёй</p>
+  <p class="tag" data-editable="gallery_tag">Пять номеров — один принцип: баланс над землёй</p>
+  <div class="cta-row hero-cta"><a class="cta primary" href="booking.html#bookingForm" data-track="hero_cta">Заказать номер</a></div>
 </div>
 
 <div class="marquee"></div>
 
 <section>
   <div class="wrap">
-    <p class="note">Настоящие фото с площадок — вся Россия, разные годы и форматы.</p>
+    <p class="note">Настоящие фото с площадок — вся Россия, разные годы и форматы.</p>
 
     <div class="gallery">
       <div class="g-grid">
@@ -278,8 +281,8 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
           </div>
           <div class="g-body">
             <p class="kind">01 · эквилибристика</p>
-            <h3>Жонглёр на вольностоящей лестнице</h3>
-            <p>Только баланс артиста, без страховки и опоры.</p>
+            <h3>Жонглёр на вольностоящей лестнице</h3>
+            <p>Только баланс артиста, без страховки и опоры.</p>
           
             <a class="g-more" href="nomera/lestnitsa.html">Подробнее →</a>
           </div>
@@ -301,8 +304,8 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
           </div>
           <div class="g-body">
             <p class="kind">02 · ходулист</p>
-            <h3>Артист на ходулях</h3>
-            <p>Сказочные и тематические образы под праздник. Фото скоро.</p>
+            <h3>Артист на ходулях</h3>
+            <p>Сказочные и тематические образы под праздник. Фото скоро.</p>
           
             <a class="g-more" href="nomera/hodulist.html">Подробнее →</a>
           </div>
@@ -316,8 +319,8 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
           </div>
           <div class="g-body">
             <p class="kind">03 · интерактив</p>
-            <h3>Труба-трансформер и Человек-пружинка</h3>
-            <p>6 разных цветов трубы. «Съедает» гостя из зала целиком — хит на сцене и на улице.</p>
+            <h3>Труба-трансформер и Человек-пружинка</h3>
+            <p>6 разных цветов трубы. «Съедает» гостя из зала целиком — хит на сцене и на улице.</p>
           
             <a class="g-more" href="nomera/truba-transformer.html">Подробнее →</a>
           </div>
@@ -330,7 +333,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
           <div class="g-body">
             <p class="kind">04 · редкий жанр</p>
             <h3>Гибкие шесты</h3>
-            <p>Жанр всего 3–4 театров в мире. Высота 6 м, работает круглый год.</p>
+            <p>Жанр всего 3–4 театров в мире. Высота 6 м, работает круглый год.</p>
           
             <a class="g-more" href="nomera/shesty.html">Подробнее →</a>
           </div>
@@ -341,9 +344,9 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
             <img src="Photos/web/turnik-1.jpg" alt="Турник на приз — интерактив с залом" loading="lazy" style="object-position:top">
           </div>
           <div class="g-body">
-            <p class="kind">05 · дополнение к номеру</p>
-            <h3>Турник на приз</h3>
-            <p>Кто дольше провисит — получает приз. Добавляется к любому формату.</p>
+            <p class="kind">05 · дополнение к номеру</p>
+            <h3>Турник на приз</h3>
+            <p>Кто дольше провисит — получает приз. Добавляется к любому формату.</p>
           
             <a class="g-more" href="nomera/turnik.html">Подробнее →</a>
           </div>
@@ -356,22 +359,27 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
 
 <div class="marquee"></div>
 
+<section class="end-cta">
+  <div class="wrap">
+    <div class="cta-row"><a class="cta primary" href="booking.html#bookingForm" data-track="end_cta">Заказать номер</a></div>
+  </div>
+</section>
 <footer>
   <div class="inner">
     <div class="badge-glow"><img src="Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
     <span class="ribbon">Booking</span>
-    <h2 class="serif">Позвать Николая на площадку</h2>
-    <p class="tag" data-editable="footer_tag">Дни рождения, свадьбы, корпоративы, городские праздники — по всей России и за рубежом.</p>
+    <h2 class="serif">Позвать Николая на площадку</h2>
+    <p class="tag" data-editable="footer_tag">Дни рождения, свадьбы, корпоративы, городские праздники — по всей России и за рубежом.</p>
     <div class="cta-row">
-      <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
-      <a class="cta ghost" href="booking.html#bookingForm">Условия и заявка</a>
+      <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
+      <a class="cta ghost" href="booking.html#bookingForm">Условия и заявка</a>
     </div>
     <!-- Бот Telegram — раскомментировать и вписать @username после
          деплоя _tools/BookingBot (см. README.md, раздел 5)
     <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Бот в Telegram</a>
     -->
     <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
-    <p class="foot-note"><a href="privacy.html">Политика конфиденциальности</a> · <a href="cookies.html">Файлы cookie</a></p>
+    <p class="foot-note"><a href="privacy.html">Политика конфиденциальности</a> · <a href="cookies.html">Файлы cookie</a> · <a href="consent.html">Согласие на обработку данных</a></p>
     <p class="foot-note">© Николай Балашов</p>
   </div>
 </footer>

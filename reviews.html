@@ -250,6 +250,11 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
 .form-note{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);margin-top:12px;text-align:center}
 .honeypot{position:absolute;left:-9999px;opacity:0;pointer-events:none}
 
+.rv-scope{border:1px solid rgba(253,217,69,.2);border-radius:12px;padding:12px 14px;margin:4px 0 12px}
+.rv-scope legend{font-family:'Space Mono';font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding:0 6px}
+.rv-opt{display:flex;align-items:flex-start;gap:8px;font-family:'Public Sans',sans-serif;font-size:14px;font-weight:400;text-transform:none;letter-spacing:normal;color:var(--cream-soft);margin:8px 0;cursor:pointer}
+.rv-opt input{width:auto;margin-top:3px;flex-shrink:0}
+.review-card .noquote{font-size:12px;color:var(--cream-soft);opacity:.8;margin-top:6px;font-style:italic}
 </style>
 <script type="application/ld+json">
 {
@@ -260,12 +265,13 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   "url": "https://show-balashov.ru/"
 }
 </script>
+<link rel="stylesheet" href="site-mobile.css">
 </head>
 <body>
 
 <nav class="site-nav">
   <a href="index.html">Главная</a>
-  <a href="about.html">О нём</a>
+  <a href="about.html">О нём</a>
   <a href="gallery.html">Галерея</a>
   <a href="media.html">Медиа</a>
   <a href="reviews.html" class="current">Отзывы</a>
@@ -273,11 +279,13 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="en/reviews.html" class="lang-switch">EN</a>
 </nav>
+<script src="nav.js"></script>
 
 <div class="page-hero">
   <div class="badge-glow"><img src="Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
   <h1 data-editable="reviews_h1">Отзывы</h1>
-  <p class="tag" data-editable="reviews_tag">Что говорят гости о выступлениях</p>
+  <p class="tag" data-editable="reviews_tag">Что говорят гости о выступлениях</p>
+  <div class="cta-row hero-cta"><a class="cta primary" href="booking.html#bookingForm" data-track="hero_cta">Заказать номер</a></div>
 </div>
 
 <div class="marquee"></div>
@@ -286,7 +294,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   <div class="wrap">
     <div class="section-head">
       <span class="ribbon">Гости говорят</span>
-      <h2 class="serif">Отзывы с мероприятий</h2>
+      <h2 class="serif">Отзывы с мероприятий</h2>
     </div>
 
     <!-- Начальное содержимое — не «Загрузка…», а осмысленный текст:
@@ -295,7 +303,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
          вечную загрузку. Скрипт ниже заменяет этот блок, только когда
          реально получил список отзывов. -->
     <div id="reviewsList">
-      <div class="empty-state"><p>Отзывов пока нет — станьте первым, кто расскажет о выступлении.</p></div>
+      <div class="empty-state"><p>Отзывов пока нет — станьте первым, кто расскажет о выступлении.</p></div>
     </div>
   </div>
 </section>
@@ -306,8 +314,8 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   <div class="wrap">
     <div class="section-head">
       <span class="ribbon">Ваш отзыв</span>
-      <h2 class="serif">Были на выступлении?</h2>
-      <p class="sub">Расскажите, как прошло — отзыв публикуется сразу.</p>
+      <h2 class="serif">Были на выступлении?</h2>
+      <p class="sub">Расскажите, как прошло — отзыв публикуется сразу.</p>
     </div>
 
     <form class="form-card" id="reviewForm">
@@ -338,38 +346,53 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
         <textarea id="rtext" required minlength="10" maxlength="1000" autocomplete="off" placeholder="Что понравилось, какой номер запомнился..."></textarea>
       </div>
       <p style="font-size:14px;color:var(--cream-soft);margin:-4px 0 4px">* обязательные поля</p>
+      <!-- pack-v125: автор сам задаёт условия распространения (ст. 10.1
+           152-ФЗ, приказ РКН № 18). Подмена имени — на бэкенде
+           (Code.gs publishedReviews), не в браузере. -->
+      <fieldset class="field rv-scope">
+        <legend>Как опубликовать отзыв</legend>
+        <label class="rv-opt"><input type="radio" name="name_scope" value="name" checked> под моим именем</label>
+        <label class="rv-opt"><input type="radio" name="name_scope" value="alias"> под псевдонимом</label>
+        <label class="rv-opt"><input type="radio" name="name_scope" value="anon"> без имени — подпись «Гость»</label>
+        <label class="rv-opt"><input type="checkbox" id="noQuote"> Не использовать мой отзыв за пределами сайта (соцсети, афиши, рассылки)</label>
+      </fieldset>
       <div class="field" style="display:flex;align-items:flex-start;gap:8px;flex-direction:row">
         <input type="checkbox" id="publishConsent" required style="width:auto;margin-top:3px;flex-shrink:0">
-        <label for="publishConsent" style="font-size:14px;font-weight:400;text-transform:none;font-family:'Public Sans',sans-serif;letter-spacing:normal;color:var(--cream-soft)">Согласен(на) на публикацию отзыва на сайте</label>
+        <label for="publishConsent" style="font-size:14px;font-weight:400;text-transform:none;font-family:'Public Sans',sans-serif;letter-spacing:normal;color:var(--cream-soft)">Согласен(на) на публикацию отзыва на сайте (<a href="consent.html#reviews" target="_blank" style="color:var(--gold)">текст согласия</a>)</label>
       </div>
       <div class="field" style="display:flex;align-items:flex-start;gap:8px;flex-direction:row">
         <input type="checkbox" id="reviewConsent" required style="width:auto;margin-top:3px;flex-shrink:0">
-        <label for="reviewConsent" style="font-size:14px;font-weight:400;text-transform:none;font-family:'Public Sans',sans-serif;letter-spacing:normal;color:var(--cream-soft)">Согласен(на) на обработку персональных данных согласно <a href="privacy.html" target="_blank" style="color:var(--gold)">политике конфиденциальности</a></label>
+        <label for="reviewConsent" style="font-size:14px;font-weight:400;text-transform:none;font-family:'Public Sans',sans-serif;letter-spacing:normal;color:var(--cream-soft)">Согласен(на) на обработку персональных данных (<a href="consent.html#processing" target="_blank" style="color:var(--gold)">текст согласия</a>)</label>
       </div>
       <button type="submit" class="submit-btn">Отправить отзыв</button>
-      <p class="form-note" id="formStatus">Отзыв публикуется сразу после проверки спам-фильтром — обычно мгновенно.</p>
+      <p class="form-note" id="formStatus">Отзыв публикуется сразу после проверки спам-фильтром — обычно мгновенно.</p>
     </form>
   </div>
 </section>
 
 <div class="marquee"></div>
 
+<section class="end-cta">
+  <div class="wrap">
+    <div class="cta-row"><a class="cta primary" href="booking.html#bookingForm" data-track="end_cta">Заказать номер</a></div>
+  </div>
+</section>
 <footer>
   <div class="inner">
     <div class="badge-glow"><img src="Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
     <span class="ribbon">Booking</span>
-    <h2 class="serif">Позвать Николая на площадку</h2>
-    <p class="tag" data-editable="footer_tag">Дни рождения, свадьбы, корпоративы, городские праздники — по всей России и за рубежом.</p>
+    <h2 class="serif">Позвать Николая на площадку</h2>
+    <p class="tag" data-editable="footer_tag">Дни рождения, свадьбы, корпоративы, городские праздники — по всей России и за рубежом.</p>
     <div class="cta-row">
-      <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
-      <a class="cta ghost" href="booking.html#bookingForm">Условия и заявка</a>
+      <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
+      <a class="cta ghost" href="booking.html#bookingForm">Условия и заявка</a>
     </div>
     <!-- Бот Telegram — раскомментировать и вписать @username после
          деплоя _tools/BookingBot (см. README.md, раздел 5)
     <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Бот в Telegram</a>
     -->
     <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
-    <p class="foot-note"><a href="privacy.html">Политика конфиденциальности</a> · <a href="cookies.html">Файлы cookie</a></p>
+    <p class="foot-note"><a href="privacy.html">Политика конфиденциальности</a> · <a href="cookies.html">Файлы cookie</a> · <a href="consent.html">Согласие на обработку данных</a></p>
     <p class="foot-note">© Николай Балашов</p>
   </div>
 </footer>
@@ -401,6 +424,7 @@ function renderReviews(list) {
       <div class="event">${escapeHtml(r.event || "")}</div>
       <div class="text">${escapeHtml(r.text)}</div>
       <div class="date">${r.date || ""}</div>
+      ${r.noQuote ? '<div class="noquote">Автор запретил использовать отзыв за пределами сайта</div>' : ""}
     </div>
   `).join("");
   updateAggregateRatingSchema(list);
@@ -449,6 +473,17 @@ fetch(REVIEWS_ENDPOINT + "?action=list")
       .catch(() => renderReviews([]));
   });
 
+// pack-v125: подпись поля имени следует выбору условий публикации
+(function () {
+  const lbl = document.querySelector('label[for="rname"]');
+  const star = lbl.querySelector("span");
+  const T = { name: "Ваше имя", alias: "Псевдоним", anon: "Ваше имя (не публикуется)" };
+  document.querySelectorAll('input[name="name_scope"]').forEach(r => r.addEventListener("change", () => {
+    lbl.textContent = T[r.value] + " ";
+    if (star) lbl.appendChild(star);
+  }));
+})();
+
 // звёздный рейтинг в форме
 let selectedRating = 0;
 const stars = document.querySelectorAll("#starInput span");
@@ -474,6 +509,8 @@ document.getElementById("reviewForm").addEventListener("submit", function (e) {
     rating: selectedRating,
     text: document.getElementById("rtext").value,
     website: document.querySelector('input[name="website"]').value, // honeypot
+    name_scope: (document.querySelector('input[name="name_scope"]:checked') || {}).value || "name",
+    no_quote: document.getElementById("noQuote").checked,
   };
   status.textContent = "Отправляем…";
   fetch(REVIEWS_ENDPOINT, {

@@ -220,6 +220,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
 
 
 </style>
+<link rel="stylesheet" href="../site-mobile.css">
 </head>
 <body>
 
@@ -233,6 +234,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="../privacy.html" class="lang-switch">RU</a>
 </nav>
+<script src="../nav.js"></script>
 
 <div class="page-hero">
   <div class="badge-glow"><img src="../Brand/logo-shou-balashova-web.jpg" alt="Shou Balashova"></div>
@@ -242,66 +244,96 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
 
 <div class="marquee"></div>
 
-<section>
+<section id="operator">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="ribbon">Operator</span>
+      <h2 class="serif">Who is responsible for the data</h2>
+    </div>
+    <div class="body-copy">
+      <p>Version of 1 October 2026.</p>
+      <p>The personal data operator is Nikolai Aleksandrovich Balashov (a private individual). For any question about your data: <a href="mailto:balashov.show.ru@gmail.com">balashov.show.ru@gmail.com</a>, <a href="tel:+79119138374">+7 911 913-83-74</a>.</p>
+      <p>This policy explains in plain language what data is collected, why, who else sees it and how to have it deleted. The consents you give in the forms and bots are on a separate page, <a href="consent.html">Data processing consent</a>.</p>
+    </div>
+  </div>
+</section>
+
+<div class="marquee"></div>
+
+<section class="tinted" id="what">
   <div class="wrap">
     <div class="section-head">
       <span class="ribbon">What we collect</span>
-      <h2 class="serif">Only what booking needs</h2>
+      <h2 class="serif">What, why and where from</h2>
     </div>
     <div class="body-copy">
-      <p>The site, the Telegram bot and the VK group collect data only when you submit an enquiry yourself: your name, event date, format, contact (phone or e-mail) and any details you write.</p>
-      <p>The form on the Booking page drafts an e-mail in your own mail client — sending isn't automatic, and nothing is stored on the site's server. The bots forward your enquiry to the organiser (Nikolai) as a direct message or working chat — data goes nowhere else and isn't stored in any bot database.</p>
-      <p>The site doesn't use tracking cookies and doesn't share data with third parties, except for anonymised visit statistics (Yandex Metrica — see below).</p>
+      <p><b style="color:var(--cream)">An enquiry about a performance.</b> Where from: the form on the Booking page (it composes an e-mail in your own mail app — nothing is sent automatically), the Telegram bot, the VK community bot. What: name, a contact (phone or e-mail), date, format and venue of the event, the text of your message; in the bots — your Telegram or VK user name and ID. Why: to get back to you and arrange the performance. Basis — your <a href="consent.html#processing">consent</a>. Period — as long as needed for the enquiry, but no longer than 3 years after your last contact, or until consent is withdrawn.</p>
+      <p><b style="color:var(--cream)">A review of a performance.</b> Where from: the form on the Reviews page. What: name or pseudonym (a review can also be published without a name), event format, rating, review text. Why: to publish the review on the website — it appears straight after sending. Basis — consent to processing and a separate <a href="consent.html#reviews">consent to publication</a> on the terms you chose in the form. Period — as long as the review is published or until consent is withdrawn.</p>
+      <p><b style="color:var(--cream)">Website and bot statistics.</b> The site's own counter records which pages are opened and where visitors came from (including utm tags in the address), device type, language and clicks on the main buttons. The bot counter records which menu sections are opened. No IP addresses, cookies or persistent visitor identifiers are collected — these statistics cannot tell who you are.</p>
     </div>
   </div>
 </section>
 
 <div class="marquee"></div>
 
-<section class="tinted">
+<section id="services">
   <div class="wrap">
     <div class="section-head">
-      <span class="ribbon">Legal basis</span>
-      <h2 class="serif">Consent, purpose, retention</h2>
+      <span class="ribbon">Who else sees it</span>
+      <h2 class="serif">Services involved</h2>
     </div>
     <div class="body-copy">
-      <p><b style="color:var(--cream)">Legal basis for processing</b> — your consent, given by checking the relevant box when you submit the enquiry form on the Booking page. Without this consent the form doesn't submit.</p>
-      <p><b style="color:var(--cream)">Purpose of processing</b> — one only: to contact you about your booking enquiry (confirm details, agree on date and terms). Data isn't used for newsletters, advertising, or anything you haven't explicitly asked for.</p>
-      <p><b style="color:var(--cream)">Retention period</b> — for as long as needed to handle your enquiry (usually until the event and any related settlement are complete), and no longer than 3 years from your last contact, unless you ask for earlier deletion (see "Your rights" below).</p>
-      <p><b style="color:var(--cream)">Where it's stored</b> — Telegram/VK correspondence is stored on those services' own servers under their terms; booking-form e-mails live in your own mailbox and Nikolai's, under your respective mail providers' terms. There's no separate database on the site's server — the site is static.</p>
+      <p><b style="color:var(--cream)">Google.</b> Enquiries from the bots, reviews and statistics are kept in Nikolai's Google Sheets; e-mails from the Booking form arrive at a Gmail mailbox.</p>
+      <p><b style="color:var(--cream)">Cloudflare.</b> The bots, the review intake and the statistics counter run on Cloudflare servers — data passes through them on its way to the spreadsheet.</p>
+      <p><b style="color:var(--cream)">Telegram and VK.</b> Bot conversations are stored by these services on their own terms.</p>
+      <p><b style="color:var(--cream)">GitHub Pages.</b> Hosting for the website pages. Form data does not pass through it.</p>
+      <p>Data is not sold and is not passed on to third parties for their own purposes, including advertising.</p>
     </div>
   </div>
 </section>
 
 <div class="marquee"></div>
 
-<section class="tinted">
+<section class="tinted" id="stats">
   <div class="wrap">
     <div class="section-head">
       <span class="ribbon">Statistics</span>
-      <h2 class="serif">Yandex Metrica and our own analytics</h2>
+      <h2 class="serif">Counters and cookies</h2>
     </div>
     <div class="body-copy">
-      <p>Yandex Metrica collects anonymised visit statistics (which pages are viewed, referral source) under Yandex's standard rules. The counter doesn't link this data to the name or contact details you leave in the booking form.</p>
-      <p>The site additionally uses its own page-view and key-button-click counter, independent of any external service. It records the page path, event type (pageview or click), the referring domain, device type (mobile/desktop), and page language — enough to understand which pages and buttons are most popular and where traffic comes from.</p>
-      <p>If you arrived via an advertising link with campaign tags (for example, from Yandex Direct — part of the address like <code>utm_source=…</code>), the counter records those too — so we can see which ad campaign actually brings visitors. This isn't a new kind of tracking: the tags are part of the page address already visible in your browser's address bar; we're just reading what's already open. The tags are stored in the same <code>sessionStorage</code> as the session id (see below) — cleared automatically when you close the tab.</p>
-      <p>Events from one visit are tagged with a random string held in the browser's <code>sessionStorage</code>, which <b style="color:var(--cream)">disappears on its own as soon as you close the tab</b> — it exists only so several actions (e.g. "opened an act page → viewed a photo → went to the booking form") can be recognised as one visit rather than several different people. This string doesn't survive closing the tab, doesn't link different visits from the same person, and isn't stored anywhere beyond the visit itself — it isn't the same thing as a persistent cookie identifier that tracks you across visits.</p>
-      <p>IP address, cookies, or any identifier that survives closing the tab are never recorded — the counter can't tell "unique visitors" apart or recognise you on a later visit.</p>
-      <p>You can opt out of both counters at once via your browser settings (blocking JavaScript or using a "Do Not Track" extension).</p>
+      <p>The site's own statistics work without cookies and without IP addresses: they use only the browser tab storage, which is cleared when the tab is closed.</p>
+      <p>Yandex.Metrica has been prepared on the site but is not switched on yet. Before it is switched on, a cookie consent request will appear on the site and this policy and the <a href="cookies.html">Cookies</a> page will be extended.</p>
     </div>
   </div>
 </section>
 
-<section>
+<div class="marquee"></div>
+
+<section id="rights">
   <div class="wrap">
     <div class="section-head">
       <span class="ribbon">Your rights</span>
-      <h2 class="serif">Ask us to check or delete your data</h2>
+      <h2 class="serif">Find out, correct, delete</h2>
     </div>
     <div class="body-copy">
-      <p>Data controller: Nikolai Balashov (private individual).</p>
-      <p>You're entitled at any time to: find out what data is held about you; ask for it to be corrected if wrong; withdraw your consent and ask for full deletion. To use any of these rights, write to <a href="mailto:balashov.show.ru@gmail.com" style="color:var(--gold)">balashov.show.ru@gmail.com</a> or call <a href="tel:+79119138374" style="color:var(--gold)">+7 911 913-83-74</a> — we'll respond within a reasonable time, usually within a few days.</p>
-      <p class="foot-note" style="margin-top:20px;text-align:left;opacity:.75">This page is written in plain language to explain what happens to your data, and isn't a substitute for professional legal advice. If you have concerns about a specific situation, please consult a lawyer.</p>
+      <p>At any time you may find out what data about you is stored; ask for it to be corrected; withdraw consent and ask for the data to be deleted completely; withdraw consent to publication of a review — the review is then taken down.</p>
+      <p>To use any of these rights, write to <a href="mailto:balashov.show.ru@gmail.com">balashov.show.ru@gmail.com</a> or call <a href="tel:+79119138374">+7 911 913-83-74</a>.</p>
+      <p><b style="color:var(--cream)">Time limits.</b> A reply within 10 working days of your request. If more time is needed, this may be extended by no more than 5 working days, with the reason explained. After consent is withdrawn, processing stops and the data is deleted within 30 days unless the law requires keeping it longer.</p>
+      <p>If you believe your data is processed unlawfully, you may complain to Roskomnadzor (the Russian data protection authority) or go to court.</p>
+    </div>
+  </div>
+</section>
+
+<div class="marquee"></div>
+
+<section class="tinted" id="deletion">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="ribbon">Deletion</span>
+      <h2 class="serif">How data is deleted</h2>
+    </div>
+    <div class="body-copy">
+      <p>On request or when the storage period ends, the rows with your data are deleted from the spreadsheets together with the enquiry correspondence; a published review is taken down. We confirm deletion in reply to your request.</p>
     </div>
   </div>
 </section>
@@ -310,6 +342,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
 
 <footer>
   <div class="inner">
+    <p class="foot-note"><a href="cookies.html">Cookies</a> · <a href="consent.html">Data processing consent</a></p>
     <p class="foot-note">© Nikolai Balashov</p>
   </div>
 </footer>

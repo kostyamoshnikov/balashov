@@ -241,6 +241,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
 .note{max-width:100%;margin:0 auto 26px;background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:14px;padding:14px 18px;font-family:'Space Mono';font-size:14px;color:var(--cream-soft);text-align:center}
 
 </style>
+<link rel="stylesheet" href="../site-mobile.css">
 <style>
 /* Хлебные крошки. Текущая страница — не ссылка (кликать на то, где
    уже находишься, бессмысленно), поэтому обычный span вместо ссылки. */
@@ -267,7 +268,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
 
 <nav class="site-nav">
   <a href="../index.html">Главная</a>
-  <a href="../about.html">О нём</a>
+  <a href="../about.html">О нём</a>
   <a href="../gallery.html">Галерея</a>
   <a href="../media.html">Медиа</a>
   <a href="../reviews.html">Отзывы</a>
@@ -275,6 +276,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="../en/nomera/flexible-poles.html" class="lang-switch">EN</a>
 </nav>
+<script src="../nav.js"></script>
 
 <!-- Хлебные крошки: со страницы номера должно быть видно, что она
      часть галереи, а не отдельный «остров». Микроразметка
@@ -303,7 +305,9 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   <div class="badge-glow"><img src="../Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
   <p class="mono" style="color:var(--gold);letter-spacing:.2em;font-size:12px;margin-bottom:6px">НОМЕР 04 · РЕДКИЙ ЖАНР</p>
   <h1>Гибкие шесты</h1>
-  <p class="tag">Редкий жанр — всего 3–4 театра в мире исполняют его сегодня</p>
+  <p class="tag">Редкий жанр — всего 3–4 театра в мире исполняют его сегодня</p>
+  <!-- pack-v123: кнопка на первом экране; ?act= подставляет номер в форму (acts.js) -->
+  <div class="cta-row hero-cta"><a class="cta primary" href="../booking.html?act=shesty#bookingForm" data-track="hero_cta:shesty">Заказать этот номер</a></div>
 </div>
 
 <div class="marquee"></div>
@@ -319,20 +323,20 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
     </div>
 
     <div class="stat-row">
-      <div class="stat"><b>6 м</b><span>высота шеста</span></div>
-      <div class="stat"><b>2,5 м</b><span>гибкость на сторону</span></div>
-      <div class="stat"><b>3–4</b><span>театра в мире</span></div>
+      <div class="stat"><b>6 м</b><span>высота шеста</span></div>
+      <div class="stat"><b>2,5 м</b><span>гибкость на сторону</span></div>
+      <div class="stat"><b>3–4</b><span>театра в мире</span></div>
     </div>
 
     <div class="body-copy">
-      <p>Два шеста высотой 6 метров, гибкость до 2,5 м на сторону, вращение вокруг оси — необычный для России аттракцион.</p>
-      <p>Идею подсмотрели у канадского и австралийского уличного цирка на Дворцовой площади — свой вариант Николай с партнёром дорабатывали целый год. Сегодня этот жанр исполняют всего 3–4 театра в мире.</p>
-      <p>Работает круглый год, в помещении и на улице, с интерактивным шоу для гостей.</p>
+      <p>Два шеста высотой 6 метров, гибкость до 2,5 м на сторону, вращение вокруг оси — необычный для России аттракцион.</p>
+      <p>Идею подсмотрели у канадского и австралийского уличного цирка на Дворцовой площади — свой вариант Николай с партнёром дорабатывали целый год. Сегодня этот жанр исполняют всего 3–4 театра в мире.</p>
+      <p>Работает круглый год, в помещении и на улице, с интерактивным шоу для гостей.</p>
     </div>
 
     <div class="note" style="margin-top:26px;text-align:left">
       <b style="color:var(--cream);display:block;margin-bottom:6px;font-family:'Public Sans'">Технический райдер · кратко</b>
-      Требуется своё оборудование — привозим сами. Работает круглый год, в помещении и на улице.
+      Требуется своё оборудование — привозим сами. Работает круглый год, в помещении и на улице.
     </div>
 
     <div class="cta-row" style="margin-top:26px">
@@ -354,14 +358,14 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
         <div class="act c2">
           <div class="num">03</div>
           <p class="kind">← Предыдущий</p>
-          <h3>Труба-трансформер и Человек-пружинка</h3>
+          <h3>Труба-трансформер и Человек-пружинка</h3>
         </div>
       </a>
       <a href="turnik.html" style="text-decoration:none;flex:1 1 45%">
         <div class="act c3">
           <div class="num">05</div>
           <p class="kind">Следующий →</p>
-          <h3>Турник на приз</h3>
+          <h3>Турник на приз</h3>
         </div>
       </a>
     </div>
@@ -403,18 +407,18 @@ document.addEventListener('keydown', function(e) {
   <div class="inner">
     <div class="badge-glow"><img src="../Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова"></div>
     <span class="ribbon">Booking</span>
-    <h2 class="serif">Позвать Николая на площадку</h2>
-    <p class="tag">Дни рождения, свадьбы, корпоративы, городские праздники — выступления по всей России.</p>
+    <h2 class="serif">Позвать Николая на площадку</h2>
+    <p class="tag">Дни рождения, свадьбы, корпоративы, городские праздники — выступления по всей России.</p>
     <div class="cta-row">
-      <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
-      <a class="cta ghost" href="../booking.html#bookingForm">Условия и заявка</a>
+      <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
+      <a class="cta ghost" href="../booking.html#bookingForm">Условия и заявка</a>
     </div>
     <!-- Бот Telegram — раскомментировать и вписать @username после
          деплоя _tools/BookingBot (см. README.md, раздел 5)
     <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Бот в Telegram</a>
     -->
     <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
-    <p class="foot-note"><a href="../privacy.html">Политика конфиденциальности</a></p>
+    <p class="foot-note"><a href="../privacy.html">Политика конфиденциальности</a> · <a href="../consent.html">Согласие на обработку данных</a></p>
     <p class="foot-note">© Николай Балашов</p>
   </div>
 </footer>

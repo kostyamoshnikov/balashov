@@ -1,0 +1,67 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Шапка и первый экран на телефоне — pack-v123 (ТЗ, задача 6).
+   Общий файл для всех страниц сайта: стили страниц встроены в каждую
+   (<style>), но эта часть одинаковая везде, поэтому лежит одна, а не
+   в 29 копиях. Подключается ПОСЛЕ встроенного <style> — поэтому при
+   равной специфичности побеждает. Пара — Site/nav.js.
+   Идея — AELITA pack-v510 (кнопка на первом экране) и v538 (кнопки
+   шапки вылезали из контейнера).
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* «VK» и «EN» были растянуты на высоту строки меню с текстом у верхнего
+   края: .site-nav — flex с align-items:stretch, а на touch-устройствах
+   соседние пункты получают padding-top:19px (область нажатия), строка
+   становится высотой 41px, овалы тянутся вместе с ней. */
+.site-nav { align-items: center }
+.site-nav a.vk-link,
+.site-nav a.lang-switch { display: inline-flex; align-items: center; justify-content: center; line-height: 1 }
+@media (pointer: coarse) {
+  .site-nav a.vk-link,
+  .site-nav a.lang-switch { min-height: 44px; min-width: 44px; padding: 0 14px }
+}
+
+/* Кнопка «Меню» есть только при работающем JS (её вставляет nav.js и
+   ставит класс .js на <html>). Без JS меню остаётся как было — раскрытым,
+   все пункты видны. */
+.nav-toggle { display: none }
+
+@media (max-width: 720px) {
+  html.js .site-nav { flex-wrap: wrap; justify-content: flex-start; gap: 6px 10px; padding: 6px 16px }
+  html.js .nav-toggle {
+    display: inline-flex; align-items: center; gap: 10px; order: -1;
+    min-height: 44px; padding: 0 6px 0 0; background: none; border: 0; cursor: pointer;
+    color: var(--cream); font: inherit; letter-spacing: inherit; text-transform: inherit;
+  }
+  html.js .nav-toggle-icon,
+  html.js .nav-toggle-icon::before,
+  html.js .nav-toggle-icon::after { display: block; width: 18px; height: 2px; background: var(--gold); border-radius: 1px }
+  html.js .nav-toggle-icon { position: relative }
+  html.js .nav-toggle-icon::before,
+  html.js .nav-toggle-icon::after { content: ""; position: absolute; left: 0 }
+  html.js .nav-toggle-icon::before { top: -6px }
+  html.js .nav-toggle-icon::after { top: 6px }
+  html.js .site-nav.open .nav-toggle-icon { background: transparent }
+  html.js .site-nav.open .nav-toggle-icon::before { top: 0; transform: rotate(45deg) }
+  html.js .site-nav.open .nav-toggle-icon::after { top: 0; transform: rotate(-45deg) }
+  html.js .site-nav a.vk-link { margin-left: auto }
+  /* разделы прячутся, VK и EN остаются в строке */
+  html.js .site-nav > a:not(.vk-link):not(.lang-switch) { display: none }
+  html.js .site-nav.open > a:not(.vk-link):not(.lang-switch) {
+    display: block; order: 5; width: 100%; padding: 12px 4px;
+    border-bottom: 1px solid rgba(253, 217, 69, .12);
+  }
+  html.js .site-nav.open > a.current { border-bottom-color: var(--gold) }
+
+  /* первый экран главной: логотип меньше, отступ сверху меньше — чтобы
+     кнопка «Заказать номер» поместилась в 640px вместе со шапкой */
+  header { padding-top: 24px }
+  /* !important — потому что en/index.html задаёт размер логотипа
+     встроенным style="width:168px…", а его иначе не перебить */
+  header .badge-glow { width: 112px !important; height: 112px !important; margin-bottom: 14px !important }
+  .page-hero { padding-top: 24px }
+}
+
+/* кнопки первого экрана */
+.hero-cta { margin-top: 20px; position: relative; z-index: 1 }
+.end-cta { text-align: center }
+.end-cta .cta-row { margin-top: 0 }

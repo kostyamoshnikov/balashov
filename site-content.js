@@ -14,6 +14,15 @@
 (function () {
   var CONTENT_ENDPOINT = "https://balashov-admin.YOUR-SUBDOMAIN.workers.dev/content"; // TODO: заменить после деплоя (см. _tools/AdminPanel/README.md)
 
+  // pack-v124: неразрывные пробелы в русских текстах из редактора.
+  // Статический текст страниц их получает при выкладке
+  // (_tools/SiteDeploy/prepare_release.py → typography.py), а текст из
+  // AdminPanel приходит уже в браузере, мимо выкладки. Здесь — только
+  // главное правило: короткий предлог/союз не остаётся в конце строки.
+  var ru = (document.documentElement.lang || "").toLowerCase().indexOf("ru") === 0;
+  var SHORT = /(^|[\s(«"])(в|к|с|о|у|и|а|я|на|по|за|от|до|из|не|ни|об|во|со|ко|но) (?=\S)/gi;
+  function nbsp(t) { return t.replace(SHORT, function (m) { return m.slice(0, -1) + "\u00a0"; }).replace(SHORT, function (m) { return m.slice(0, -1) + "\u00a0"; }); }
+
   fetch(CONTENT_ENDPOINT)
     .then(function (r) { return r.json(); })
     .then(function (content) {
@@ -24,7 +33,7 @@
         // кто-то в редакторе намеренно стёр текст и сохранил пусто,
         // это уважаемое решение, а не сигнал откатиться на дефолт.
         if (typeof value === "string") {
-          el.textContent = value;
+          el.textContent = ru ? nbsp(value) : value;
         }
       });
     })

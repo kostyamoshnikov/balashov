@@ -241,6 +241,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
 .note{max-width:100%;margin:0 auto 26px;background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:14px;padding:14px 18px;font-family:'Space Mono';font-size:14px;color:var(--cream-soft);text-align:center}
 
 </style>
+<link rel="stylesheet" href="../../site-mobile.css">
 <style>
 /* Хлебные крошки. Текущая страница — не ссылка (кликать на то, где
    уже находишься, бессмысленно), поэтому обычный span вместо ссылки. */
@@ -275,6 +276,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="../../nomera/shesty.html" class="lang-switch">RU</a>
 </nav>
+<script src="../../nav.js"></script>
 
 <!-- Breadcrumbs — see the RU builder above for the rationale. -->
 <nav class="breadcrumbs" aria-label="Breadcrumb">
@@ -301,6 +303,8 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   <p class="mono" style="color:var(--gold);letter-spacing:.2em;font-size:12px;margin-bottom:6px">ACT 04 · RARE GENRE</p>
   <h1>Flexible poles</h1>
   <p class="tag">A rare genre — performed by only 3–4 theatres worldwide today</p>
+  <!-- pack-v123: first-screen button; ?act= pre-fills the form (acts.js) -->
+  <div class="cta-row hero-cta"><a class="cta primary" href="../booking.html?act=flexible-poles#bookingForm" data-track="hero_cta:flexible-poles">Book this act</a></div>
 </div>
 
 <div class="marquee"></div>
@@ -411,7 +415,7 @@ document.addEventListener('keydown', function(e) {
     <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Telegram bot</a>
     -->
     <p class="foot-note"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
-    <p class="foot-note"><a href="../privacy.html">Privacy policy</a></p>
+    <p class="foot-note"><a href="../privacy.html">Privacy policy</a> · <a href="../consent.html">Data processing consent</a></p>
     <p class="foot-note">© Nikolai Balashov</p>
   </div>
 </footer>

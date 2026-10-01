@@ -241,12 +241,13 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   }
 }
 </script>
+<link rel="stylesheet" href="site-mobile.css">
 </head>
 <body>
 
 <nav class="site-nav">
   <a href="index.html" class="current">Главная</a>
-  <a href="about.html">О нём</a>
+  <a href="about.html">О нём</a>
   <a href="gallery.html">Галерея</a>
   <a href="media.html">Медиа</a>
   <a href="reviews.html">Отзывы</a>
@@ -254,19 +255,23 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   <a href="https://vk.ru/show_balashov" target="_blank" rel="noopener" class="vk-link">VK</a>
   <a href="en/index.html" class="lang-switch">EN</a>
 </nav>
+<script src="nav.js"></script>
 
 <header>
   <div class="badge-glow">
     <img src="Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова">
   </div>
-  <p class="kicker">Артист цирка · с 1984 года</p>
+  <p class="kicker">Артист цирка · с 1984 года</p>
   <h1 class="name gold-text" data-editable="home_h1">Николай Балашов</h1>
   <p class="showname">«Шоу Балашова»</p>
-  <p class="tag" data-editable="home_tag">Жонглёр, эквилибрист, артист на ходулях и гибких шестах — цирковые номера для праздников по всей России и за рубежом.</p>
+  <p class="tag" data-editable="home_tag">Жонглёр, эквилибрист, артист на ходулях и гибких шестах — цирковые номера для праздников по всей России и за рубежом.</p>
+  <div class="cta-row hero-cta">
+    <a class="cta primary" href="booking.html#bookingForm" data-track="hero_cta">Заказать номер</a>
+    <a class="cta ghost" href="#repertoire" data-track="hero_see_acts">Смотреть номера ↓</a>
+  </div>
   <div class="hero-strip">
     <span>Лестница</span><span>Ходулист</span><span>Гибкие шесты</span><span>Труба-трансформер</span><span>Рекорд России · 2009</span>
   </div>
-  <a class="scroll-cue" href="#repertoire">Смотреть номера ↓</a>
 </header>
 
 <div class="marquee"></div>
@@ -275,12 +280,12 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   <div class="wrap">
     <div class="section-head">
       <span class="ribbon">Формат</span>
-      <h2 class="serif">Один номер — или целое шоу</h2>
+      <h2 class="serif">Один номер — или целое шоу</h2>
     </div>
     <div class="position-copy">
-      <p>На каждой площадке — <b>лично Николай</b>: сорок лет на манеже, каждый выход под его именем и его ответственностью.</p>
-      <p>Для больших форматов он же собирает нужную команду. Так родилась цирковая группа спектакля «Принцесса цирка» в Театре Музыкальной комедии, а для шоу с полётами на парамоторе Николай приглашал пилота-чемпиона и четырёх гимнасток на трапеции.</p>
-      <p>«Шоу Балашова» — это диапазон от одного артиста на свадьбе до полноценной постановки на городском празднике, и в обоих случаях на площадке — сам Николай.</p>
+      <p>На каждой площадке — <b>лично Николай</b>: сорок лет на манеже, каждый выход под его именем и его ответственностью.</p>
+      <p>Для больших форматов он же собирает нужную команду. Так родилась цирковая группа спектакля «Принцесса цирка» в Театре Музыкальной комедии, а для шоу с полётами на парамоторе Николай приглашал пилота-чемпиона и четырёх гимнасток на трапеции.</p>
+      <p>«Шоу Балашова» — это диапазон от одного артиста на свадьбе до полноценной постановки на городском празднике, и в обоих случаях на площадке — сам Николай.</p>
     </div>
   </div>
 </section>
@@ -297,35 +302,35 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
       <a class="act c1" href="nomera/lestnitsa.html" data-track="act_card_click:lestnitsa">
         <div class="num">01</div>
         <p class="kind">Эквилибристика</p>
-        <h3>Жонглёр на вольностоящей лестнице</h3>
-        <p>Классический стиль — чистая эквилибристика, 6 минут. Комический — в костюме джокера, с интерактивом и призами, 12 минут. Только баланс артиста, без страховки и опоры.</p>
+        <h3>Жонглёр на вольностоящей лестнице</h3>
+        <p>Классический стиль — чистая эквилибристика, 6 минут. Комический — в костюме джокера, с интерактивом и призами, 12 минут. Только баланс артиста, без страховки и опоры.</p>
         <span class="act-more">Подробнее →</span>
       </a>
       <a class="act c2" href="nomera/hodulist.html" data-track="act_card_click:hodulist">
         <div class="num">02</div>
-        <p class="kind">В любом образе</p>
+        <p class="kind">В любом образе</p>
         <h3>Ходулист</h3>
-        <p>Сказочные, скоморошьи и тематические костюмы — под детский праздник, свадьбу, открытие ТЦ или городское событие. Живой интерактив с гостями.</p>
+        <p>Сказочные, скоморошьи и тематические костюмы — под детский праздник, свадьбу, открытие ТЦ или городское событие. Живой интерактив с гостями.</p>
         <span class="act-more">Подробнее →</span>
       </a>
       <a class="act c3" href="nomera/shesty.html" data-track="act_card_click:shesty">
         <div class="num">03</div>
         <p class="kind">Редкий жанр</p>
         <h3>Гибкие шесты</h3>
-        <p>Два шеста высотой 6 метров, гибкость до 2,5 м на сторону, вращение вокруг оси. Работает круглый год, в помещении и на улице — необычный для России аттракцион с интерактивным шоу для гостей.</p>
+        <p>Два шеста высотой 6 метров, гибкость до 2,5 м на сторону, вращение вокруг оси. Работает круглый год, в помещении и на улице — необычный для России аттракцион с интерактивным шоу для гостей.</p>
         <span class="act-more">Подробнее →</span>
       </a>
       <a class="act c4" href="nomera/truba-transformer.html" data-track="act_card_click:truba-transformer">
         <div class="num">04</div>
         <p class="kind">Космический гость</p>
         <h3>Человек-пружинка</h3>
-        <p>Яркий интерактивный персонаж для детских и городских праздников. Для взрослых гостей — версия «Труба-трансформер»: 6 разных цветов трубы, «съедает» и «выплёвывает» героя вечера.</p>
+        <p>Яркий интерактивный персонаж для детских и городских праздников. Для взрослых гостей — версия «Труба-трансформер»: 6 разных цветов трубы, «съедает» и «выплёвывает» героя вечера.</p>
         <span class="act-more">Подробнее →</span>
       </a>
     </div>
     <div class="cta-row" style="margin-top:34px">
       <a class="cta primary" href="booking.html#bookingForm" data-track="midpage_cta_repertoire">Заказать номер</a>
-      <a class="cta ghost" href="gallery.html">Все номера и фото</a>
+      <a class="cta ghost" href="gallery.html">Все номера и фото</a>
     </div>
   </div>
 </section>
@@ -336,7 +341,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   <div class="wrap record">
     <span class="ribbon">Книга рекордов России · 2009</span>
     <p class="big serif gold-text">Самый хрупкий баланс</p>
-    <p class="prose">Официально зафиксированный рекорд России в номинации «Самый хрупкий баланс в России» — путь начался с трёх пластиковых стаканов и эквилибра на катушках.</p>
+    <p class="prose">Официально зафиксированный рекорд России в номинации «Самый хрупкий баланс в России» — путь начался с трёх пластиковых стаканов и эквилибра на катушках.</p>
   </div>
 </section>
 
@@ -346,22 +351,22 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   <div class="wrap">
     <div class="section-head">
       <span class="ribbon">Театр</span>
-      <h2 class="serif">На сцене сегодня</h2>
+      <h2 class="serif">На сцене сегодня</h2>
     </div>
     <div class="tl-row">
-      <div class="tl-year">2023 —</div>
+      <div class="tl-year">2023 —</div>
       <div class="tl-body"><h4><a href="https://muzcomedy.ru/about/persons/princessa_cirka/" target="_blank" rel="noopener">«Принцесса цирка» · Театр Музыкальной комедии</a></h4>
-      <p>Постановщик цирковых номеров и руководитель цирковой группы: жонглёр на лестнице и на ходулях.</p></div>
+      <p>Постановщик цирковых номеров и руководитель цирковой группы: жонглёр на лестнице и на ходулях.</p></div>
     </div>
     <div class="tl-row">
       <div class="tl-year">2018</div>
       <div class="tl-body"><h4><a href="https://mikhailovsky.ru/afisha/performances/detail/1070493/" target="_blank" rel="noopener">Опера «Богема» · Михайловский театр</a></h4>
-      <p>Жонглёр на ходулях в сцене «Ярмарка», позже — артист-каскадёр (контракт на 3 года).</p></div>
+      <p>Жонглёр на ходулях в сцене «Ярмарка», позже — артист-каскадёр (контракт на 3 года).</p></div>
     </div>
     <div class="tl-row">
       <div class="tl-year">—</div>
-      <div class="tl-body"><h4><a href="https://www.mariinsky.ru/playbill/repertoire/opera/son/" target="_blank" rel="noopener">«Сон в летнюю ночь» · Мариинский театр</a></h4>
-      <p>Постановка Клаудии Шолти, постановка трюков акробатов — Дэвид Доулни.</p></div>
+      <div class="tl-body"><h4><a href="https://www.mariinsky.ru/playbill/repertoire/opera/son/" target="_blank" rel="noopener">«Сон в летнюю ночь» · Мариинский театр</a></h4>
+      <p>Постановка Клаудии Шолти, постановка трюков акробатов — Дэвид Доулни.</p></div>
     </div>
   </div>
 </section>
@@ -372,18 +377,18 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
       <span class="ribbon">Кино</span>
       <h2 class="serif">Фильмография</h2>
     </div>
-    <div class="tl-row"><div class="tl-year">2025</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/series/5249437/" target="_blank" rel="noopener">«Секс. До и после»</a></h4><p>Реж. Дарья Мороз. Жонглёр во фраке на ходулях.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2024</div><div class="tl-body"><h4>«Фаворит» (Потёмкин)</h4><p>Факир-жонглёр с огнём.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/1402927/" target="_blank" rel="noopener">«Капитан Волконогов бежал»</a></h4><p>Номер на шестах.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/1402918/" target="_blank" rel="noopener">«Хорошие девочки попадают в рай»</a></h4><p>Сцена свадьбы.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2025</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/series/5249437/" target="_blank" rel="noopener">«Секс. До и после»</a></h4><p>Реж. Дарья Мороз. Жонглёр во фраке на ходулях.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2024</div><div class="tl-body"><h4>«Фаворит» (Потёмкин)</h4><p>Факир-жонглёр с огнём.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/1402927/" target="_blank" rel="noopener">«Капитан Волконогов бежал»</a></h4><p>Номер на шестах.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/1402918/" target="_blank" rel="noopener">«Хорошие девочки попадают в рай»</a></h4><p>Сцена свадьбы.</p></div></div>
     <div class="tl-row"><div class="tl-year">2019</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/4360154/" target="_blank" rel="noopener">«Вертинский»</a></h4><p>Сцена застолья.</p></div></div>
     <div class="tl-row"><div class="tl-year">2018</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/1162781/" target="_blank" rel="noopener">«Бендер»</a></h4><p>Актёр второго плана, группа цирка.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2017</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/840234/" target="_blank" rel="noopener">«Дуэлянт»</a></h4><p>Участие в съёмках.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2017</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/840234/" target="_blank" rel="noopener">«Дуэлянт»</a></h4><p>Участие в съёмках.</p></div></div>
     <div class="tl-row"><div class="tl-year">2008</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/451181/" target="_blank" rel="noopener">«Городок»</a></h4><p>Сериал.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/447113/" target="_blank" rel="noopener">«Августейший посол»</a></h4><p>Работа с огнём.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/412345/" target="_blank" rel="noopener">«Гаишники»</a></h4><p>Сериал, работа с огнём на ходулях.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/447113/" target="_blank" rel="noopener">«Августейший посол»</a></h4><p>Работа с огнём.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/412345/" target="_blank" rel="noopener">«Гаишники»</a></h4><p>Сериал, работа с огнём на ходулях.</p></div></div>
     <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/266536/" target="_blank" rel="noopener">«Ветка сирени»</a></h4><p>Реж. Павел Лунгин.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/470915/" target="_blank" rel="noopener">«Дом на Английской набережной»</a></h4><p>Реж. Михаил Богин.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/470915/" target="_blank" rel="noopener">«Дом на Английской набережной»</a></h4><p>Реж. Михаил Богин.</p></div></div>
     <div class="tl-row"><div class="tl-year">2003</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/series/468089/" target="_blank" rel="noopener">«Удачи тебе, сыщик!»</a></h4><p>Реж. Александр Баширов.</p></div></div>
   </div>
 </section>
@@ -392,7 +397,7 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
   <div class="wrap">
     <div class="section-head">
       <span class="ribbon">Гастроли</span>
-      <h2 class="serif">40 лет на дорогах мира</h2>
+      <h2 class="serif">40 лет на дорогах мира</h2>
     </div>
     <div class="tour-row"><span>Польша</span><span>1994–95</span></div>
     <div class="tour-row"><span>Финляндия</span><span>1996</span></div>
@@ -416,18 +421,18 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
       <img src="Brand/logo-shou-balashova-web.jpg" alt="Шоу Балашова">
     </div>
     <span class="ribbon">Booking</span>
-    <h2 class="serif">Позвать Николая на площадку</h2>
-    <p class="tag" data-editable="footer_tag">Дни рождения, свадьбы, корпоративы, городские праздники — по всей России и за рубежом.</p>
+    <h2 class="serif">Позвать Николая на площадку</h2>
+    <p class="tag" data-editable="footer_tag">Дни рождения, свадьбы, корпоративы, городские праздники — по всей России и за рубежом.</p>
     <div class="cta-row">
-      <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
-      <a class="cta ghost" href="booking.html#bookingForm">Условия и заявка</a>
+      <a class="cta primary" href="mailto:balashov.show.ru@gmail.com">Написать по booking</a>
+      <a class="cta ghost" href="booking.html#bookingForm">Условия и заявка</a>
     </div>
     <!-- Бот Telegram — раскомментировать и вписать @username после
          деплоя _tools/BookingBot (см. README.md, раздел 5)
     <a class="cta ghost" href="https://t.me/YOUR_BOT_USERNAME">Бот в Telegram</a>
     -->
     <p class="foot-phone"><a href="tel:+79119138374">+7 911 913-83-74</a></p>
-    <p class="foot-note"><a href="privacy.html">Политика конфиденциальности</a> · <a href="cookies.html">Файлы cookie</a></p>
+    <p class="foot-note"><a href="privacy.html">Политика конфиденциальности</a> · <a href="cookies.html">Файлы cookie</a> · <a href="consent.html">Согласие на обработку данных</a></p>
     <p class="foot-note">© Николай Балашов</p>
   </div>
 </footer>
