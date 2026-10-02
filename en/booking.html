@@ -87,6 +87,8 @@
 
 
 
+#date:disabled{opacity:.4;cursor:not-allowed}
+#formatOtherField[hidden]{display:none}
 </style>
 <link rel="stylesheet" href="../site-mobile.css">
 </head>
@@ -234,6 +236,8 @@
       <div class="field">
         <label for="date">Event date</label>
         <input type="date" id="date">
+        <!-- pack-v128: дату можно не выбирать, если она ещё не известна -->
+        <label for="dateTbd" style="display:flex;align-items:center;gap:8px;margin-top:10px;font-size:14px;font-weight:400;text-transform:none;font-family:'Public Sans',sans-serif;letter-spacing:normal;color:var(--cream-soft);cursor:pointer"><input type="checkbox" id="dateTbd" style="width:auto;margin:0;flex-shrink:0"> Date not decided yet</label>
       </div>
       <div class="field">
         <label for="format">Format</label>
@@ -245,9 +249,18 @@
           <option>Other</option>
         </select>
       </div>
+      <!-- pack-v128: появляется только при формате «Other» и тогда обязательно -->
+      <div class="field" id="formatOtherField" hidden>
+        <label for="formatOther">Please specify the format <span style="color:var(--gold)">*</span></label>
+        <input type="text" id="formatOther" maxlength="120" autocomplete="off" placeholder="e.g. graduation, shop opening">
+      </div>
       <div class="field">
-        <label for="contact">Contact (phone or e-mail) <span style="color:var(--gold)">*</span></label>
-        <input type="text" id="contact" required autocomplete="tel">
+        <label for="phone">Phone <span style="color:var(--gold)">*</span></label>
+        <input type="tel" id="phone" required autocomplete="tel" inputmode="tel">
+      </div>
+      <div class="field">
+        <label for="email">E-mail <span style="color:var(--gold)">*</span></label>
+        <input type="email" id="email" required autocomplete="email" inputmode="email">
       </div>
       <div class="field">
         <label for="details">Details (venue, act format, requests)</label>
@@ -277,35 +290,38 @@
 
 <script src="../acts.js"></script>
 <script>
-// ── pack-v121: удобство и проверка формы (ТЗ, задача 9) ──────────────
-// Адаптировано по мотивам AELITA pack-v535/v536. Запоминания введённого
-// на устройстве (localStorage, как у AELITA) здесь НЕТ сознательно:
+// ── Удобство и проверка формы (pack-v121, переработано в pack-v128) ──
+// Запоминания введённого на устройстве (localStorage) здесь НЕТ сознательно:
 // privacy.html и cookies.html обещают, что сайт ничего не хранит дольше
 // вкладки. Автозаполнение делает сам браузер (атрибуты autocomplete).
+// pack-v128 (по просьбе заказчика): телефон и почта — два отдельных
+// обязательных поля вместо одного «телефон или e-mail»; дату можно
+// заменить отметкой «Date not decided yet»; формат «Other» открывает поле
+// уточнения.
 (function () {
-  var contact = document.getElementById('contact');
-  var date = document.getElementById('date');
-  var details = document.getElementById('details');
-  // Контакт: e-mail (есть @ и точка после) или телефон (10+ цифр).
-  // Раньше проходило что угодно непустое — «а», «звоните».
-  window.__balashovContactOk = function (v) {
-    v = String(v || '').trim();
-    if (/@[^@\s]+\.[^@\s]+/.test(v)) return true;
-    return v.replace(/\D/g, '').length >= 10;
-  };
-  function checkContact() {
-    var v = contact.value.trim();
-    contact.setCustomValidity(v && !window.__balashovContactOk(v) ? 'Enter a phone number (10+ digits) or e-mail' : '');
-  }
-  contact.addEventListener('input', checkContact);
-  contact.addEventListener('blur', checkContact);
-  // Дата: не раньше сегодняшней (по часам устройства).
+  var $ = function (id) { return document.getElementById(id); };
+  var phone = $('phone'), email = $('email'), date = $('date'), tbd = $('dateTbd');
+  var format = $('format'), otherField = $('formatOtherField'), other = $('formatOther'), details = $('details');
+  window.__balashovPhoneOk = function (v) { return String(v || '').replace(/\D/g, '').length >= 10; };
+  window.__balashovEmailOk = function (v) { return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(v || '').trim()); };
+  function check(el, ok, msg) { el.setCustomValidity(el.value.trim() && !ok(el.value) ? msg : ''); }
+  var checkPhone = function () { check(phone, window.__balashovPhoneOk, 'Enter a phone number — at least 10 digits'); };
+  var checkEmail = function () { check(email, window.__balashovEmailOk, 'Enter a full e-mail address — with @ and a dot'); };
+  ['input', 'blur'].forEach(function (ev) { phone.addEventListener(ev, checkPhone); email.addEventListener(ev, checkEmail); });
+  // Дата: не раньше сегодняшней; «пока не определена» — очистить и отключить поле.
   try {
     var d = new Date(), pad = function (n) { return (n < 10 ? '0' : '') + n; };
     date.min = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
   } catch (e) {}
-  // ?act=<слаг> — со страницы номера: подставить номер в «Детали»,
-  // если поле пустое. Названия — из acts.js (собирает build_nomer_pages.py).
+  tbd.addEventListener('change', function () { if (tbd.checked) date.value = ''; date.disabled = tbd.checked; });
+  // Формат «Other» — показать обязательное поле уточнения.
+  function syncOther() {
+    var on = format.value === 'Other';
+    otherField.hidden = !on; other.required = on;
+    if (on && document.activeElement === format) other.focus();
+  }
+  format.addEventListener('change', syncOther); syncOther();
+  // ?act=<слаг> — со страницы номера: подставить номер в «Детали», если пусто.
   try {
     var act = new URLSearchParams(location.search).get('act');
     var acts = window.BALASHOV_ACTS || {};
@@ -315,24 +331,21 @@
 
 document.getElementById('bookingForm').addEventListener('submit', function(e){
   e.preventDefault();
-  var contactEl = document.getElementById('contact');
-  if (!window.__balashovContactOk(contactEl.value)) {
-    contactEl.setCustomValidity('Enter a phone number (10+ digits) or e-mail');
-    contactEl.reportValidity();
-    contactEl.focus();
-    return;
-  }
-  var name = document.getElementById('name').value;
-  var date = document.getElementById('date').value;
-  var format = document.getElementById('format').value;
-  var contact = document.getElementById('contact').value;
-  var details = document.getElementById('details').value;
-  var subject = encodeURIComponent('Booking: ' + format + (date ? ' — ' + date : ''));
+  var $ = function (id) { return document.getElementById(id); };
+  var fail = function (el, msg) { el.setCustomValidity(msg); el.reportValidity(); el.focus(); };
+  if (!window.__balashovPhoneOk($('phone').value)) return fail($('phone'), 'Enter a phone number — at least 10 digits');
+  if (!window.__balashovEmailOk($('email').value)) return fail($('email'), 'Enter a full e-mail address — with @ and a dot');
+  var name = $('name').value;
+  var date = $('dateTbd').checked ? 'not decided yet' : $('date').value;
+  var format = $('format').value === 'Other' ? 'Other: ' + $('formatOther').value.trim() : $('format').value;
+  var details = $('details').value;
+  var subject = encodeURIComponent('Booking: ' + format + ($('date').value && !$('dateTbd').checked ? ' — ' + date : ''));
   var body = encodeURIComponent(
     'Name: ' + name + '\n' +
     'Date: ' + (date || '—') + '\n' +
     'Format: ' + format + '\n' +
-    'Contact: ' + contact + '\n' +
+    'Phone: ' + $('phone').value.trim() + '\n' +
+    'E-mail: ' + $('email').value.trim() + '\n' +
     'Details: ' + (details || '—')
   );
   window.location.href = 'mailto:balashov.show.ru@gmail.com?subject=' + subject + '&body=' + body;
