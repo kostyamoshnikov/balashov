@@ -190,9 +190,9 @@ section.tinted{background:rgba(253,217,69,.025)}
 .tl-row{display:grid;grid-template-columns:64px 1fr;gap:14px;padding:14px 0;border-bottom:1px dashed rgba(253,217,69,.15)}
 .tl-row:first-child{border-top:1px dashed rgba(253,217,69,.15)}
 .tl-year{font-family:'Space Mono';font-size:12px;color:var(--gold);font-weight:700}
-.tl-body h4{font-family:'Public Sans';font-weight:600;font-size:18px;color:var(--cream)}
-.tl-body h4 a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(253,217,69,.35)}
-.tl-body h4 a:hover{border-color:var(--gold);color:var(--gold)}
+.tl-body h4,.tl-body h3{font-family:'Public Sans';font-weight:600;font-size:18px;color:var(--cream)}
+.tl-body h4 a,.tl-body h3 a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(253,217,69,.35)}
+.tl-body h4 a:hover,.tl-body h3 a:hover{border-color:var(--gold);color:var(--gold)}
 .tl-body p{font-family:'Public Sans';font-size:16px;color:var(--cream-soft);margin-top:3px}
 
 /* ── touring chips ── */
@@ -216,7 +216,9 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
 .foot-phone a{color:var(--gold);text-decoration:none}
 .foot-phone a:hover{text-decoration:underline}
 
-@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+@media (prefers-reduced-
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+motion: reduce){ html{scroll-behavior:auto} }
 </style>
 <script type="application/ld+json">
 {
@@ -355,17 +357,17 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
     </div>
     <div class="tl-row">
       <div class="tl-year">2023 —</div>
-      <div class="tl-body"><h4><a href="https://muzcomedy.ru/about/persons/princessa_cirka/" target="_blank" rel="noopener">«Принцесса цирка» · Театр Музыкальной комедии</a></h4>
+      <div class="tl-body"><h3><a href="https://muzcomedy.ru/about/persons/princessa_cirka/" target="_blank" rel="noopener">«Принцесса цирка» · Театр Музыкальной комедии</a></h3>
       <p>Постановщик цирковых номеров и руководитель цирковой группы: жонглёр на лестнице и на ходулях.</p></div>
     </div>
     <div class="tl-row">
       <div class="tl-year">2018</div>
-      <div class="tl-body"><h4><a href="https://mikhailovsky.ru/afisha/performances/detail/1070493/" target="_blank" rel="noopener">Опера «Богема» · Михайловский театр</a></h4>
+      <div class="tl-body"><h3><a href="https://mikhailovsky.ru/afisha/performances/detail/1070493/" target="_blank" rel="noopener">Опера «Богема» · Михайловский театр</a></h3>
       <p>Жонглёр на ходулях в сцене «Ярмарка», позже — артист-каскадёр (контракт на 3 года).</p></div>
     </div>
     <div class="tl-row">
       <div class="tl-year">—</div>
-      <div class="tl-body"><h4><a href="https://www.mariinsky.ru/playbill/repertoire/opera/son/" target="_blank" rel="noopener">«Сон в летнюю ночь» · Мариинский театр</a></h4>
+      <div class="tl-body"><h3><a href="https://www.mariinsky.ru/playbill/repertoire/opera/son/" target="_blank" rel="noopener">«Сон в летнюю ночь» · Мариинский театр</a></h3>
       <p>Постановка Клаудии Шолти, постановка трюков акробатов — Дэвид Доулни.</p></div>
     </div>
   </div>
@@ -377,19 +379,19 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
       <span class="ribbon">Кино</span>
       <h2 class="serif">Фильмография</h2>
     </div>
-    <div class="tl-row"><div class="tl-year">2025</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/series/5249437/" target="_blank" rel="noopener">«Секс. До и после»</a></h4><p>Реж. Дарья Мороз. Жонглёр во фраке на ходулях.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2024</div><div class="tl-body"><h4>«Фаворит» (Потёмкин)</h4><p>Факир-жонглёр с огнём.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/1402927/" target="_blank" rel="noopener">«Капитан Волконогов бежал»</a></h4><p>Номер на шестах.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/1402918/" target="_blank" rel="noopener">«Хорошие девочки попадают в рай»</a></h4><p>Сцена свадьбы.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2019</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/4360154/" target="_blank" rel="noopener">«Вертинский»</a></h4><p>Сцена застолья.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2018</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/1162781/" target="_blank" rel="noopener">«Бендер»</a></h4><p>Актёр второго плана, группа цирка.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2017</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/840234/" target="_blank" rel="noopener">«Дуэлянт»</a></h4><p>Участие в съёмках.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2008</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/451181/" target="_blank" rel="noopener">«Городок»</a></h4><p>Сериал.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/447113/" target="_blank" rel="noopener">«Августейший посол»</a></h4><p>Работа с огнём.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/412345/" target="_blank" rel="noopener">«Гаишники»</a></h4><p>Сериал, работа с огнём на ходулях.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/266536/" target="_blank" rel="noopener">«Ветка сирени»</a></h4><p>Реж. Павел Лунгин.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/470915/" target="_blank" rel="noopener">«Дом на Английской набережной»</a></h4><p>Реж. Михаил Богин.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2003</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/series/468089/" target="_blank" rel="noopener">«Удачи тебе, сыщик!»</a></h4><p>Реж. Александр Баширов.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2025</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/series/5249437/" target="_blank" rel="noopener">«Секс. До и после»</a></h3><p>Реж. Дарья Мороз. Жонглёр во фраке на ходулях.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2024</div><div class="tl-body"><h3>«Фаворит» (Потёмкин)</h3><p>Факир-жонглёр с огнём.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/1402927/" target="_blank" rel="noopener">«Капитан Волконогов бежал»</a></h3><p>Номер на шестах.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/1402918/" target="_blank" rel="noopener">«Хорошие девочки попадают в рай»</a></h3><p>Сцена свадьбы.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2019</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/4360154/" target="_blank" rel="noopener">«Вертинский»</a></h3><p>Сцена застолья.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2018</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/1162781/" target="_blank" rel="noopener">«Бендер»</a></h3><p>Актёр второго плана, группа цирка.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2017</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/840234/" target="_blank" rel="noopener">«Дуэлянт»</a></h3><p>Участие в съёмках.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2008</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/451181/" target="_blank" rel="noopener">«Городок»</a></h3><p>Сериал.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/447113/" target="_blank" rel="noopener">«Августейший посол»</a></h3><p>Работа с огнём.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/412345/" target="_blank" rel="noopener">«Гаишники»</a></h3><p>Сериал, работа с огнём на ходулях.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/266536/" target="_blank" rel="noopener">«Ветка сирени»</a></h3><p>Реж. Павел Лунгин.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/470915/" target="_blank" rel="noopener">«Дом на Английской набережной»</a></h3><p>Реж. Михаил Богин.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2003</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/series/468089/" target="_blank" rel="noopener">«Удачи тебе, сыщик!»</a></h3><p>Реж. Александр Баширов.</p></div></div>
   </div>
 </section>
 

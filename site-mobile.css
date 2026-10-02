@@ -65,3 +65,20 @@
 .hero-cta { margin-top: 20px; position: relative; z-index: 1 }
 .end-cta { text-align: center }
 .end-cta .cta-row { margin-top: 0 }
+
+/* pack-v127: область нажатия не меньше 24px (WCAG 2.2, 2.5.8) у ссылок,
+   которые стоят отдельно, а не внутри текста: «хлебные крошки» страниц
+   номеров (были 15px в высоту), «Подробнее →» в галерее (21px), названия
+   фильмов в хронологии (21px). На всех ширинах, не только на телефоне. */
+.breadcrumbs a{display:inline-block;padding:5px 0}
+.g-more{padding:3px 0}
+/* названия в хронологии переносятся на 2 строки — остаются строчными
+   (display:inline-block свёл бы построчное подчёркивание в одно под блоком);
+   вертикальный отступ строчного элемента расширяет область нажатия, не
+   сдвигая строки */
+.tl-body h3 a,.tl-body h4 a{padding:3px 0}
+/* телефон в подвале и в карточках booking (отдельная ссылка, на телефоне —
+   главная кнопка связи; была 14–15px в высоту) и ссылки на PDF-материалы */
+.foot-note a[href^="tel:"],
+.rider-box a[href^="tel:"],
+.rider-box .note a[href*="files/"]{display:inline-block;padding:5px 0}

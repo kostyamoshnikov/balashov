@@ -165,9 +165,9 @@ section.tinted{background:rgba(253,217,69,.025)}
 .tl-row{display:grid;grid-template-columns:64px 1fr;gap:14px;padding:14px 0;border-bottom:1px dashed rgba(253,217,69,.15)}
 .tl-row:first-child{border-top:1px dashed rgba(253,217,69,.15)}
 .tl-year{font-family:'Space Mono';font-size:12px;color:var(--gold);font-weight:700}
-.tl-body h4{font-family:'Public Sans';font-weight:600;font-size:18px;color:var(--cream)}
-.tl-body h4 a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(253,217,69,.35)}
-.tl-body h4 a:hover{border-color:var(--gold);color:var(--gold)}
+.tl-body h4,.tl-body h3{font-family:'Public Sans';font-weight:600;font-size:18px;color:var(--cream)}
+.tl-body h4 a,.tl-body h3 a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(253,217,69,.35)}
+.tl-body h4 a:hover,.tl-body h3 a:hover{border-color:var(--gold);color:var(--gold)}
 .tl-body p{font-family:'Public Sans';font-size:16px;color:var(--cream-soft);margin-top:3px}
 
 .tour-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dotted rgba(253,217,69,.15);font-family:'Space Mono';font-size:14px}
@@ -201,7 +201,7 @@ section.tinted{background:rgba(253,217,69,.025)}
 .link-card{background:var(--ink-2);border:1px solid rgba(253,217,69,.2);border-radius:16px;padding:18px 20px;margin-bottom:12px;display:block;text-decoration:none;color:inherit}
 .link-card:hover{border-color:rgba(253,217,69,.45)}
 .link-card .kind{font-family:'Space Mono';font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
-.link-card h4{font-family:'Public Sans';font-weight:600;font-size:18px;margin:5px 0 4px;color:var(--cream)}
+.link-card h4,.link-card h3{font-family:'Public Sans';font-weight:600;font-size:18px;margin:5px 0 4px;color:var(--cream)}
 .link-card p{font-family:'Public Sans';font-size:16px;color:var(--cream-soft);margin-bottom:6px}
 .link-card .url{font-family:'Space Mono';font-size:12px;color:var(--flame);word-break:break-all}
 
@@ -225,7 +225,9 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
 .foot-phone a{color:var(--gold);text-decoration:none}
 .foot-phone a:hover{text-decoration:underline}
 
-@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+@media (pref
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+ers-reduced-motion: reduce){ html{scroll-behavior:auto} }
 
 
 </style>
@@ -368,17 +370,17 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
     </div>
     <div class="tl-row">
       <div class="tl-year">2023 —</div>
-      <div class="tl-body"><h4><a href="https://muzcomedy.ru/about/persons/princessa_cirka/" target="_blank" rel="noopener">"Princess of the Circus" · Musical Comedy Theatre</a></h4>
+      <div class="tl-body"><h3><a href="https://muzcomedy.ru/about/persons/princessa_cirka/" target="_blank" rel="noopener">"Princess of the Circus" · Musical Comedy Theatre</a></h3>
       <p>Director of circus acts and head of the circus troupe: juggler on the ladder and on stilts.</p></div>
     </div>
     <div class="tl-row">
       <div class="tl-year">2018</div>
-      <div class="tl-body"><h4><a href="https://mikhailovsky.ru/afisha/performances/detail/1070493/" target="_blank" rel="noopener">Opera "La Bohème" · Mikhailovsky Theatre</a></h4>
+      <div class="tl-body"><h3><a href="https://mikhailovsky.ru/afisha/performances/detail/1070493/" target="_blank" rel="noopener">Opera "La Bohème" · Mikhailovsky Theatre</a></h3>
       <p>Stilt juggler in the "Fair" scene, later a stunt performer (three-year contract).</p></div>
     </div>
     <div class="tl-row">
       <div class="tl-year">—</div>
-      <div class="tl-body"><h4><a href="https://www.mariinsky.ru/playbill/repertoire/opera/son/" target="_blank" rel="noopener">"A Midsummer Night's Dream" · Mariinsky Theatre</a></h4>
+      <div class="tl-body"><h3><a href="https://www.mariinsky.ru/playbill/repertoire/opera/son/" target="_blank" rel="noopener">"A Midsummer Night's Dream" · Mariinsky Theatre</a></h3>
       <p>Staged by Claudia Sholti, acrobatic stunts staged by David Doulen.</p></div>
     </div>
   </div>
@@ -390,19 +392,19 @@ footer .tag{font-family:'Public Sans';font-size:14px;color:var(--cream-soft);mar
       <span class="ribbon">Film</span>
       <h2 class="serif">Filmography</h2>
     </div>
-    <div class="tl-row"><div class="tl-year">2025</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/series/5249437/" target="_blank" rel="noopener">"Sex. Before and After"</a></h4><p>Dir. Darya Moroz. Tailcoat juggler on stilts.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2024</div><div class="tl-body"><h4>"Favourite" (Potemkin)</h4><p>Fire-juggling fakir.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/1402927/" target="_blank" rel="noopener">"Captain Volkonogov Escaped"</a></h4><p>Pole act.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/1402918/" target="_blank" rel="noopener">"Good Girls Go to Heaven"</a></h4><p>Wedding scene.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2019</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/4360154/" target="_blank" rel="noopener">"Vertinsky"</a></h4><p>Feast scene.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2018</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/1162781/" target="_blank" rel="noopener">"Bender"</a></h4><p>Supporting role, circus troupe.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2017</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/840234/" target="_blank" rel="noopener">"The Duelist"</a></h4><p>On-screen appearance.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2008</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/451181/" target="_blank" rel="noopener">"Gorodok"</a></h4><p>TV series.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/447113/" target="_blank" rel="noopener">"The August Envoy"</a></h4><p>Fire work.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/412345/" target="_blank" rel="noopener">"Traffic Cops"</a></h4><p>TV series, fire work on stilts.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/266536/" target="_blank" rel="noopener">"A Sprig of Lilac"</a></h4><p>Dir. Pavel Lungin.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/film/470915/" target="_blank" rel="noopener">"House on the English Embankment"</a></h4><p>Dir. Mikhail Bogin.</p></div></div>
-    <div class="tl-row"><div class="tl-year">2003</div><div class="tl-body"><h4><a href="https://www.kinopoisk.ru/series/468089/" target="_blank" rel="noopener">"Good Luck, Detective!"</a></h4><p>Dir. Alexander Bashirov.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2025</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/series/5249437/" target="_blank" rel="noopener">"Sex. Before and After"</a></h3><p>Dir. Darya Moroz. Tailcoat juggler on stilts.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2024</div><div class="tl-body"><h3>"Favourite" (Potemkin)</h3><p>Fire-juggling fakir.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/1402927/" target="_blank" rel="noopener">"Captain Volkonogov Escaped"</a></h3><p>Pole act.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2020</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/1402918/" target="_blank" rel="noopener">"Good Girls Go to Heaven"</a></h3><p>Wedding scene.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2019</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/4360154/" target="_blank" rel="noopener">"Vertinsky"</a></h3><p>Feast scene.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2018</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/1162781/" target="_blank" rel="noopener">"Bender"</a></h3><p>Supporting role, circus troupe.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2017</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/840234/" target="_blank" rel="noopener">"The Duelist"</a></h3><p>On-screen appearance.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2008</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/451181/" target="_blank" rel="noopener">"Gorodok"</a></h3><p>TV series.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/447113/" target="_blank" rel="noopener">"The August Envoy"</a></h3><p>Fire work.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2007</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/412345/" target="_blank" rel="noopener">"Traffic Cops"</a></h3><p>TV series, fire work on stilts.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/266536/" target="_blank" rel="noopener">"A Sprig of Lilac"</a></h3><p>Dir. Pavel Lungin.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2006</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/film/470915/" target="_blank" rel="noopener">"House on the English Embankment"</a></h3><p>Dir. Mikhail Bogin.</p></div></div>
+    <div class="tl-row"><div class="tl-year">2003</div><div class="tl-body"><h3><a href="https://www.kinopoisk.ru/series/468089/" target="_blank" rel="noopener">"Good Luck, Detective!"</a></h3><p>Dir. Alexander Bashirov.</p></div></div>
   </div>
 </section>
 
